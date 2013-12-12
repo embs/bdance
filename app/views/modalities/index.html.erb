@@ -1,0 +1,29 @@
+<h1>Listing modalities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @modalities.each do |modality| %>
+      <tr>
+        <td><%= modality.name %></td>
+        <td><%= modality.description %></td>
+        <td><%= link_to 'Show', modality %></td>
+        <td><%= link_to 'Edit', edit_modality_path(modality) %></td>
+        <td><%= link_to 'Destroy', modality, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Modality', new_modality_path %>

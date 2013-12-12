@@ -4,7 +4,6 @@ class CreateGroups < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.float :price
-      t.time :hour
       t.string :local
       t.date :start
       t.date :end

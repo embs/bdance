@@ -3,7 +3,7 @@ Bdance::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'modalities#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -12,7 +12,7 @@ Bdance::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :modalities, :rhythms, :groups
 
   # Example resource route with options:
   #   resources :products do
@@ -39,7 +39,7 @@ Bdance::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

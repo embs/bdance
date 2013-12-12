@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131211070014) do
+ActiveRecord::Schema.define(version: 20131211213607) do
 
   create_table "addresses", force: true do |t|
     t.integer  "user_id"
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(version: 20131211070014) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "horaries", force: true do |t|
+    t.string   "day"
+    t.datetime "start"
+    t.datetime "end"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "horaries", ["group_id"], name: "index_horaries_on_group_id"
 
   create_table "hours_packages", force: true do |t|
     t.integer  "amount"
@@ -135,7 +146,7 @@ ActiveRecord::Schema.define(version: 20131211070014) do
   create_table "rhythms", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "modality_id"
+    t.integer  "modality_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

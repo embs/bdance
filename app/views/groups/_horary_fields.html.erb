@@ -1,0 +1,5 @@
+<p class='horary'>
+  <%= f.select :day, Date::DAYNAMES.each_with_index.collect { |d, n| [d, n] } %><br />
+  <%= f.time_select :start, prompt: true %> ~ <%= f.time_select :end, prompt: true %><br />
+  <%= f.link_to_remove "Remove this horary" %><br />
+</p>

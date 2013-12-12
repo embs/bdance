@@ -1,0 +1,52 @@
+<%= nested_form_for(@group) do |f| %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :horaries %><br>
+    <%= f.fields_for :horaries do |builder| %>
+      <%= render "horary_fields", f: builder %>
+    <% end %>
+    <%= f.link_to_add "Add a horary", :horaries %>
+  </div>
+  <div class="field">
+    <%= f.label :local %><br>
+    <%= f.text_field :local %>
+  </div>
+  <div class="field">
+    <%= f.label :start %><br>
+    <%= f.date_select :start %>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br>
+    <%= f.date_select :end %>
+  </div>
+  <div class="field">
+    <%= f.label :modality %><br>
+    <%= f.select :modality, options_from_collection_for_select(Modality.all, :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @rhythm.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @rhythm.description %>
+</p>
+
+<p>
+  <strong>Modality:</strong>
+  <%= @rhythm.modality.name %>
+</p>
+
+<%= link_to 'Edit', edit_rhythm_path(@rhythm) %> |
+<%= link_to 'Back', rhythms_path %>

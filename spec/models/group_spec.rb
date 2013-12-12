@@ -5,7 +5,6 @@ describe Group do
   it { should respond_to(:name) }
   it { should respond_to(:description) }
   it { should respond_to(:price) }
-  it { should respond_to(:hour) }
   it { should respond_to(:local) }
   it { should respond_to(:start) }
   it { should respond_to(:end) }
@@ -13,4 +12,8 @@ describe Group do
   # Associações
   it { should have_many(:pupils).through(:enrollments) }
   it { should belong_to(:modality) }
+  it { should have_many(:horaries) }
+
+  # Validações
+  it { should validate_presence_of(:name) }
 end
