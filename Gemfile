@@ -54,3 +54,7 @@ gem 'nested_form'
 gem 'acts_as_relation', '~> 1.0'
 
 gem 'devise'
+
+gem 'omniauth'
+
+gem 'omniauth-facebook'
