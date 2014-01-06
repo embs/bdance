@@ -20,7 +20,7 @@ require 'spec_helper'
 
 describe EnrollmentsController do
 
-  let(:pupil) { Pupil.create(first_name: 'Anakin') }
+  let(:pupil) { FactoryGirl.create(:pupil) }
   let(:modality) { Modality.create(name: 'Salao') }
   let(:group) { Group.create(name: 'Salao I', modality: modality )}
 

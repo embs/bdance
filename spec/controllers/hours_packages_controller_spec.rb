@@ -20,7 +20,7 @@ require 'spec_helper'
 
 describe HoursPackagesController do
 
-  let(:pupil) { Pupil.create(first_name: 'Anakin') }
+  let(:pupil) { FactoryGirl.create(:pupil) }
 
   # This should return the minimal set of attributes required to create a valid
   # HoursPackage. As you add validations to HoursPackage, be sure to

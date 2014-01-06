@@ -8,7 +8,6 @@ class CreateUsers < ActiveRecord::Migration
       t.text :phone
       t.string :first_name
       t.string :last_name
-      t.string :mail
       t.string :username
 
       t.timestamps

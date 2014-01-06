@@ -79,6 +79,7 @@ class PupilsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pupil_params
-      params.require(:pupil).permit(:first_name, :last_name, :username, :mail, :rg, :cpf, :birth, :phone, :profession, :observations)
+      params.require(:pupil).permit(:first_name, :last_name, :username, :email, :password,
+        :rg, :cpf, :birth, :phone, :profession, :observations)
     end
 end

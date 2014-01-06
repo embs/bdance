@@ -36,6 +36,8 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'debugger'
 end
 
 # Use ActiveModel has_secure_password
@@ -47,9 +49,8 @@ end
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-# Use debugger
-gem 'debugger', group: [:development, :test]
-
 gem 'nested_form'
 
 gem 'acts_as_relation', '~> 1.0'
+
+gem 'devise'
