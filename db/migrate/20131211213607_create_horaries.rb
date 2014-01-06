@@ -5,6 +5,7 @@ class CreateHoraries < ActiveRecord::Migration
       t.datetime :start
       t.datetime :end
       t.references :group, index: true
+      t.references :hours_package, index: true
 
       t.timestamps
     end

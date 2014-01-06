@@ -1,11 +1,8 @@
 require 'spec_helper'
 
 describe HoursPackage do
-  # Atributos
-  it { should respond_to(:amount) }
-  it { should respond_to(:weekly_hours) }
-
   # Associações
   it { should belong_to(:teacher) }
-  it { should belong_to(:pupil) }
+  it { should have_and_belong_to_many(:pupils) }
+  it { should have_many(:horaries) }
 end

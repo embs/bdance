@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pupils:</strong>
+  <%= @hours_package.pupils %>
+</p>
+
+<p>
+  <strong>Teacher:</strong>
+  <%= @hours_package.teacher %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @hours_package.price %>
+</p>
+
+<p>
+  <strong>Horaries:</strong>
+  <%= @hours_package.horaries %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @hours_package.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @hours_package.end %>
+</p>
+
+<%= link_to 'Edit', edit_hours_package_path(@hours_package) %> |
+<%= link_to 'Back', hours_packages_path %>

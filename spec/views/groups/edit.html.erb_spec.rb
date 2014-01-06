@@ -20,7 +20,7 @@ describe "groups/edit" do
       assert_select "input#group_name[name=?]", "group[name]"
       assert_select "textarea#group_description[name=?]", "group[description]"
       assert_select "input#group_price[name=?]", "group[price]"
-      assert_select "input#group_hour[name=?]", "group[hour]"
+      # assert_select "select#group_horary[name=?]", "group[horary]"
       assert_select "input#group_local[name=?]", "group[local]"
       assert_select "select#group_modality[name=?]", "group[modality]"
     end

@@ -26,7 +26,7 @@
   <div class="field">
     <%= f.label :horaries %><br>
     <%= f.fields_for :horaries do |builder| %>
-      <%= render "horary_fields", f: builder %>
+      <%= render "shared/horary_fields", f: builder %>
     <% end %>
     <%= f.link_to_add "Add a horary", :horaries %>
   </div>

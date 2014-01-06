@@ -20,10 +20,14 @@ require 'spec_helper'
 
 describe GroupsController do
 
+  let(:modality) { Modality.create(name: "NewModality") }
+
   # This should return the minimal set of attributes required to create a valid
   # Group. As you add validations to Group, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString" } }
+  let(:valid_attributes) do
+    { "name" => "MyString", modality: modality }
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +89,14 @@ describe GroupsController do
       it "assigns a newly created but unsaved group as @group" do
         # Trigger the behavior that occurs when invalid params are submitted
         Group.any_instance.stub(:save).and_return(false)
-        post :create, {:group => { "name" => "invalid value" }}, valid_session
+        post :create, {:group => { "name" => "invalid value", modality: modality }}, valid_session
         expect(assigns(:group)).to be_a_new(Group)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Group.any_instance.stub(:save).and_return(false)
-        post :create, {:group => { "name" => "invalid value" }}, valid_session
+        post :create, {:group => { "name" => "invalid value", modality: modality }}, valid_session
         expect(response).to render_template("new")
       end
     end
@@ -128,7 +132,7 @@ describe GroupsController do
         group = Group.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Group.any_instance.stub(:save).and_return(false)
-        put :update, {:id => group.to_param, :group => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => group.to_param, :group => { "name" => "invalid value", modality: modality }}, valid_session
         expect(assigns(:group)).to eq(group)
       end
 
@@ -136,7 +140,7 @@ describe GroupsController do
         group = Group.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Group.any_instance.stub(:save).and_return(false)
-        put :update, {:id => group.to_param, :group => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => group.to_param, :group => { "name" => "invalid value", modality: modality }}, valid_session
         expect(response).to render_template("edit")
       end
     end

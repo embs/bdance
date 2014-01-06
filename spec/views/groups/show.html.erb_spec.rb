@@ -8,7 +8,7 @@ describe "groups/show" do
       :price => 1.5,
       :time => "",
       :local => "Local",
-      :modality => nil
+      :modality => Modality.create(name: "MyModality")
     ))
   end
 

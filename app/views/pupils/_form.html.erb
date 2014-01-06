@@ -1,0 +1,57 @@
+<%= form_for(@pupil) do |f| %>
+  <% if @pupil.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pupil.errors.count, "error") %> prohibited this pupil from being saved:</h2>
+
+      <ul>
+      <% @pupil.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :mail %><br>
+    <%= f.text_field :mail %>
+  </div>
+  <div class="field">
+    <%= f.label :rg %><br>
+    <%= f.text_field :rg %>
+  </div>
+  <div class="field">
+    <%= f.label :cpf %><br>
+    <%= f.text_field :cpf %>
+  </div>
+  <div class="field">
+    <%= f.label :birth %><br>
+    <%= f.text_field :birth %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :profession %><br>
+    <%= f.text_field :profession %>
+  </div>
+  <div class="field">
+    <%= f.label :observations %><br>
+    <%= f.text_field :observations %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

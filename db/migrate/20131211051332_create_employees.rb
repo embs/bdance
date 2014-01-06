@@ -1,6 +1,6 @@
 class CreateEmployees < ActiveRecord::Migration
   def change
-    create_table :employees do |t|
+    create_table :employees, as_relation_superclass: true do |t|
       t.string :responsibility
       t.float :wage
 

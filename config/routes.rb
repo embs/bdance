@@ -12,7 +12,8 @@ Bdance::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :modalities, :rhythms, :groups
+  resources :modalities, :rhythms, :groups, :employees, :pupils, :enrollments,
+    :hours_packages
 
   # Example resource route with options:
   #   resources :products do

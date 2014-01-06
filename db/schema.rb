@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20131211213607) do
   end
 
   create_table "employees", force: true do |t|
+    t.integer  "as_employee_id"
+    t.string   "as_employee_type"
     t.string   "responsibility"
     t.float    "wage"
     t.datetime "created_at"
@@ -60,7 +62,6 @@ ActiveRecord::Schema.define(version: 20131211213607) do
     t.string   "name"
     t.text     "description"
     t.float    "price"
-    t.time     "hour"
     t.string   "local"
     t.date     "start"
     t.date     "end"
@@ -69,25 +70,41 @@ ActiveRecord::Schema.define(version: 20131211213607) do
     t.datetime "updated_at"
   end
 
+  create_table "groups_teachers", id: false, force: true do |t|
+    t.integer "group_id"
+    t.integer "teacher_id"
+  end
+
+  add_index "groups_teachers", ["group_id", "teacher_id"], name: "index_groups_teachers_on_group_id_and_teacher_id"
+
   create_table "horaries", force: true do |t|
     t.string   "day"
     t.datetime "start"
     t.datetime "end"
     t.integer  "group_id"
+    t.integer  "hours_package_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "horaries", ["group_id"], name: "index_horaries_on_group_id"
+  add_index "horaries", ["hours_package_id"], name: "index_horaries_on_hours_package_id"
 
   create_table "hours_packages", force: true do |t|
-    t.integer  "amount"
-    t.text     "weekly_hours"
-    t.integer  "pupil_id"
     t.integer  "teacher_id"
+    t.float    "price"
+    t.date     "start"
+    t.date     "end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "hours_packages_pupils", id: false, force: true do |t|
+    t.integer "pupil_id"
+    t.integer "hours_package_id"
+  end
+
+  add_index "hours_packages_pupils", ["pupil_id", "hours_package_id"], name: "index_hours_packages_pupils_on_pupil_id_and_hours_package_id"
 
   create_table "managers", force: true do |t|
     t.datetime "created_at"
@@ -125,6 +142,7 @@ ActiveRecord::Schema.define(version: 20131211213607) do
   end
 
   create_table "pupils", force: true do |t|
+    t.text     "observations"
     t.integer  "responsible_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -157,9 +175,11 @@ ActiveRecord::Schema.define(version: 20131211213607) do
   end
 
   create_table "users", force: true do |t|
+    t.integer  "as_user_id"
+    t.string   "as_user_type"
     t.string   "rg"
     t.string   "profession"
-    t.datetime "birth"
+    t.date     "birth"
     t.string   "cpf"
     t.text     "phone"
     t.string   "first_name"

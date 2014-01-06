@@ -13,7 +13,9 @@ describe Group do
   it { should have_many(:pupils).through(:enrollments) }
   it { should belong_to(:modality) }
   it { should have_many(:horaries) }
+  it { should have_and_belong_to_many(:teachers) }
 
   # Validações
   it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:modality) }
 end

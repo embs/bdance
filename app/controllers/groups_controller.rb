@@ -80,9 +80,15 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-      modality = Modality.find(group_permitted_params[:modality])
-
-      group_permitted_params.merge({ modality: modality }).merge({ horaries_attributes: horaries_permitted_params })
+      if params[:group][:modality] && params[:group][:horaries_attributes]
+        return group_permitted_params.merge(horaries_attributes: horaries_permitted_params).
+          merge(modality: Modality.find(group_permitted_params[:modality]))
+      elsif params[:group][:modality]
+        return group_permitted_params.
+          merge(modality: Modality.find(group_permitted_params[:modality]))
+      else
+        return group_permitted_params
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

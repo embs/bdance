@@ -1,0 +1,37 @@
+<h1>Listing hours_packages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pupils</th>
+      <th>Teacher</th>
+      <th>Price</th>
+      <th>Horaries</th>
+      <th>Start</th>
+      <th>End</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hours_packages.each do |hours_package| %>
+      <tr>
+        <td><%= hours_package.pupils %></td>
+        <td><%= hours_package.teacher %></td>
+        <td><%= hours_package.price %></td>
+        <td><%= hours_package.horaries %></td>
+        <td><%= hours_package.start %></td>
+        <td><%= hours_package.end %></td>
+        <td><%= link_to 'Show', hours_package %></td>
+        <td><%= link_to 'Edit', edit_hours_package_path(hours_package) %></td>
+        <td><%= link_to 'Destroy', hours_package, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hours package', new_hours_package_path %>

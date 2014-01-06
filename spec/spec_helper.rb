@@ -44,4 +44,9 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  # Acaba com os malditos warnings do :expect x :should syntax
+  config.mock_with :rspec do |c|
+    c.syntax = [:expect, :should]
+  end
 end
