@@ -27,7 +27,7 @@ class RhythmsController < ApplicationController
     @rhythm = Rhythm.new(rhythm_params.merge({ modality: Modality.find(rhythm_params[:modality]) }))
 
     respond_to do |format|
-      if @rhythm.save
+      if Facade.instance.saveRhythm(@rhythm)
         format.html { redirect_to @rhythm, notice: 'Rhythm was successfully created.' }
         format.json { render action: 'show', status: :created, location: @rhythm }
       else
