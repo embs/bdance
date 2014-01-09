@@ -6,6 +6,15 @@ class Facade
   attr_accessor :rhythm_controller, :facebook_login_controller
 
   def initialize
+    # inicializa repositórios
+    case Bdance::Application.config.repository_type
+    when 'RDB'
+      RDBRepositoryFactory.create
+    else
+      raise NotImplementedError, "Unsupported Repository Type"
+    end
+
+    # inicializa controladores do Model
     @rhythm_controller = RhythmController.new
     @facebookLoginController = FacebookLoginController.new
   end

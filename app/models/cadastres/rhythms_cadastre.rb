@@ -2,7 +2,7 @@ class RhythmsCadastre
   attr_accessor :rhythms_repository
 
   def initialize
-    @rhythms_repository = RhythmsRepositoryRDB.new
+    @rhythms_repository = Repositories.instance.rhythms_repository
   end
 
   def save(rhythm)

@@ -2,7 +2,7 @@ class UsersCadastre
   attr_accessor :users_repository
 
   def initialize
-    @users_repository = UsersRepositoryRDB.new
+    @users_repository = Repositories.instance.users_repository
   end
 
   def find_for_facebook_oauth(auth_hash, current_user)
