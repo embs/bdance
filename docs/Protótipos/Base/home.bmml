@@ -1,0 +1,88 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="886" measuredH="805" mockupW="802" mockupH="800">
+  <controls>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="84" y="5" w="800" h="800" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>BDance%0Ahttp%3A//www.bdance.example.com</text>
+      </controlProperties>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::Label" x="107" y="233" w="-1" h="-1" measuredW="105" measuredH="21" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Aqui%20voc%EA%20poder%E1</text>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::RadioButton" x="135" y="254" w="-1" h="-1" measuredW="289" measuredH="22" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Gerenciar%20sua%20escola%20de%20dan%E7a%20%28se%20tiver%20uma%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::RadioButton" x="135" y="276" w="-1" h="-1" measuredW="338" measuredH="22" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Controlar%20turmas%20e%20alunos%20%28se%20for%20professor%20de%20dan%E7a%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::RadioButton" x="135" y="298" w="-1" h="-1" measuredW="313" measuredH="22" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Explorar%20modalidades%2C%20ritmos%20e%20servi%E7os%20da%20escola</text>
+      </controlProperties>
+    </control>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Label" x="107" y="326" w="-1" h="-1" measuredW="368" measuredH="21" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>E%20muito%20mais%21%20Fa%E7a%20login%2C%20cadastre-se%20ou%20navegue%20nas%20se%E7%F5es%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="63" controlTypeID="com.balsamiq.mockups::ButtonBar" x="120" y="381" w="350" h="27" measuredW="238" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>-1</selectedIndex>
+        <text>Alunos%2C%20Professores%2C%20Gerentes</text>
+      </controlProperties>
+    </control>
+    <control controlID="64" controlTypeID="com.balsamiq.mockups::Label" x="120" y="360" w="-1" h="-1" measuredW="51" measuredH="21" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Pessoas</text>
+      </controlProperties>
+    </control>
+    <control controlID="65" controlTypeID="com.balsamiq.mockups::ButtonBar" x="120" y="464" w="350" h="27" measuredW="233" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>-1</selectedIndex>
+        <text>Turmas%2C%20Modalidades%2C%20Ritmos</text>
+      </controlProperties>
+    </control>
+    <control controlID="66" controlTypeID="com.balsamiq.mockups::Label" x="120" y="443" w="-1" h="-1" measuredW="39" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dan%E7a</text>
+      </controlProperties>
+    </control>
+    <control controlID="67" controlTypeID="com.balsamiq.mockups::ButtonBar" x="86" y="78" w="800" h="27" measuredW="780" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>0</selectedIndex>
+        <text>Home%2C%20Alunos%2C%20Funcion%E1rios%2C%20Turmas%2C%20Modalidades%2C%20Ritmos%2C%20Matr%EDcula%2C%20Particulares%2C%20Presen%E7a%2C%20Eventos</text>
+      </controlProperties>
+    </control>
+    <control controlID="68" controlTypeID="com.balsamiq.mockups::Label" x="755" y="120" w="-1" h="-1" measuredW="56" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Oi%2C%20Maria%21</text>
+      </controlProperties>
+    </control>
+    <control controlID="69" controlTypeID="com.balsamiq.mockups::Button" x="822" y="117" w="-1" h="-1" measuredW="47" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Sair</text>
+      </controlProperties>
+    </control>
+    <control controlID="70" controlTypeID="com.balsamiq.mockups::ButtonBar" x="120" y="544" w="350" h="27" measuredW="297" measuredH="27" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>-1</selectedIndex>
+        <text>Matr%EDcula%2C%20Aulas%20Particulares%2C%20Presen%E7as</text>
+      </controlProperties>
+    </control>
+    <control controlID="71" controlTypeID="com.balsamiq.mockups::Label" x="120" y="523" w="-1" h="-1" measuredW="140" measuredH="21" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Matr%EDculas%20e%20Presen%E7as</text>
+      </controlProperties>
+    </control>
+    <control controlID="72" controlTypeID="com.balsamiq.mockups::StickyNote" x="474" y="526" w="109" h="145" measuredW="109" measuredH="123" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Op%E7%F5es%20de%20Matr%EDculas%20e%20Presen%E7as%20s%F3%20s%E3o%20vis%EDveis%20para%20Gerentes</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

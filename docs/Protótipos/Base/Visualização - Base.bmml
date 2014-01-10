@@ -1,0 +1,77 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1474" measuredH="1083" mockupW="927" mockupH="917">
+  <controls>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="547" y="166" w="927" h="917" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Image" x="572" y="256" w="141" h="115" measuredW="288" measuredH="288" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>http%3A//www.statenewswire.net/wp-content/uploads/2013/04/Your-Logo-Here-Black-2.jpg</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::List" x="602" y="502" w="84" h="144" measuredW="100" measuredH="126" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Home%0AMain%20page%0ALogout</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::ButtonBar" x="969" y="269" w="-1" h="-1" measuredW="166" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>About%2C%20Login%20%7C%20Logout</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Button" x="728" y="269" w="-1" h="-1" measuredW="226" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Login%20with%20Facebook%20/%20Ol%E1%2C%20Pessoa</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="1425" y="472" w="-1" h="493" measuredW="16" measuredH="100" zOrder="5" locked="false" isInGroup="-1"/>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::SearchBox" x="1330" y="270" w="-1" h="-1" measuredW="120" measuredH="25" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Search</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::List" x="814" y="472" w="358" h="372" measuredW="100" measuredH="126" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Item%20One%0AItem%20Two%0AItem%20Three</text>
+      </controlProperties>
+    </control>
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::Button" x="948" y="859" w="-1" h="-1" measuredW="88" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Index%20Page</text>
+      </controlProperties>
+    </control>
+    <control controlID="29" controlTypeID="com.balsamiq.mockups::IconLabel" x="831" y="859" w="-1" h="-1" measuredW="36" measuredH="39" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>PencilIcon%7Csmall</icon>
+        <text>Editar</text>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::IconLabel" x="1106" y="862" w="-1" h="-1" measuredW="45" measuredH="39" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>TrashIcon%7Csmall</icon>
+        <text>Deletar</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::Title" x="852" y="401" w="-1" h="-1" measuredW="337" measuredH="43" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>XXX%20-%20Principal%20PK</text>
+      </controlProperties>
+    </control>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::HRule" x="557" y="371" w="908" h="-1" measuredW="100" measuredH="10" zOrder="12" locked="false" isInGroup="-1"/>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::TextArea" x="581" y="1010" w="330" h="44" measuredW="200" measuredH="140" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>14</size>
+        <state>disabled</state>
+        <text>Copyright%20@2013%20Developer.%20All%20rights%20reserved.%0AXXX%20is%20a%20Developer%20product</text>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::LinkBar" x="1090" y="1022" w="-1" h="-1" measuredW="315" measuredH="20" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>14</size>
+        <text>License%2C%20Privacy%2C%20Trademark%2C%20Give%20Feedback</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

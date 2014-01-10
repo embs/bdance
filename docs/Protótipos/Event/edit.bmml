@@ -1,0 +1,158 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="981" measuredH="929" mockupW="802" mockupH="800">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="179" y="129" w="800" h="800" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>BDance%20-%20Edi%E7%E3o%20de%20Evento%0Ahttp%3A//www.bdance.example.com/events/1/edit</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::IconLabel" x="441" y="823" w="54" h="-1" measuredW="38" measuredH="39" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>%24ACCOUNT/SaveIcon%7Csmall</icon>
+        <text>Salvar</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::IconLabel" x="619" y="823" w="55" h="-1" measuredW="55" measuredH="39" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>%24ACCOUNT/JumpBackIcon%7Csmall</icon>
+        <text>Cancelar</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Title" x="357" y="281" w="424" h="-1" measuredW="220" measuredH="31" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>28</size>
+        <text>Edi%E7%E3o%20de%20evento</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::SubTitle" x="323" y="354" w="63" h="-1" measuredW="63" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Nome</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::SubTitle" x="323" y="426" w="117" h="-1" measuredW="59" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Local</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::TextInput" x="323" y="385" w="212" h="-1" measuredW="131" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Baile%20de%20Fim%20de%20Ano</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::SubTitle" x="632" y="355" w="212" h="-1" measuredW="110" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Descri%E7%E3o</text>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::SubTitle" x="323" y="494" w="63" h="-1" measuredW="52" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Data</text>
+      </controlProperties>
+    </control>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::TextInput" x="323" y="453" w="212" h="-1" measuredW="144" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Espa%E7o%20Dan%E7as%20Man%E1</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::ButtonBar" x="181" y="200" w="800" h="27" measuredW="780" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>9</selectedIndex>
+        <text>Home%2C%20Alunos%2C%20Funcion%E1rios%2C%20Turmas%2C%20Modalidades%2C%20Ritmos%2C%20Matr%EDcula%2C%20Particulares%2C%20Presen%E7a%2C%20Eventos</text>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Label" x="850" y="242" w="-1" h="-1" measuredW="56" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Oi%2C%20Maria%21</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::Button" x="917" y="239" w="-1" h="-1" measuredW="47" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Sair</text>
+      </controlProperties>
+    </control>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::TextArea" x="632" y="381" w="218" h="155" measuredW="200" measuredH="140" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Confraterniza%E7%E3o%20de%20fim%20de%20ano%20da%20escola.</text>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::NumericStepper" x="323" y="517" w="-1" h="-1" measuredW="49" measuredH="24" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>27</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::NumericStepper" x="379" y="517" w="-1" h="-1" measuredW="47" measuredH="24" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>12</text>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::NumericStepper" x="442" y="517" w="-1" h="-1" measuredW="63" measuredH="24" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>2013</text>
+      </controlProperties>
+    </control>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::SubTitle" x="324" y="553" w="63" h="-1" measuredW="50" measuredH="27" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Hora</text>
+      </controlProperties>
+    </control>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::NumericStepper" x="323" y="580" w="-1" h="-1" measuredW="50" measuredH="24" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>20</text>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::NumericStepper" x="386" y="580" w="-1" h="-1" measuredW="49" measuredH="24" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>00</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::StickyNote" x="197" y="291" w="109" h="99" measuredW="109" measuredH="123" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Esta%20p%E1gina%20s%F3%20%E9%20visualizada%20por%20Gerentes</text>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::SubTitle" x="632" y="565" w="212" h="-1" measuredW="144" measuredH="27" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Participantes</text>
+      </controlProperties>
+    </control>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::Button" x="632" y="663" w="218" h="27" measuredW="199" measuredH="27" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>+%20Adicionar%20outro%20participante</text>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::ComboBox" x="632" y="592" w="216" h="-1" measuredW="134" measuredH="62" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Anakin%20Skywalker%0AJo%E3o%20da%20Silva%0AMaria%20Antonieta</text>
+      </controlProperties>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Icon" x="857" y="594" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>%24ACCOUNT/TrashIcon%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Button" x="632" y="697" w="218" h="27" measuredW="169" measuredH="27" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>+%20Adicionar%20todos%20alunos</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Button" x="632" y="732" w="218" h="27" measuredW="200" measuredH="27" zOrder="26" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>+%20Adicionar%20todos%20professores</text>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Image" x="323" y="652" w="-1" h="-1" measuredW="77" measuredH="79" zOrder="27" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::SubTitle" x="323" y="625" w="90" h="-1" measuredW="69" measuredH="27" zOrder="28" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Avatar</text>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::Button" x="323" y="736" w="-1" h="-1" measuredW="127" measuredH="27" zOrder="29" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Escolher%20arquivo...</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

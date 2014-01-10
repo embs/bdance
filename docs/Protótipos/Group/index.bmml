@@ -1,0 +1,115 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="978" measuredH="951" mockupW="802" mockupH="900">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="176" y="51" w="800" h="900" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>BDance%20-%20Visualiza%E7%E3o%20de%20Todas%20as%20Turmas%0Ahttp%3A//www.bdance.example.com/groups</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Title" x="354" y="203" w="445" h="-1" measuredW="430" measuredH="31" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>28</size>
+        <text>Visualiza%E7%E3o%20de%20Todas%20as%20Turmas</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::SubTitle" x="394" y="276" w="63" h="-1" measuredW="63" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Nome</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::SubTitle" x="578" y="276" w="212" h="-1" measuredW="110" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Descri%E7%E3o</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::ButtonBar" x="178" y="122" w="800" h="27" measuredW="780" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>3</selectedIndex>
+        <text>Home%2C%20Alunos%2C%20Funcion%E1rios%2C%20Turmas%2C%20Modalidades%2C%20Ritmos%2C%20Matr%EDcula%2C%20Particulares%2C%20Presen%E7a%2C%20Eventos</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="847" y="164" w="-1" h="-1" measuredW="56" measuredH="21" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Oi%2C%20Maria%21</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Button" x="914" y="161" w="-1" h="-1" measuredW="47" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Sair</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Label" x="394" y="303" w="-1" h="-1" measuredW="149" measuredH="21" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dan%E7a%20de%20Sal%E3o%20Iniciante</text>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Paragraph" x="578" y="305" w="-1" h="-1" measuredW="200" measuredH="80" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Turma%20de%20dan%E7a%20de%20sal%E3o%20para%20quem%20nunca%20dan%E7ou%20antes.</text>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::Label" x="394" y="356" w="-1" h="-1" measuredW="177" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dan%E7a%20de%20Sal%E3o%20Intermedi%E1rio</text>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::Paragraph" x="578" y="358" w="-1" h="-1" measuredW="200" measuredH="80" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Turma%20de%20dan%E7a%20de%20sal%E3o%20para%20alunos%20que%20conclu%EDram%20a%20turma%20de%20dan%E7a%20de%20sal%E3o%20iniciante.</text>
+      </controlProperties>
+    </control>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::TextArea" x="391" y="297" w="388" h="55" measuredW="200" measuredH="140" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::TextArea" x="391" y="354" w="388" h="55" measuredW="200" measuredH="140" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::StickyNote" x="228" y="284" w="143" h="116" measuredW="109" measuredH="123" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Nomes%20de%20turmas%20s%E3o%20links%20que%20direcionam%20para%20suas%20p%E1ginas</text>
+      </controlProperties>
+    </control>
+    <control controlID="62" controlTypeID="com.balsamiq.mockups::IconLabel" x="801" y="303" w="-1" h="-1" measuredW="36" measuredH="39" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>%24ACCOUNT/PencilIcon%7Csmall</icon>
+        <text>Editar</text>
+      </controlProperties>
+    </control>
+    <control controlID="63" controlTypeID="com.balsamiq.mockups::IconLabel" x="869" y="303" w="-1" h="-1" measuredW="45" measuredH="39" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>%24ACCOUNT/TrashIcon%7Csmall</icon>
+        <text>Deletar</text>
+      </controlProperties>
+    </control>
+    <control controlID="64" controlTypeID="com.balsamiq.mockups::IconLabel" x="801" y="362" w="-1" h="-1" measuredW="36" measuredH="39" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>%24ACCOUNT/PencilIcon%7Csmall</icon>
+        <text>Editar</text>
+      </controlProperties>
+    </control>
+    <control controlID="65" controlTypeID="com.balsamiq.mockups::IconLabel" x="869" y="362" w="-1" h="-1" measuredW="45" measuredH="39" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>%24ACCOUNT/TrashIcon%7Csmall</icon>
+        <text>Deletar</text>
+      </controlProperties>
+    </control>
+    <control controlID="66" controlTypeID="com.balsamiq.mockups::StickyNote" x="815" y="415" w="123" h="138" measuredW="109" measuredH="123" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Apenas%20Gerentes%20veem%20as%20op%E7%F5es%20de%20Edi%E7%E3o%20e%20Remo%E7%E3o%20de%20Turmas</text>
+      </controlProperties>
+    </control>
+    <control controlID="67" controlTypeID="com.balsamiq.mockups::Button" x="504" y="727" w="-1" h="-1" measuredW="145" measuredH="27" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Mostrar%20mais%20turmas</text>
+      </controlProperties>
+    </control>
+    <control controlID="68" controlTypeID="com.balsamiq.mockups::StickyNote" x="381" y="690" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Os%20itens%20s%E3o%20exibidos%20por%20pagina%E7%E3o</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
