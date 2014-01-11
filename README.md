@@ -17,16 +17,19 @@ Pela Internet! Os serviços são todos disponibilizados em forma de uma platafor
 ## Colaboradores
 
 Grupo de Análise e Projeto de Sistemas:
-Diogo Nóbrega (davn)
-Edmundo Matheus (embs)
-Flávio de Holanda (fhcj2)
-Vitor Arrais (vas2)
+* Diogo Nóbrega (davn)
+* Edmundo Matheus (embs)
+* Flávio de Holanda (fhcj2)
+* Vitor Arrais (vas2)
+
 Grupo de Projeto de Banco de Dados:
-Edmundo Matheus (embs)
-Fernando Maranhão (fmpn)
-Felipe de Macêdo (fmr3)
-João Guilherme (jgfd)
-Pedro Arcuri (pvac)
+* Edmundo Matheus (embs)
+* Fernando Maranhão (fmpn)
+* Felipe de Macêdo (fmr3)
+* João Guilherme (jgfd)
+* Pedro Arcuri (pvac)
+* Raphael Brito (rba4)
+
 Além desses envolvidos diretos no projeto, contamos com o apoio de gestores, professores e alunos da escola de dança Espaço Danças Maná.
 
 ## Repositórios
