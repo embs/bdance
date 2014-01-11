@@ -6,7 +6,7 @@ describe "pupils/show" do
       :first_name => "First Name",
       :last_name => "Last Name",
       :username => "Username",
-      :mail => "Mail",
+      :email => "Mail",
       :rg => "Rg",
       :cpf => "Cpf",
       :birth => "Birth",

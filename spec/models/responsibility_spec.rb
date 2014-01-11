@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Responsibility do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should respond_to :kinship }
+
+  it { should belong_to :responsible }
+  it { should belong_to :pupil }
 end

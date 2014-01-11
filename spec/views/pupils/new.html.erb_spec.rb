@@ -6,7 +6,7 @@ describe "pupils/new" do
       :first_name => "MyString",
       :last_name => "MyString",
       :username => "MyString",
-      :mail => "MyString",
+      :email => "MyString",
       :rg => "MyString",
       :cpf => "MyString",
       :birth => "MyString",
@@ -24,7 +24,7 @@ describe "pupils/new" do
       assert_select "input#pupil_first_name[name=?]", "pupil[first_name]"
       assert_select "input#pupil_last_name[name=?]", "pupil[last_name]"
       assert_select "input#pupil_username[name=?]", "pupil[username]"
-      assert_select "input#pupil_mail[name=?]", "pupil[mail]"
+      assert_select "input#pupil_email[name=?]", "pupil[email]"
       assert_select "input#pupil_rg[name=?]", "pupil[rg]"
       assert_select "input#pupil_cpf[name=?]", "pupil[cpf]"
       assert_select "input#pupil_birth[name=?]", "pupil[birth]"

@@ -5,7 +5,7 @@ describe "employees/show" do
     @employee = assign(:employee, stub_model(Employee,
       :first_name => "First Name",
       :last_name => "Last Name",
-      :mail => "Mail",
+      :email => "Mail",
       :username => "Username",
       :rg => "Rg",
       :cpf => "Cpf",

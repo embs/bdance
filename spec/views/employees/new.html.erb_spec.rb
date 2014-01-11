@@ -5,7 +5,7 @@ describe "employees/new" do
     assign(:employee, stub_model(Employee,
       :first_name => "MyString",
       :last_name => "MyString",
-      :mail => "MyString",
+      :email => "MyString",
       :username => "MyString",
       :rg => "MyString",
       :cpf => "MyString",
@@ -23,7 +23,7 @@ describe "employees/new" do
     assert_select "form[action=?][method=?]", employees_path, "post" do
       assert_select "input#employee_first_name[name=?]", "employee[first_name]"
       assert_select "input#employee_last_name[name=?]", "employee[last_name]"
-      assert_select "input#employee_mail[name=?]", "employee[mail]"
+      assert_select "input#employee_email[name=?]", "employee[email]"
       assert_select "input#employee_username[name=?]", "employee[username]"
       assert_select "input#employee_rg[name=?]", "employee[rg]"
       assert_select "input#employee_cpf[name=?]", "employee[cpf]"
