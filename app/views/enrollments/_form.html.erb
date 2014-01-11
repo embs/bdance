@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :pupil %><br>
-    <%= f.text_field :pupil %>
+    <%= f.select :pupil, Pupil.all.collect { |p| [p.first_name, p.id] } %>
   </div>
   <div class="field">
     <%= f.label :group %><br>
-    <%= f.text_field :group %>
+    <%= f.select :group, Group.all.collect { |g| [g.name, g.id] } %>
   </div>
   <div class="actions">
     <%= f.submit %>

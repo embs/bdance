@@ -13,8 +13,8 @@ describe "enrollments/new" do
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form[action=?][method=?]", enrollments_path, "post" do
-      assert_select "input#enrollment_pupil[name=?]", "enrollment[pupil]"
-      assert_select "input#enrollment_group[name=?]", "enrollment[group]"
+      assert_select "select#enrollment_pupil[name=?]", "enrollment[pupil]"
+      assert_select "select#enrollment_group[name=?]", "enrollment[group]"
     end
   end
 end
