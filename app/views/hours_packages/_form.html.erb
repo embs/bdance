@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :teacher %><br>
-    <%= f.text_field :teacher %>
+    <%= f.select :teacher, Teacher.all.collect { |t| [t.first_name, t.id] } %>
   </div>
   <div class="field">
     <%= f.label :price %><br>

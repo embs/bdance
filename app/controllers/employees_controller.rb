@@ -28,12 +28,16 @@ class EmployeesController < ApplicationController
       birthday = Date.new(employee_params['birth(1i)'].to_i,
         employee_params['birth(2i)'].to_i, employee_params['birth(3i)'].to_i)
     end
-    @employee = Employee.new(employee_params.except('birth(1i)', 'birth(2i)', 'birth(3i)'))
+    if employee_params['responsibility'] == 'Teacher'
+      @employee = Teacher.new(employee_params.except('birth(1i)', 'birth(2i)', 'birth(3i)'))
+    else
+      @employee = Employee.new(employee_params.except('birth(1i)', 'birth(2i)', 'birth(3i)'))
+    end
     @employee.update(birth: birthday) if birthday
 
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
+        format.html { redirect_to Employee.last, notice: 'Employee was successfully created.' }
         format.json { render action: 'show', status: :created, location: @employee }
       else
         format.html { render action: 'new' }
