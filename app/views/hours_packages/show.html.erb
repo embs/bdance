@@ -2,12 +2,12 @@
 
 <p>
   <strong>Pupils:</strong>
-  <%= @hours_package.pupils %>
+  <%= @hours_package.pupils.collect { |p| p.email } %>
 </p>
 
 <p>
   <strong>Teacher:</strong>
-  <%= @hours_package.teacher %>
+  <%= @hours_package.teacher.email %>
 </p>
 
 <p>
@@ -17,7 +17,7 @@
 
 <p>
   <strong>Horaries:</strong>
-  <%= @hours_package.horaries %>
+  <%= @hours_package.horaries.collect { |h| "#{h.day}, #{h.start} ~ #{h.end}" } %>
 </p>
 
 <p>

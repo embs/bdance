@@ -21,11 +21,12 @@ require 'spec_helper'
 describe HoursPackagesController do
 
   let(:pupil) { FactoryGirl.create(:pupil) }
+  let(:teacher) { FactoryGirl.create(:teacher) }
 
   # This should return the minimal set of attributes required to create a valid
   # HoursPackage. As you add validations to HoursPackage, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "pupils" => [pupil] } }
+  let(:valid_attributes) { { 'teacher' => teacher } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -102,14 +103,14 @@ describe HoursPackagesController do
 
   describe "PUT update" do
     describe "with valid params" do
-      xit "updates the requested hours_package" do
+      it "updates the requested hours_package" do
         hours_package = HoursPackage.create! valid_attributes
         # Assuming there are no other hours_packages in the database, this
         # specifies that the HoursPackage created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        expect_any_instance_of(HoursPackage).to receive(:update).with({ "pupils" => [Pupil.new] })
-        put :update, {:id => hours_package.to_param, :hours_package => { "pupils" => [] }}, valid_session
+        expect_any_instance_of(HoursPackage).to receive(:update).with({ "price" => "2000" })
+        put :update, {:id => hours_package.to_param, :hours_package => { "price" => "2000" }}, valid_session
       end
 
       it "assigns the requested hours_package as @hours_package" do
@@ -118,7 +119,7 @@ describe HoursPackagesController do
         expect(assigns(:hours_package)).to eq(hours_package)
       end
 
-      xit "redirects to the hours_package" do
+      it "redirects to the hours_package" do
         hours_package = HoursPackage.create! valid_attributes
         put :update, {:id => hours_package.to_param, :hours_package => valid_attributes}, valid_session
         expect(response).to redirect_to(hours_package)

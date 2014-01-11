@@ -4,7 +4,7 @@ describe "hours_packages/show" do
   before(:each) do
     @hours_package = assign(:hours_package, stub_model(HoursPackage,
       :pupils => [],
-      :teacher => nil,
+      :teacher => FactoryGirl.create(:teacher),
       :price => 1.5,
       :horaries => []
     ))

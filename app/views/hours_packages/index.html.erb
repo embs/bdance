@@ -18,10 +18,12 @@
   <tbody>
     <% @hours_packages.each do |hours_package| %>
       <tr>
-        <td><%= hours_package.pupils %></td>
-        <td><%= hours_package.teacher %></td>
+        <td><%= hours_package.pupils.collect { |p| p.email } %></td>
+        <td><%= hours_package.teacher.email %></td>
         <td><%= hours_package.price %></td>
-        <td><%= hours_package.horaries %></td>
+        <td>
+          <%= hours_package.horaries.collect { |h| "#{h.day}, #{h.start} ~ #{h.end}" } %>
+        </td>
         <td><%= hours_package.start %></td>
         <td><%= hours_package.end %></td>
         <td><%= link_to 'Show', hours_package %></td>

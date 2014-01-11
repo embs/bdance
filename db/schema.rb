@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140106220203) do
+ActiveRecord::Schema.define(version: 20140111151640) do
 
   create_table "addresses", force: true do |t|
     t.integer  "user_id"
@@ -108,13 +108,6 @@ ActiveRecord::Schema.define(version: 20140106220203) do
     t.datetime "updated_at"
   end
 
-  create_table "hours_packages_pupils", id: false, force: true do |t|
-    t.integer "pupil_id"
-    t.integer "hours_package_id"
-  end
-
-  add_index "hours_packages_pupils", ["pupil_id", "hours_package_id"], name: "index_hours_packages_pupils_on_pupil_id_and_hours_package_id"
-
   create_table "managers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -149,6 +142,15 @@ ActiveRecord::Schema.define(version: 20140106220203) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "private_classes", force: true do |t|
+    t.integer  "pupil_id"
+    t.integer  "hours_package_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "private_classes", ["pupil_id", "hours_package_id"], name: "index_private_classes_on_pupil_id_and_hours_package_id"
 
   create_table "pupils", force: true do |t|
     t.text     "observations"

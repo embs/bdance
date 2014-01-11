@@ -24,7 +24,7 @@ class HoursPackagesController < ApplicationController
   # POST /hours_packages
   # POST /hours_packages.json
   def create
-    @hours_package = HoursPackage.new(hours_package_params)
+    @hours_package = HoursPackage.new(hours_package_attrs)
 
     respond_to do |format|
       if @hours_package.save
@@ -41,7 +41,7 @@ class HoursPackagesController < ApplicationController
   # PATCH/PUT /hours_packages/1.json
   def update
     respond_to do |format|
-      if @hours_package.update(hours_package_params)
+      if @hours_package.update(hours_package_attrs)
         format.html { redirect_to @hours_package, notice: 'Hours package was successfully updated.' }
         format.json { head :no_content }
       else
@@ -67,8 +67,26 @@ class HoursPackagesController < ApplicationController
       @hours_package = HoursPackage.find(params[:id])
     end
 
+    def hours_package_attrs
+      attrs = hours_package_permitted_params
+      attrs.merge!(teacher: Teacher.find(hours_package_permitted_params[:teacher])) if hours_package_permitted_params[:teacher]
+      attrs.merge!(private_classes_attributes: private_classes_attrs) if private_classes_attrs
+
+      attrs
+    end
+
+    def private_classes_attrs
+      return nil if !hours_package_permitted_params[:private_classes_attributes]
+      private_classes_attrs = {}
+      hours_package_permitted_params[:private_classes_attributes].each { |k, v| private_classes_attrs.merge!(k => v.merge(pupil: Pupil.find(v["pupil"]))) }
+
+      private_classes_attrs
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
-    def hours_package_params
-      params.require(:hours_package).permit(:pupils_id, :teacher_id, :price, :horaries, :start, :end)
+    def hours_package_permitted_params
+      params.require(:hours_package).permit(:teacher, :price, :horaries, :start, :end,
+        horaries_attributes: [:id, :day, :start, :end, :_destroy],
+        private_classes_attributes: [:id, :pupil, :_destroy])
     end
 end

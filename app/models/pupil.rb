@@ -6,5 +6,6 @@ class Pupil < ActiveRecord::Base
   has_many :groups, through: :enrollments
   has_many :monthly_fees
   has_many :payments
-  has_and_belongs_to_many :hours_packages
+  has_many :private_classes
+  has_many :hours_packages, through: :private_classes
 end

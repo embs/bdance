@@ -17,5 +17,5 @@ describe Pupil do
   it { should have_many(:groups).through(:enrollments) }
   it { should have_many(:monthly_fees) }
   it { should have_many(:payments) }
-  it { should have_and_belong_to_many(:hours_packages) }
+  it { should have_many(:hours_packages).through(:private_classes) }
 end
