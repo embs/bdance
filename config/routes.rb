@@ -14,7 +14,7 @@ Bdance::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :modalities, :rhythms, :groups, :employees, :pupils, :enrollments,
-    :hours_packages, :presences
+    :hours_packages, :presences, :events
 
   # Example resource route with options:
   #   resources :products do

@@ -1,3 +1,6 @@
 class Event < ActiveRecord::Base
-  has_and_belongs_to_many :users
+  has_many :attendances
+  has_many :users, through: :attendances
+  accepts_nested_attributes_for :attendances, reject_if: lambda { |h| h[:user].blank? },
+    allow_destroy: true
 end

@@ -13,7 +13,7 @@ describe User do
   it { should respond_to(:username) }
 
   # Associações
-  it { should have_and_belong_to_many(:events) }
+  it { should have_many(:events).through(:attendances) }
   it { should have_many(:presences) }
   it { should have_one(:address) }
   it { should have_many(:authentications) }

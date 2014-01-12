@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          omniauth_providers: [:facebook]
   acts_as_superclass
-  has_and_belongs_to_many :events
+  has_many :attendances
+  has_many :events, through: :attendances
   has_many :presences
   has_one :address
   has_many :authentications, dependent: :destroy

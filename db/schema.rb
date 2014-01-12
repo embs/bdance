@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140111151640) do
+ActiveRecord::Schema.define(version: 20140112143527) do
 
   create_table "addresses", force: true do |t|
     t.integer  "user_id"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20140111151640) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "attendances", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attendances", ["user_id", "event_id"], name: "index_attendances_on_user_id_and_event_id"
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -59,13 +68,6 @@ ActiveRecord::Schema.define(version: 20140111151640) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "events_users", id: false, force: true do |t|
-    t.integer "event_id"
-    t.integer "user_id"
-  end
-
-  add_index "events_users", ["event_id", "user_id"], name: "index_events_users_on_event_id_and_user_id"
 
   create_table "groups", force: true do |t|
     t.string   "name"
