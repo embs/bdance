@@ -33,18 +33,14 @@ describe PresencesController do
   let(:valid_session) { {} }
 
   describe "GET index" do
-    it "assigns all presences as @presences" do
-      presence = Presence.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:presences)).to eq([presence])
+    before do
+      @user_presence = Presence.create! valid_attributes  # presença do usuário
+      2.times { Presence.create(user: stub_model(User)) } # outras presenças
     end
-  end
 
-  describe "GET show" do
-    it "assigns the requested presence as @presence" do
-      presence = Presence.create! valid_attributes
-      get :show, {:id => presence.to_param}, valid_session
-      expect(assigns(:presence)).to eq(presence)
+    it "assigns all user presences as @presences" do
+      get :index, { user_id: pupil.user.to_param }, valid_session
+      expect(assigns(:presences)).to eq([@user_presence])
     end
   end
 
@@ -52,14 +48,6 @@ describe PresencesController do
     it "assigns a new presence as @presence" do
       get :new, {}, valid_session
       expect(assigns(:presence)).to be_a_new(Presence)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested presence as @presence" do
-      presence = Presence.create! valid_attributes
-      get :edit, {:id => presence.to_param}, valid_session
-      expect(assigns(:presence)).to eq(presence)
     end
   end
 
@@ -77,9 +65,9 @@ describe PresencesController do
         expect(assigns(:presence)).to be_persisted
       end
 
-      it "redirects to the created presence" do
+      it "redirects to the user presences" do
         post :create, {:presence => valid_attributes}, valid_session
-        expect(response).to redirect_to(Presence.last)
+        expect(response).to redirect_to(user_presences_path(pupil.user))
       end
     end
 
@@ -111,7 +99,7 @@ describe PresencesController do
     it "redirects to the presences list" do
       presence = Presence.create! valid_attributes
       delete :destroy, {:id => presence.to_param}, valid_session
-      expect(response).to redirect_to(presences_url)
+      expect(response).to redirect_to(user_presences_url(pupil.user))
     end
   end
 

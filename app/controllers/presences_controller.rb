@@ -4,7 +4,7 @@ class PresencesController < ApplicationController
   # GET /presences
   # GET /presences.json
   def index
-    @presences = Presence.all
+    @presences = User.find(params[:user_id]).presences
   end
 
   # GET /presences/new
@@ -19,7 +19,7 @@ class PresencesController < ApplicationController
 
     respond_to do |format|
       if @presence.save
-        format.html { redirect_to @presence, notice: 'Presence was successfully created.' }
+        format.html { redirect_to user_presences_path(@presence.user), notice: 'Presence was successfully created.' }
         format.json { render action: 'show', status: :created, location: @presence }
       else
         format.html { render action: 'new' }
@@ -31,9 +31,10 @@ class PresencesController < ApplicationController
   # DELETE /presences/1
   # DELETE /presences/1.json
   def destroy
+    user = @presence.user
     @presence.destroy
     respond_to do |format|
-      format.html { redirect_to presences_url }
+      format.html { redirect_to user_presences_url(user) }
       format.json { head :no_content }
     end
   end
