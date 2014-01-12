@@ -15,7 +15,8 @@
 
   <div class="field">
     <%= f.label :responsibility %><br>
-    <%= f.select :responsibility, options_for_select(['Teacher', 'Facilitator']) %>
+    <%= f.select :responsibility, options_for_select(['Teacher', 'Manager', 'Facilitator'],
+      selected: @employee.try(:responsibility)) %>
   </div>
   <div class="field">
     <%= f.label :wage %><br>

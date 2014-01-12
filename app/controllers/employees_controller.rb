@@ -24,16 +24,13 @@ class EmployeesController < ApplicationController
   # POST /employees
   # POST /employees.json
   def create
-    if employee_params['birth(1i)']
-      birthday = Date.new(employee_params['birth(1i)'].to_i,
-        employee_params['birth(2i)'].to_i, employee_params['birth(3i)'].to_i)
-    end
     if employee_params['responsibility'] == 'Teacher'
-      @employee = Teacher.new(employee_params.except('birth(1i)', 'birth(2i)', 'birth(3i)'))
+      @employee = Teacher.new(employee_attrs)
+    elsif employee_params['responsibility'] == 'Manager'
+      @employee = Manager.new(employee_attrs)
     else
-      @employee = Employee.new(employee_params.except('birth(1i)', 'birth(2i)', 'birth(3i)'))
+      @employee = Employee.new(employee_attrs)
     end
-    @employee.update(birth: birthday) if birthday
 
     respond_to do |format|
       if @employee.save
@@ -50,12 +47,7 @@ class EmployeesController < ApplicationController
   # PATCH/PUT /employees/1.json
   def update
     respond_to do |format|
-      if @employee.update(employee_params.except('birth(1i)', 'birth(2i)', 'birth(3i)'))
-        if employee_params['birth(1i)']
-          birthday = Date.new(employee_params['birth(1i)'].to_i,
-            employee_params['birth(2i)'].to_i, employee_params['birth(3i)'].to_i)
-          @employee.update(birth: birthday)
-        end
+      if @employee.update(employee_attrs)
         format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
         format.json { head :no_content }
       else
@@ -79,6 +71,22 @@ class EmployeesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
       @employee = Employee.find(params[:id])
+    end
+
+    def employee_attrs
+      attrs = employee_params
+      attrs.merge!(birth: birthday_attr) if birthday_attr
+      attrs.delete 'birth(1i)'
+      attrs.delete 'birth(2i)'
+      attrs.delete 'birth(3i)'
+
+      attrs
+    end
+
+    def birthday_attr
+      return nil if !employee_params['birth(1i)']
+
+      Date.new(employee_params['birth(1i)'].to_i, employee_params['birth(2i)'].to_i, employee_params['birth(3i)'].to_i)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -69,6 +69,23 @@ describe EmployeesController do
         }.to change(Employee, :count).by(1)
       end
 
+      it "creates an Employee with arbitrary responsibility" do
+        post :create, {:employee => valid_attributes}, valid_session
+        Employee.last.responsibility.should == valid_attributes[:responsibility]
+      end
+
+      it "creates a new Teacher" do
+        expect {
+          post :create, { employee: (attributes_for :teacher)}, valid_session
+        }.to change(Teacher, :count).by(1)
+      end
+
+      it "creates a new Manager" do
+        expect {
+          post :create, { employee: (attributes_for :manager)}, valid_session
+        }.to change(Manager, :count).by(1)
+      end
+
       it "assigns a newly created employee as @employee" do
         post :create, {:employee => valid_attributes}, valid_session
         expect(assigns(:employee)).to be_a(Employee)
