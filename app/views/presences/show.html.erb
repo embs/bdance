@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @presence.user %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @presence.time %>
+</p>
+
+<%= link_to 'Edit', edit_presence_path(@presence) %> |
+<%= link_to 'Back', presences_path %>

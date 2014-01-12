@@ -1,0 +1,28 @@
+<h1>Listing presences</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @presences.each do |presence| %>
+      <tr>
+        <td><%= presence.user.first_name %></td>
+        <td><%= presence.time %></td>
+        <td><%= link_to 'Show', presence %></td>
+        <td><%= link_to 'Destroy', presence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Presence', new_presence_path %>
