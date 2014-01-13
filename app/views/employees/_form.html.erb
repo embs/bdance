@@ -1,4 +1,4 @@
-<%= nested_form_for(@employee) do |f| %>
+<%= nested_form_for(@employee.try(:employee) || @employee) do |f| %>
   <% if @employee.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>

@@ -29,7 +29,7 @@
         <td><%= employee.rg %></td>
         <td><%= employee.cpf %></td>
         <td><%= employee.birth %></td>
-        <td><%= employee.phone %></td>
+        <td><%= employee.phone_numbers.collect { |p| p.number } %></td>
         <td><%= employee.responsibility %></td>
         <td><%= employee.wage %></td>
         <td><%= link_to 'Show', employee %></td>

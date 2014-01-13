@@ -6,6 +6,7 @@ FactoryGirl.define do
       "#{first_name}.#{last_name}#{n}@example.com".downcase
     end
     password '12345678'
+    password_confirmation '12345678'
     observations 'Lorem ipsum dolor'
   end
 end

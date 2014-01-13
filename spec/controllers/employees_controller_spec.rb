@@ -113,6 +113,14 @@ describe EmployeesController do
         expect(response).to render_template("new")
       end
     end
+
+    describe "with password confirmation that doesn't match password" do
+      it "raises error" do
+        password_attrs = { password: '12345678', password_confirmation: '87654321'}
+        post :create, {:employee => valid_attributes.merge(password_attrs)}, valid_session
+        expect(assigns(:employee)).to be_a_new(Employee)
+      end
+    end
   end
 
   describe "PUT update" do

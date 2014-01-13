@@ -96,6 +96,14 @@ describe PupilsController do
         expect(response).to render_template("new")
       end
     end
+
+    describe "with password confirmation that doesn't match password" do
+      it "raises error" do
+        password_attrs = { password: '12345678', password_confirmation: '87654321'}
+        post :create, {:pupil => valid_attributes.merge(password_attrs)}, valid_session
+        expect(assigns(:pupil)).to be_a_new(Pupil)
+      end
+    end
   end
 
   describe "PUT update" do

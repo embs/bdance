@@ -79,6 +79,7 @@ class EmployeesController < ApplicationController
       attrs.delete 'birth(1i)'
       attrs.delete 'birth(2i)'
       attrs.delete 'birth(3i)'
+      attrs.merge!(phone_numbers_attributes: phone_numbers_attrs) if phone_numbers_attrs
 
       attrs
     end
@@ -89,9 +90,18 @@ class EmployeesController < ApplicationController
       Date.new(employee_params['birth(1i)'].to_i, employee_params['birth(2i)'].to_i, employee_params['birth(3i)'].to_i)
     end
 
+    def phone_numbers_attrs
+      return nil if !employee_params[:phone_numbers_attributes]
+      attrs = {}
+      employee_params[:phone_numbers_attributes].each { |k,v| attrs.merge!(k => v) }
+
+      attrs
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
       params.require(:employee).permit(:first_name, :last_name, :email, :password,
-        :username, :rg, :cpf, :birth, :phone, :responsibility, :wage)
+        :password_confirmation, :username, :rg, :cpf, :birth, :phone, :responsibility, :wage,
+        phone_numbers_attributes: [:id, :kind, :ddd, :number, :provider, :_destroy])
     end
 end
