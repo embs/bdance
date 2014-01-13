@@ -24,10 +24,8 @@ class EmployeesController < ApplicationController
   # POST /employees
   # POST /employees.json
   def create
-    if employee_params['responsibility'] == 'Teacher'
-      @employee = Teacher.new(employee_attrs)
-    elsif employee_params['responsibility'] == 'Manager'
-      @employee = Manager.new(employee_attrs)
+    if ['Teacher', 'Manager'].include?(employee_params['responsibility'])
+      @employee = (eval "#{employee_params['responsibility']}.new(employee_attrs)")
     else
       @employee = Employee.new(employee_attrs)
     end
@@ -46,9 +44,16 @@ class EmployeesController < ApplicationController
   # PATCH/PUT /employees/1
   # PATCH/PUT /employees/1.json
   def update
+    if responsibility_changes?
+      new_employee = Employee.new_from_old(employee_params['responsibility'], @employee)
+      @employee.destroy
+      new_employee.save
+      @employee = new_employee
+    end
+
     respond_to do |format|
       if @employee.update(employee_attrs)
-        format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
+        format.html { redirect_to (@employee.try(:employee) || @employee), notice: 'Employee was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -71,6 +76,10 @@ class EmployeesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
       @employee = Employee.find(params[:id])
+    end
+
+    def responsibility_changes?
+      employee_params['responsibility'] && employee_params['responsibility'] != @employee.responsibility
     end
 
     def employee_attrs

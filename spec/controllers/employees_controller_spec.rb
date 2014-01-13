@@ -146,6 +146,26 @@ describe EmployeesController do
         put :update, {:id => employee.to_param, :employee => valid_attributes}, valid_session
         expect(response).to redirect_to(employee)
       end
+
+      describe "without changing responsibility" do
+        before { @employee = Employee.create! valid_attributes }
+
+        it "does not destroy employee user" do
+          put :update, {id: @employee.to_param, employee: { first_name: "Chefe",
+            responsibility: @employee.responsibility }}, valid_session
+          expect {
+            User.find(@employee.user.id)
+          }.not_to raise_error
+        end
+
+        it "does not destroy employee" do
+          put :update, {id: @employee.to_param, employee: { first_name: "Chefe",
+            responsibility: @employee.responsibility }}, valid_session
+          expect {
+            Employee.find(@employee.id)
+          }.not_to raise_error
+        end
+      end
     end
 
     describe "with invalid params" do
@@ -163,6 +183,114 @@ describe EmployeesController do
         Employee.any_instance.stub(:save).and_return(false)
         put :update, {:id => employee.to_param, :employee => { "first_name" => "invalid value" }}, valid_session
         expect(response).to render_template("edit")
+      end
+    end
+
+    describe "changing employee responsibility" do
+
+      describe "from teacher to manager" do
+        before { @teacher = FactoryGirl.create(:teacher) }
+
+        it "destroys teacher" do
+          expect {
+            put :update, {id: @teacher.to_param, employee: { responsibility: 'Manager' } }, valid_session
+          }.to change(Teacher, :count).by(-1)
+        end
+
+        it "creates manager" do
+          expect {
+            put :update, {id: @teacher.to_param, employee: { responsibility: 'Manager' } }, valid_session
+          }.to change(Manager, :count).by(1)
+        end
+
+        it "keeps teacher attributes but responsibility" do
+          put :update, {id: @teacher.to_param, employee: { responsibility: 'Manager' } }, valid_session
+          manager = Manager.last
+          manager.responsibility.should == 'Manager'
+          @teacher.attributes.except(:responsibility).each do |k,v|
+            manager.send(k.to_sym).to_s.should eq v.to_s
+          end
+        end
+
+        it "keeps user password" do
+          put :update, {id: @teacher.to_param, employee: { responsibility: 'Manager' } }, valid_session
+          Employee.last.encrypted_password.should eq @teacher.encrypted_password
+        end
+
+        it "destroys old employee" do
+          put :update, {id: @teacher.to_param, employee: { responsibility: 'Manager' } }, valid_session
+          expect {
+            Employee.find(@teacher.employee.id)
+          }.to raise_error(ActiveRecord::RecordNotFound)
+        end
+
+        it "destroys old user" do
+          put :update, {id: @teacher.to_param, employee: { responsibility: 'Manager' } }, valid_session
+          expect {
+            User.find(@teacher.user.id)
+          }.to raise_error(ActiveRecord::RecordNotFound)
+        end
+
+        it "changes user associated to existing phone numbers from manager" do
+          phone_number = PhoneNumber.create(number: 87654321, user: @teacher.user)
+          put :update, {id: @teacher.to_param, employee: { responsibility: 'Manager',
+            phone_number_attributes: { "26548" => phone_number.attributes } } }, valid_session
+          Employee.last.phone_numbers.should include(phone_number)
+        end
+      end
+
+      describe "from manager to teacher" do
+        before { @manager = FactoryGirl.create(:manager) }
+
+        it "destroys manager" do
+          expect {
+            put :update, {id: @manager.to_param, employee: { responsibility: 'Teacher' } }, valid_session
+          }.to change(Manager, :count).by(-1)
+        end
+
+        it "creates teacher" do
+          expect {
+            put :update, {id: @manager.to_param, employee: { responsibility: 'Teacher' } }, valid_session
+          }.to change(Teacher, :count).by(1)
+        end
+
+        it "keeps manager attributes but responsibility" do
+          put :update, {id: @manager.to_param, employee: { responsibility: 'Teacher' } }, valid_session
+          teacher = Teacher.last
+          @manager.attributes.except(:responsibility).each do |k,v|
+            teacher.send(k.to_sym).to_s.should eq v.to_s
+          end
+        end
+      end
+
+      describe "from teacher to jedi" do
+        before { @teacher = FactoryGirl.create(:teacher) }
+
+        it "destroys teacher" do
+          expect {
+            put :update, {id: @teacher.to_param, employee: { responsibility: 'Jedi' } }, valid_session
+          }.to change(Teacher, :count).by(-1)
+        end
+
+        it "creates jedi" do
+          put :update, {id: @teacher.to_param, employee: { responsibility: 'Jedi' } }, valid_session
+          Employee.last.responsibility.should == 'Jedi'
+        end
+
+        it "does not create a manager" do
+          expect {
+            put :update, {id: @teacher.to_param, employee: { responsibility: 'Jedi' } }, valid_session
+          }.to change(Manager, :count).by(0)
+        end
+
+        it "keeps teacher attributes but responsibility" do
+          put :update, {id: @teacher.to_param, employee: { responsibility: 'Jedi' } }, valid_session
+          jedi = Employee.last
+          jedi.responsibility.should == 'Jedi'
+          @teacher.attributes.except(:responsibility).each do |k,v|
+            jedi.send(k.to_sym).to_s.should eq v.to_s
+          end
+        end
       end
     end
   end
