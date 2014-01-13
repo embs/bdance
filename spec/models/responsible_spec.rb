@@ -11,6 +11,6 @@ describe Responsible do
   it { should respond_to(:email) }
   it { should respond_to(:username) }
 
-  # Associações
+  # Associação
   it { should have_many(:pupils).through(:responsibilities) }
 end

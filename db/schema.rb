@@ -166,7 +166,6 @@ ActiveRecord::Schema.define(version: 20140112194722) do
 
   create_table "pupils", force: true do |t|
     t.text     "observations"
-    t.integer  "responsible_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -178,6 +177,8 @@ ActiveRecord::Schema.define(version: 20140112194722) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "responsibilities", ["pupil_id", "responsible_id"], name: "index_responsibilities_on_pupil_id_and_responsible_id"
 
   create_table "responsibles", force: true do |t|
     t.datetime "created_at"

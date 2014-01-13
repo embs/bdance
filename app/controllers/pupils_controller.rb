@@ -74,6 +74,7 @@ class PupilsController < ApplicationController
       attrs.delete 'birth(2i)'
       attrs.delete 'birth(3i)'
       attrs.merge!(phone_numbers_attributes: phone_numbers_attrs) if phone_numbers_attrs
+      attrs.merge!(responsibilities_attributes: responsibilities_attrs) if responsibilities_attrs
 
       attrs
     end
@@ -92,10 +93,19 @@ class PupilsController < ApplicationController
       attrs
     end
 
+    def responsibilities_attrs
+      return nil if !pupil_params[:responsibilities_attributes]
+      attrs = {}
+      pupil_params[:responsibilities_attributes].each { |k,v| attrs.merge!(k => v.merge(responsible: Responsible.find(v["responsible"])))}
+
+      attrs
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def pupil_params
       params.require(:pupil).permit(:first_name, :last_name, :username, :email,
         :password, :password_confirmation, :rg, :cpf, :birth, :phone, :profession, :observations,
-        phone_numbers_attributes: [:id, :kind, :ddd, :number, :provider, :_destroy])
+        phone_numbers_attributes: [:id, :kind, :ddd, :number, :provider, :_destroy],
+        responsibilities_attributes: [:id, :kinship, :responsible, :_destroy])
     end
 end

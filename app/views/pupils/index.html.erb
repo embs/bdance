@@ -12,6 +12,7 @@
       <th>Birth</th>
       <th>Phone</th>
       <th>Profession</th>
+      <th>Responsibles</th>
       <th>Observations</th>
       <th></th>
       <th></th>
@@ -31,6 +32,7 @@
         <td><%= pupil.birth %></td>
         <td><%= pupil.phone_numbers.collect { |p| p.number } %></td>
         <td><%= pupil.profession %></td>
+        <td><%= pupil.responsibles.collect { |r| r.email } %></td>
         <td><%= pupil.observations %></td>
         <td><%= link_to 'Show', pupil %></td>
         <td><%= link_to 'Edit', edit_pupil_path(pupil) %></td>

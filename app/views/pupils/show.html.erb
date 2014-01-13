@@ -46,6 +46,11 @@
 </p>
 
 <p>
+  <strong>Responsibles:</strong>
+  <%= @pupil.responsibles.collect { |r| r.email } %>
+</p>
+
+<p>
   <strong>Observations:</strong>
   <%= @pupil.observations %>
 </p>
