@@ -29,7 +29,7 @@
         <td><%= pupil.rg %></td>
         <td><%= pupil.cpf %></td>
         <td><%= pupil.birth %></td>
-        <td><%= pupil.phone %></td>
+        <td><%= pupil.phone_numbers.collect { |p| p.number } %></td>
         <td><%= pupil.profession %></td>
         <td><%= pupil.observations %></td>
         <td><%= link_to 'Show', pupil %></td>

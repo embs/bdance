@@ -11,7 +11,7 @@ describe "pupils/index" do
         :rg => "Rg",
         :cpf => "Cpf",
         :birth => Date.new,
-        :phone => "Phone",
+        :phone_numbers => [PhoneNumber.new(number: 12345678)],
         :profession => "Profession",
         :observations => "Observations"
       ),
@@ -23,7 +23,7 @@ describe "pupils/index" do
         :rg => "Rg",
         :cpf => "Cpf",
         :birth => Date.new,
-        :phone => "Phone",
+        :phone_numbers => [PhoneNumber.new(number: 12345678)],
         :profession => "Profession",
         :observations => "Observations"
       )
@@ -40,7 +40,7 @@ describe "pupils/index" do
     assert_select "tr>td", :text => "Rg".to_s, :count => 2
     assert_select "tr>td", :text => "Cpf".to_s, :count => 2
     assert_select "tr>td", :text => Date.new.to_s, :count => 2
-    assert_select "tr>td", :text => "Phone".to_s, :count => 2
+    assert_select "tr>td", :text => "[12345678]".to_s, :count => 2
     assert_select "tr>td", :text => "Profession".to_s, :count => 2
     assert_select "tr>td", :text => "Observations".to_s, :count => 2
   end

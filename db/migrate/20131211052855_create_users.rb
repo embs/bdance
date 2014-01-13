@@ -5,7 +5,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :profession
       t.date :birth
       t.string :cpf
-      t.text :phone
       t.string :first_name
       t.string :last_name
       t.string :username

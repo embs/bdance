@@ -37,7 +37,7 @@
 
 <p>
   <strong>Phone:</strong>
-  <%= @pupil.phone %>
+  <%= @pupil.phone_numbers.collect { |p| p.number } %>
 </p>
 
 <p>

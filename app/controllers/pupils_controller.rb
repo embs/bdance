@@ -24,12 +24,7 @@ class PupilsController < ApplicationController
   # POST /pupils
   # POST /pupils.json
   def create
-    if pupil_params['birth(1i)']
-      birthday = Date.new(pupil_params['birth(1i)'].to_i,
-        pupil_params['birth(2i)'].to_i, pupil_params['birth(3i)'].to_i)
-    end
-    @pupil = Pupil.new(pupil_params.except('birth(1i)', 'birth(2i)', 'birth(3i)'))
-    @pupil.update(birth: birthday) if birthday
+    @pupil = Pupil.new(pupil_attrs)
 
     respond_to do |format|
       if @pupil.save
@@ -46,12 +41,7 @@ class PupilsController < ApplicationController
   # PATCH/PUT /pupils/1.json
   def update
     respond_to do |format|
-      if @pupil.update(pupil_params.except('birth(1i)', 'birth(2i)', 'birth(3i)'))
-        if pupil_params['birth(1i)']
-          birthday = Date.new(pupil_params['birth(1i)'].to_i,
-            pupil_params['birth(2i)'].to_i, pupil_params['birth(3i)'].to_i)
-          @pupil.update(birth: birthday)
-        end
+      if @pupil.update(pupil_attrs)
         format.html { redirect_to @pupil, notice: 'Pupil was successfully updated.' }
         format.json { head :no_content }
       else
@@ -77,9 +67,35 @@ class PupilsController < ApplicationController
       @pupil = Pupil.find(params[:id])
     end
 
+    def pupil_attrs
+      attrs = pupil_params
+      attrs.merge!(birth: birthday_attr) if birthday_attr
+      attrs.delete 'birth(1i)'
+      attrs.delete 'birth(2i)'
+      attrs.delete 'birth(3i)'
+      attrs.merge!(phone_numbers_attributes: phone_numbers_attrs) if phone_numbers_attrs
+
+      attrs
+    end
+
+    def birthday_attr
+      return nil if !pupil_params['birth(1i)']
+
+      Date.new(pupil_params['birth(1i)'].to_i, pupil_params['birth(2i)'].to_i, pupil_params['birth(3i)'].to_i)
+    end
+
+    def phone_numbers_attrs
+      return nil if !pupil_params[:phone_numbers_attributes]
+      attrs = {}
+      pupil_params[:phone_numbers_attributes].each { |k,v| attrs.merge!(k => v) }
+
+      attrs
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def pupil_params
-      params.require(:pupil).permit(:first_name, :last_name, :username, :email, :password,
-        :rg, :cpf, :birth, :phone, :profession, :observations)
+      params.require(:pupil).permit(:first_name, :last_name, :username, :email,
+        :password, :rg, :cpf, :birth, :phone, :profession, :observations,
+        phone_numbers_attributes: [:id, :kind, :ddd, :number, :provider, :_destroy])
     end
 end

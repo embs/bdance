@@ -30,7 +30,7 @@ describe "pupils/edit" do
       assert_select "select#pupil_birth_1i[name=?]", "pupil[birth(1i)]"
       assert_select "select#pupil_birth_2i[name=?]", "pupil[birth(2i)]"
       assert_select "select#pupil_birth_3i[name=?]", "pupil[birth(3i)]"
-      assert_select "input#pupil_phone[name=?]", "pupil[phone]"
+      assert_select "a.add_nested_fields" # Adiciona números de telefone
       assert_select "input#pupil_profession[name=?]", "pupil[profession]"
       assert_select "input#pupil_observations[name=?]", "pupil[observations]"
     end

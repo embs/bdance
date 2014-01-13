@@ -30,7 +30,7 @@ describe "employees/edit" do
       assert_select "select#employee_birth_1i[name=?]", "employee[birth(1i)]"
       assert_select "select#employee_birth_2i[name=?]", "employee[birth(2i)]"
       assert_select "select#employee_birth_3i[name=?]", "employee[birth(3i)]"
-      assert_select "input#employee_phone[name=?]", "employee[phone]"
+      assert_select "a.add_nested_fields" # Adiciona números de telefone
       assert_select "select#employee_responsibility[name=?]", "employee[responsibility]"
       assert_select "input#employee_wage[name=?]", "employee[wage]"
     end

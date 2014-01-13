@@ -37,6 +37,15 @@
   <%= f.date_select :birth %>
 </div>
 <div class="field">
-  <%= f.label :phone %><br>
-  <%= f.text_field :phone %>
+  <%= f.label :phone_numbers %><br>
+  <%= f.fields_for :phone_numbers do |b| %>
+    <%= b.select :kind, ["Personal", "Commercial", "Residential", "Work"], placeholder: 'DDD' %>
+    <%= b.text_field :ddd, placeholder: 'DDD' %>
+    <%= b.text_field :number, placeholder: 'Number' %>
+    <%= b.select :provider, ["", "Claro", "Oi", "TIM", "Vivo"] %><br />
+    <%= b.link_to_remove "Remove this phone number" %><br />
+  <% end %>
+  <%= f.link_to_add :phone_numbers, model_object: PhoneNumber.new do %>
+    Add Phone Number
+  <% end %>
 </div>

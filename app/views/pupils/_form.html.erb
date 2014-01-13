@@ -1,4 +1,4 @@
-<%= form_for(@pupil) do |f| %>
+<%= nested_form_for(@pupil) do |f| %>
   <% if @pupil.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pupil.errors.count, "error") %> prohibited this pupil from being saved:</h2>
