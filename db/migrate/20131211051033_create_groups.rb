@@ -8,6 +8,7 @@ class CreateGroups < ActiveRecord::Migration
       t.date :start
       t.date :end
       t.references :modality
+      t.references :teacher
 
       t.timestamps
     end

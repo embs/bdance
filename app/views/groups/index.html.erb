@@ -5,6 +5,7 @@
     <tr>
       <th><%= Group.human_attribute_name :name %></th>
       <th><%= Group.human_attribute_name :description %></th>
+      <th><%= Group.human_attribute_name :teacher %></th>
       <th><%= Group.human_attribute_name :price %></th>
       <th><%= Group.human_attribute_name :time %></th>
       <th><%= Group.human_attribute_name :local %></th>
@@ -22,6 +23,7 @@
       <tr>
         <td><%= group.name %></td>
         <td><%= group.description %></td>
+        <td><%= group.teacher.first_name %></td>
         <td><%= group.price %></td>
         <td><%#= group.hour %></td>
         <td><%= group.local %></td>

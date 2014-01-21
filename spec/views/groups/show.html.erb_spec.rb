@@ -5,6 +5,7 @@ describe "groups/show" do
     @group = assign(:group, stub_model(Group,
       :name => "Name",
       :description => "MyText",
+      :teacher => stub_model(Teacher, first_name: 'Anakin'),
       :price => 1.5,
       :time => "",
       :local => "Local",
@@ -17,6 +18,7 @@ describe "groups/show" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/MyText/)
+    expect(rendered).to match(/Anakin/)
     expect(rendered).to match(/1.5/)
     expect(rendered).to match(//)
     expect(rendered).to match(/Local/)

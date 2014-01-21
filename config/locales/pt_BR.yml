@@ -232,6 +232,7 @@ pt-BR:
       group:
         name: Nome
         description: Descrição
+        teacher: Professor
         price: Preço
         time: Horário
         local: Local

@@ -17,5 +17,5 @@ describe Teacher do
 
   # Associações
   it { should have_many(:hours_packages) }
-  it { should have_and_belong_to_many(:groups) }
+  it { should have_many(:groups) }
 end

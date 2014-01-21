@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong><%= Group.human_attribute_name :teacher %>:</strong>
+  <%= @group.teacher.first_name %>
+</p>
+
+<p>
   <strong><%= Group.human_attribute_name :price %>:</strong>
   <%= @group.price %>
 </p>

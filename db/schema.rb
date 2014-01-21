@@ -77,16 +77,10 @@ ActiveRecord::Schema.define(version: 20140112194722) do
     t.date     "start"
     t.date     "end"
     t.integer  "modality_id"
+    t.integer  "teacher_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "groups_teachers", force: true do |t|
-    t.integer "group_id"
-    t.integer "teacher_id"
-  end
-
-  add_index "groups_teachers", ["group_id", "teacher_id"], name: "index_groups_teachers_on_group_id_and_teacher_id"
 
   create_table "horaries", force: true do |t|
     t.string   "day"

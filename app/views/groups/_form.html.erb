@@ -20,6 +20,10 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :teacher %><br>
+    <%= f.select :teacher, options_from_collection_for_select(Teacher.all, :id, :first_name, selected: @group.teacher) %>
+  </div>
+  <div class="field">
     <%= f.label :price %><br>
     <%= f.text_field :price %>
   </div>
