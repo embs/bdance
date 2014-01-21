@@ -1,46 +1,46 @@
-<p id="notice"><%= notice %></p>
+<h1><%= "#{t 'action.showing'} #{Group.model_name.human}" %></h1>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= Group.human_attribute_name :name %>:</strong>
   <%= @group.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= Group.human_attribute_name :description %>:</strong>
   <%= @group.description %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong><%= Group.human_attribute_name :price %>:</strong>
   <%= @group.price %>
 </p>
 
 <p>
-  <strong>Horaries:</strong>
+  <strong><%= Group.human_attribute_name :horaries %>:</strong>
   <% @group.horaries.each do |horary| %>
     <%= Date::DAYNAMES[horary.day.to_i] %>, <%= horary.start.to_s(:horary_time) %> ~ <%= horary.end.to_s(:horary_time) %>
   <% end %>
 </p>
 
 <p>
-  <strong>Local:</strong>
+  <strong><%= Group.human_attribute_name :local %>:</strong>
   <%= @group.local %>
 </p>
 
 <p>
-  <strong>Start:</strong>
+  <strong><%= Group.human_attribute_name :start %>:</strong>
   <%= @group.start %>
 </p>
 
 <p>
-  <strong>End:</strong>
+  <strong><%= Group.human_attribute_name :end %>:</strong>
   <%= @group.end %>
 </p>
 
 <p>
-  <strong>Modality:</strong>
+  <strong><%= Group.human_attribute_name :modality %>:</strong>
   <%= @group.modality.name %>
 </p>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<%= link_to t('action.edit'), edit_group_path(@group) %> |
+<%= link_to t('action.back'), groups_path %>

@@ -1,10 +1,10 @@
-<h1>Listing enrollments</h1>
+<h1><%= "#{t 'action.listing'} #{Enrollment.model_name.human.pluralize}" %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Pupil</th>
-      <th>Group</th>
+      <th><%= Enrollment.human_attribute_name :pupil %></th>
+      <th><%= Enrollment.human_attribute_name :group %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= enrollment.pupil.first_name %></td>
         <td><%= enrollment.group.name %></td>
-        <td><%= link_to 'Show', enrollment %></td>
-        <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
-        <td><%= link_to 'Destroy', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('action.show'), enrollment %></td>
+        <td><%= link_to t('action.edit'), edit_enrollment_path(enrollment) %></td>
+        <td><%= link_to t('action.destroy'), enrollment, method: :delete, data: { confirm: t('action.confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Enrollment', new_enrollment_path %>
+<%= link_to "#{t 'action.new'} #{Enrollment.model_name.human}", new_enrollment_path %>

@@ -1,54 +1,54 @@
-<p id="notice"><%= notice %></p>
+<h1><%= "#{t 'action.showing'} #{Employee.model_name.human}" %></h1>
 
 <p>
-  <strong>First name:</strong>
+  <strong><%= Employee.human_attribute_name :first_name %>:</strong>
   <%= @employee.first_name %>
 </p>
 
 <p>
-  <strong>Last name:</strong>
+  <strong><%= Employee.human_attribute_name :last_name %>:</strong>
   <%= @employee.last_name %>
 </p>
 
 <p>
-  <strong>Mail:</strong>
+  <strong><%= Employee.human_attribute_name :email %>:</strong>
   <%= @employee.email %>
 </p>
 
 <p>
-  <strong>Username:</strong>
+  <strong><%= Employee.human_attribute_name :username %>:</strong>
   <%= @employee.username %>
 </p>
 
 <p>
-  <strong>Rg:</strong>
+  <strong><%= Employee.human_attribute_name :rg %>:</strong>
   <%= @employee.rg %>
 </p>
 
 <p>
-  <strong>Cpf:</strong>
+  <strong><%= Employee.human_attribute_name :cpf %>:</strong>
   <%= @employee.cpf %>
 </p>
 
 <p>
-  <strong>Birth:</strong>
+  <strong><%= Employee.human_attribute_name :birth %>:</strong>
   <%= @employee.birth %>
 </p>
 
 <p>
-  <strong>Phone:</strong>
+  <strong><%= Employee.human_attribute_name :phone_numbers %>:</strong>
   <%= @employee.phone_numbers.collect { |p| p.number } %>
 </p>
 
 <p>
-  <strong>Responsibility:</strong>
+  <strong><%= Employee.human_attribute_name :responsibility %>:</strong>
   <%= @employee.responsibility %>
 </p>
 
 <p>
-  <strong>Wage:</strong>
+  <strong><%= Employee.human_attribute_name :wage %>:</strong>
   <%= @employee.wage %>
 </p>
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<%= link_to t('action.edit'), edit_employee_path(@employee) %> |
+<%= link_to t('action.back'), employees_path %>

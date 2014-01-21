@@ -1,34 +1,34 @@
-<p id="notice"><%= notice %></p>
+<h1><%= "#{t 'action.showing'} #{HoursPackage.model_name.human}" %></h1>
 
 <p>
-  <strong>Pupils:</strong>
+  <strong><%= HoursPackage.human_attribute_name :pupils %>:</strong>
   <%= @hours_package.pupils.collect { |p| p.email } %>
 </p>
 
 <p>
-  <strong>Teacher:</strong>
+  <strong><%= HoursPackage.human_attribute_name :teacher %>:</strong>
   <%= @hours_package.teacher.email %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong><%= HoursPackage.human_attribute_name :price %>:</strong>
   <%= @hours_package.price %>
 </p>
 
 <p>
-  <strong>Horaries:</strong>
+  <strong><%= HoursPackage.human_attribute_name :horaries %>:</strong>
   <%= @hours_package.horaries.collect { |h| "#{h.day}, #{h.start} ~ #{h.end}" } %>
 </p>
 
 <p>
-  <strong>Start:</strong>
+  <strong><%= HoursPackage.human_attribute_name :start %>:</strong>
   <%= @hours_package.start %>
 </p>
 
 <p>
-  <strong>End:</strong>
+  <strong><%= HoursPackage.human_attribute_name :end %>:</strong>
   <%= @hours_package.end %>
 </p>
 
-<%= link_to 'Edit', edit_hours_package_path(@hours_package) %> |
-<%= link_to 'Back', hours_packages_path %>
+<%= link_to t('action.edit'), edit_hours_package_path(@hours_package) %> |
+<%= link_to t('action.back'), hours_packages_path %>

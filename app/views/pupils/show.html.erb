@@ -1,59 +1,59 @@
-<p id="notice"><%= notice %></p>
+<h1><%= "#{t 'action.showing'} #{Pupil.model_name.human}" %></h1>
 
 <p>
-  <strong>First name:</strong>
+  <strong><%= Pupil.human_attribute_name :first_name %>:</strong>
   <%= @pupil.first_name %>
 </p>
 
 <p>
-  <strong>Last name:</strong>
+  <strong><%= Pupil.human_attribute_name :last_name %>:</strong>
   <%= @pupil.last_name %>
 </p>
 
 <p>
-  <strong>Username:</strong>
+  <strong><%= Pupil.human_attribute_name :username %>:</strong>
   <%= @pupil.username %>
 </p>
 
 <p>
-  <strong>Mail:</strong>
+  <strong><%= Pupil.human_attribute_name :email %>:</strong>
   <%= @pupil.email %>
 </p>
 
 <p>
-  <strong>Rg:</strong>
+  <strong><%= Pupil.human_attribute_name :rg %>:</strong>
   <%= @pupil.rg %>
 </p>
 
 <p>
-  <strong>Cpf:</strong>
+  <strong><%= Pupil.human_attribute_name :cpf %>:</strong>
   <%= @pupil.cpf %>
 </p>
 
 <p>
-  <strong>Birth:</strong>
+  <strong><%= Pupil.human_attribute_name :birth %>:</strong>
   <%= @pupil.birth %>
 </p>
 
 <p>
-  <strong>Phone:</strong>
+  <strong><%= Pupil.human_attribute_name :phone_numbers %>:</strong>
   <%= @pupil.phone_numbers.collect { |p| p.number } %>
 </p>
 
 <p>
-  <strong>Profession:</strong>
+  <strong><%= Pupil.human_attribute_name :profession %>:</strong>
   <%= @pupil.profession %>
 </p>
 
 <p>
-  <strong>Responsibles:</strong>
+  <strong><%= Pupil.human_attribute_name :responsibles %>:</strong>
   <%= @pupil.responsibles.collect { |r| r.email } %>
 </p>
 
 <p>
-  <strong>Observations:</strong>
+  <strong><%= Pupil.human_attribute_name :observations %>:</strong>
   <%= @pupil.observations %>
 </p>
 
-<%= link_to 'Edit', edit_pupil_path(@pupil) %> |
-<%= link_to 'Back', pupils_path %>
+<%= link_to t('action.edit'), edit_pupil_path(@pupil) %> |
+<%= link_to t('action.back'), pupils_path %>

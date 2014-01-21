@@ -1,18 +1,18 @@
-<h1>Listing employees</h1>
+<h1><%= "#{t 'action.listing'} #{Employee.model_name.human.pluralize}" %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Mail</th>
-      <th>Username</th>
-      <th>Rg</th>
-      <th>Cpf</th>
-      <th>Birth</th>
-      <th>Phone</th>
-      <th>Responsibility</th>
-      <th>Wage</th>
+      <th><%= Employee.human_attribute_name :first_name %></th>
+      <th><%= Employee.human_attribute_name :last_name %></th>
+      <th><%= Employee.human_attribute_name :email %></th>
+      <th><%= Employee.human_attribute_name :username %></th>
+      <th><%= Employee.human_attribute_name :rg %></th>
+      <th><%= Employee.human_attribute_name :cpf %></th>
+      <th><%= Employee.human_attribute_name :birth %></th>
+      <th><%= Employee.human_attribute_name :phone_numbers %></th>
+      <th><%= Employee.human_attribute_name :responsibility %></th>
+      <th><%= Employee.human_attribute_name :wage %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -32,9 +32,9 @@
         <td><%= employee.phone_numbers.collect { |p| p.number } %></td>
         <td><%= employee.responsibility %></td>
         <td><%= employee.wage %></td>
-        <td><%= link_to 'Show', employee %></td>
-        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('action.show'), employee %></td>
+        <td><%= link_to t('action.edit'), edit_employee_path(employee) %></td>
+        <td><%= link_to t('action.destroy'), employee, method: :delete, data: { confirm: t('action.confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -42,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New Employee', new_employee_path %>
+<%= link_to "#{t 'action.new'} #{Employee.model_name.human}", new_employee_path %>

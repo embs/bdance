@@ -1,6 +1,6 @@
-<h1>Editing rhythm</h1>
+<h1><%= "#{t 'action.editing'} #{Rhythm.model_name.human}" %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @rhythm %> |
-<%= link_to 'Back', rhythms_path %>
+<%= link_to t('action.show'), @rhythm %> |
+<%= link_to t('action.back'), rhythms_path %>

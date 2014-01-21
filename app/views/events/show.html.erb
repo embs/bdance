@@ -1,29 +1,29 @@
-<p id="notice"><%= notice %></p>
+<h1><%= "#{t 'action.showing'} #{Event.model_name.human}" %></h1>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= Event.human_attribute_name :name %>:</strong>
   <%= @event.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= Event.human_attribute_name :description %>:</strong>
   <%= @event.description %>
 </p>
 
 <p>
-  <strong>Local:</strong>
+  <strong><%= Event.human_attribute_name :local %>:</strong>
   <%= @event.local %>
 </p>
 
 <p>
-  <strong>Date:</strong>
+  <strong><%= Event.human_attribute_name :date %>:</strong>
   <%= @event.date %>
 </p>
 
 <p>
-  <strong>Users:</strong>
+  <strong><%= Event.human_attribute_name :users %>:</strong>
   <%= @event.users.collect { |u| u.email } %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to t('action.edit'), edit_event_path(@event) %> |
+<%= link_to t('action.back'), events_path %>

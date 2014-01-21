@@ -19,15 +19,15 @@ describe "employees/show" do
   it "renders attributes in <p>" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    expect(rendered).to match(/First Name/)
-    expect(rendered).to match(/Last Name/)
-    expect(rendered).to match(/Mail/)
-    expect(rendered).to match(/Username/)
-    expect(rendered).to match(/Rg/)
-    expect(rendered).to match(/Cpf/)
-    expect(rendered).to match(/Birth/)
-    expect(rendered).to match(/Phone/)
-    expect(rendered).to match(/Responsibility/)
-    expect(rendered).to match(/Wage/)
+    expect(rendered).to match(/Nome/)
+    expect(rendered).to match(/Sobrenome/)
+    expect(rendered).to match(/Nome de Usuário/)
+    expect(rendered).to match(/E-mail/)
+    expect(rendered).to match(/RG/)
+    expect(rendered).to match(/CPF/)
+    expect(rendered).to match(/Data de Nascimento/)
+    expect(rendered).to match(/Telefones/)
+    expect(rendered).to match(/Cargo/)
+    expect(rendered).to match(/Salário/)
   end
 end

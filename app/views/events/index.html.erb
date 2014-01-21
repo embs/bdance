@@ -1,13 +1,13 @@
-<h1>Listing events</h1>
+<h1><%= "#{t 'action.listing'} #{Event.model_name.human.pluralize}" %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Local</th>
-      <th>Date</th>
-      <th>Users</th>
+      <th><%= Event.human_attribute_name :name %></th>
+      <th><%= Event.human_attribute_name :description %></th>
+      <th><%= Event.human_attribute_name :local %></th>
+      <th><%= Event.human_attribute_name :date %></th>
+      <th><%= Event.human_attribute_name :users %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -22,9 +22,9 @@
         <td><%= event.local %></td>
         <td><%= event.date %></td>
         <td><%= event.users.collect { |u| u.email } %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('action.show'), event %></td>
+        <td><%= link_to t('action.edit'), edit_event_path(event) %></td>
+        <td><%= link_to t('action.destroy'), event, method: :delete, data: { confirm: t('action.confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to "#{t 'action.new'} #{Event.model_name.human}", new_event_path %>

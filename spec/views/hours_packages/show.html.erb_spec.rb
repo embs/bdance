@@ -16,6 +16,6 @@ describe "hours_packages/show" do
     expect(rendered).to match(//)
     expect(rendered).to match(//)
     expect(rendered).to match(/1.5/)
-    expect(rendered).to match(/Horaries/)
+    expect(rendered).to match(/Horários/)
   end
 end

@@ -1,11 +1,11 @@
-<h1>Listing rhythms</h1>
+<h1><%= "#{t 'action.listing'} #{Rhythm.model_name.human.pluralize}" %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Modality</th>
+      <th><%= Rhythm.human_attribute_name :name %></th>
+      <th><%= Rhythm.human_attribute_name :description %></th>
+      <th><%= Rhythm.human_attribute_name :modality %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,9 +18,9 @@
         <td><%= rhythm.name %></td>
         <td><%= rhythm.description %></td>
         <td><%= rhythm.modality.name %></td>
-        <td><%= link_to 'Show', rhythm %></td>
-        <td><%= link_to 'Edit', edit_rhythm_path(rhythm) %></td>
-        <td><%= link_to 'Destroy', rhythm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('action.show'), rhythm %></td>
+        <td><%= link_to t('action.edit'), edit_rhythm_path(rhythm) %></td>
+        <td><%= link_to t('action.destroy'), rhythm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Rhythm', new_rhythm_path %>
+<%= link_to "#{t 'action.new'} #{Rhythm.model_name.human}", new_rhythm_path %>

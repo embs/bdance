@@ -1,14 +1,14 @@
-<p id="notice"><%= notice %></p>
+<h1><%= "#{t 'action.showing'} #{Enrollment.model_name.human}" %></h1>
 
 <p>
-  <strong>Pupil:</strong>
-  <%= @enrollment.pupil %>
+  <strong><%= Enrollment.human_attribute_name :pupil %>:</strong>
+  <%= "#{@enrollment.pupil.first_name} #{@enrollment.pupil.last_name}" %>
 </p>
 
 <p>
-  <strong>Group:</strong>
-  <%= @enrollment.group %>
+  <strong><%= Enrollment.human_attribute_name :group %>:</strong>
+  <%= @enrollment.group.name %>
 </p>
 
-<%= link_to 'Edit', edit_enrollment_path(@enrollment) %> |
-<%= link_to 'Back', enrollments_path %>
+<%= link_to t('action.edit'), edit_enrollment_path(@enrollment) %> |
+<%= link_to t('action.back'), enrollments_path %>

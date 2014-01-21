@@ -1,10 +1,10 @@
-<h1>Listing modalities</h1>
+<h1><%= "#{t 'action.listing'} #{Modality.model_name.human.pluralize}" %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
+      <th><%= Modality.model_name.human %></th>
+      <th><%= Modality.human_attribute_name :description %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= modality.name %></td>
         <td><%= modality.description %></td>
-        <td><%= link_to 'Show', modality %></td>
-        <td><%= link_to 'Edit', edit_modality_path(modality) %></td>
-        <td><%= link_to 'Destroy', modality, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('action.show'), modality %></td>
+        <td><%= link_to t('action.edit'), edit_modality_path(modality) %></td>
+        <td><%= link_to t('action.destroy'), modality, method: :delete, data: { confirm: t('action.confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Modality', new_modality_path %>
+<%= link_to "#{t 'action.new'} #{Modality.model_name.human}", new_modality_path %>

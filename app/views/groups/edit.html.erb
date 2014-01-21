@@ -1,6 +1,6 @@
-<h1>Editing group</h1>
+<h1><%= "#{t 'action.editing'} #{Group.model_name.human}" %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @group %> |
-<%= link_to 'Back', groups_path %>
+<%= link_to t('action.show'), @group %> |
+<%= link_to t('action.back'), groups_path %>

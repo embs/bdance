@@ -20,4 +20,22 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  action:
+    new: New
+    save: Save
+    show: Show
+    edit: Edit
+    update: Update
+    destroy: Destroy
+    listing: Listing
+    editing: Editing
+    showing: Showing
+    back: Back
+    confirm: Are you sure?
+    signup: Register
+    edit_registration: Edit Registration
+    signin: Sign in
+    fb_login: Sign in with Facebook
+    provider_login: Sign in with
+    logout: Logout
+    recover_password: Forgot your password?

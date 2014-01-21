@@ -1,10 +1,10 @@
-<h1>Listing presences</h1>
+<h1><%= "#{t 'action.listing'} #{Presence.model_name.human.pluralize}" %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
-      <th>Time</th>
+      <th><%= Presence.human_attribute_name :user %></th>
+      <th><%= Presence.human_attribute_name :time %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,7 +16,7 @@
       <tr>
         <td><%= presence.user.first_name %></td>
         <td><%= presence.time %></td>
-        <td><%= link_to 'Destroy', presence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('action.destroy'), presence, method: :delete, data: { confirm: t('action.confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Presence', new_presence_path %>
+<%= link_to "#{t 'action.new'} #{Presence.model_name.human}", new_presence_path %>

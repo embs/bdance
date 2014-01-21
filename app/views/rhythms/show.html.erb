@@ -1,19 +1,19 @@
-<p id="notice"><%= notice %></p>
+<h1><%= "#{t 'action.showing'} #{Rhythm.model_name.human}" %></h1>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= Rhythm.human_attribute_name :name %>:</strong>
   <%= @rhythm.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= Rhythm.human_attribute_name :description %>:</strong>
   <%= @rhythm.description %>
 </p>
 
 <p>
-  <strong>Modality:</strong>
+  <strong><%= Rhythm.human_attribute_name :modality %>:</strong>
   <%= @rhythm.modality.name %>
 </p>
 
-<%= link_to 'Edit', edit_rhythm_path(@rhythm) %> |
-<%= link_to 'Back', rhythms_path %>
+<%= link_to t('action.edit'), edit_rhythm_path(@rhythm) %> |
+<%= link_to t('action.back'), rhythms_path %>

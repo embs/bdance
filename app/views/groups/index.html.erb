@@ -1,16 +1,16 @@
-<h1>Listing groups</h1>
+<h1><%= "#{t 'action.listing'} #{Group.model_name.human.pluralize}" %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Time</th>
-      <th>Local</th>
-      <th>Start</th>
-      <th>End</th>
-      <th>Modality</th>
+      <th><%= Group.human_attribute_name :name %></th>
+      <th><%= Group.human_attribute_name :description %></th>
+      <th><%= Group.human_attribute_name :price %></th>
+      <th><%= Group.human_attribute_name :time %></th>
+      <th><%= Group.human_attribute_name :local %></th>
+      <th><%= Group.human_attribute_name :start %></th>
+      <th><%= Group.human_attribute_name :end %></th>
+      <th><%= Group.human_attribute_name :modality %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -28,9 +28,9 @@
         <td><%= group.start %></td>
         <td><%= group.end %></td>
         <td><%= group.modality.name %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('action.show'), group %></td>
+        <td><%= link_to t('action.edit'), edit_group_path(group) %></td>
+        <td><%= link_to t('action.destroy'), group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Group', new_group_path %>
+<%= link_to "#{t 'action.new'} #{Group.model_name.human}", new_group_path %>

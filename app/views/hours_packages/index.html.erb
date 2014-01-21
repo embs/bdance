@@ -1,14 +1,14 @@
-<h1>Listing hours_packages</h1>
+<h1><%= "#{t 'action.listing'} #{HoursPackage.model_name.human.pluralize}" %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Pupils</th>
-      <th>Teacher</th>
-      <th>Price</th>
-      <th>Horaries</th>
-      <th>Start</th>
-      <th>End</th>
+      <th><%= HoursPackage.human_attribute_name :pupils %></th>
+      <th><%= HoursPackage.human_attribute_name :teacher %></th>
+      <th><%= HoursPackage.human_attribute_name :price %></th>
+      <th><%= HoursPackage.human_attribute_name :horaries %></th>
+      <th><%= HoursPackage.human_attribute_name :start %></th>
+      <th><%= HoursPackage.human_attribute_name :end %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -26,9 +26,9 @@
         </td>
         <td><%= hours_package.start %></td>
         <td><%= hours_package.end %></td>
-        <td><%= link_to 'Show', hours_package %></td>
-        <td><%= link_to 'Edit', edit_hours_package_path(hours_package) %></td>
-        <td><%= link_to 'Destroy', hours_package, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('action.show'), hours_package %></td>
+        <td><%= link_to t('action.edit'), edit_hours_package_path(hours_package) %></td>
+        <td><%= link_to t('action.destroy'), hours_package, method: :delete, data: { confirm: t('action.confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Hours package', new_hours_package_path %>
+<%= link_to "#{t 'action.new'} #{HoursPackage.model_name.human}", new_hours_package_path %>

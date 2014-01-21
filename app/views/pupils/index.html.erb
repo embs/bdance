@@ -1,19 +1,19 @@
-<h1>Listing pupils</h1>
+<h1><%= "#{t 'action.listing'} #{Pupil.model_name.human.pluralize}" %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Username</th>
-      <th>Mail</th>
-      <th>Rg</th>
-      <th>Cpf</th>
-      <th>Birth</th>
-      <th>Phone</th>
-      <th>Profession</th>
-      <th>Responsibles</th>
-      <th>Observations</th>
+      <th><%= Pupil.human_attribute_name :first_name %></th>
+      <th><%= Pupil.human_attribute_name :last_name %></th>
+      <th><%= Pupil.human_attribute_name :email %></th>
+      <th><%= Pupil.human_attribute_name :username %></th>
+      <th><%= Pupil.human_attribute_name :rg %></th>
+      <th><%= Pupil.human_attribute_name :cpf %></th>
+      <th><%= Pupil.human_attribute_name :birth %></th>
+      <th><%= Pupil.human_attribute_name :phone_numbers %></th>
+      <th><%= Pupil.human_attribute_name :profession %></th>
+      <th><%= Pupil.human_attribute_name :responsibles %></th>
+      <th><%= Pupil.human_attribute_name :observations %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -34,9 +34,9 @@
         <td><%= pupil.profession %></td>
         <td><%= pupil.responsibles.collect { |r| r.email } %></td>
         <td><%= pupil.observations %></td>
-        <td><%= link_to 'Show', pupil %></td>
-        <td><%= link_to 'Edit', edit_pupil_path(pupil) %></td>
-        <td><%= link_to 'Destroy', pupil, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('action.show'), pupil %></td>
+        <td><%= link_to t('action.edit'), edit_pupil_path(pupil) %></td>
+        <td><%= link_to t('action.destroy'), pupil, method: :delete, data: { confirm: t('action.confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -44,4 +44,4 @@
 
 <br>
 
-<%= link_to 'New Pupil', new_pupil_path %>
+<%= link_to "#{t 'action.new'} #{Pupil.model_name.human}", new_pupil_path %>

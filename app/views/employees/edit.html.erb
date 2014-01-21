@@ -1,6 +1,6 @@
-<h1>Editing employee</h1>
+<h1><%= "#{t 'action.editing'} #{Employee.model_name.human}" %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @employee %> |
-<%= link_to 'Back', employees_path %>
+<%= link_to t('action.show'), @employee %> |
+<%= link_to t('action.back'), employees_path %>

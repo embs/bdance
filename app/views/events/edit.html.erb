@@ -1,6 +1,6 @@
-<h1>Editing event</h1>
+<h1><%= "#{t 'action.editing'} #{Event.model_name.human}" %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<%= link_to t('action.show'), @event %> |
+<%= link_to t('action.back'), events_path %>

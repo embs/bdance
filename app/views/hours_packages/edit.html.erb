@@ -1,6 +1,6 @@
-<h1>Editing hours_package</h1>
+<h1><%= "#{t 'action.editing'} #{HoursPackage.model_name.human}" %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @hours_package %> |
-<%= link_to 'Back', hours_packages_path %>
+<%= link_to t('action.show'), @hours_package %> |
+<%= link_to t('action.back'), hours_packages_path %>
