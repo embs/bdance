@@ -1,0 +1,258 @@
+phone_numbers:
+  1: &phone_number1
+    kind: Celular
+    ddd: 81
+    number: 12345678
+    provider: SpringLineMobile
+  2: &phone_number2
+    kind: Fixo
+    ddd: 81
+    numer: 32146549
+    provider: SpringLine
+pupils:
+  1: &pupil1
+    first_name: Homer
+    last_name: Simpson
+    email: homer@simpsons.com
+    username: homer
+    password: naoseiminhasenha
+    password_confirmation: naoseiminhasenha
+    rg: 96541575841
+    cpf: 12365498745
+    birth: 10-01-1965
+    phone_numbers_attributes:
+      1: *phone_number1
+    profession: Operário
+    observations: 'Obesidade, diabetes, cardíaco, artrose, artrite, respirador oral'
+  2: &pupil2
+    first_name: Bart
+    last_name: Simpson
+    email: bart@simpsons.com
+    username: bart
+    password: naoseiminhasenha
+    password_confirmation: naoseiminhasenha
+    birth: 10-01-1995
+    phone_numbers_attributes:
+      1: *phone_number2
+  3: &pupil3
+    first_name: Milhouse
+    last_name: Van Houten
+    email: milhouse@simpsons.com
+    username: milhouse
+    password: naoseiminhasenha
+    password_confirmation: naoseiminhasenha
+    birth: 10-01-1995
+  4: &pupil4
+    first_name: Charles
+    last_name: Montgomery Burns
+    email: burns@simpsons.com
+    username: burns
+    password: naoseiminhasenha
+    password_confirmation: naoseiminhasenha
+    birth: 10-01-1888
+  5: &pupil5
+    first_name: Cersei
+    last_name: Lannister
+    email: cersei@got.com
+    username: cersei
+    password: naoseiminhasenha
+    password_confirmation: naoseiminhasenha
+    birth: 10-01-1972
+  6: &pupil6
+    first_name: Arya
+    last_name: Stark
+    email: arya@got.com
+    username: arya
+    password: naoseiminhasenha
+    password_confirmation: naoseiminhasenha
+    birth: 10-01-1995
+  7: &pupil7
+    first_name: Apu
+    last_name: Nahasapeemapetilon
+    email: apu@simpsons.com
+    username: apu
+    password: naoseiminhasenha
+    password_confirmation: naoseiminhasenha
+    birth: 10-01-1969
+  8: &pupil8
+    first_name: Sansa
+    last_name: Stark
+    email: sansa@got.com
+    username: sansa
+    password: naoseiminhasenha
+    password_confirmation: naoseiminhasenha
+    birth: 10-01-1992
+  9: &pupil9
+    first_name: Robb
+    last_name: Stark
+    email: rob@got.com
+    username: rob
+    password: naoseiminhasenha
+    password_confirmation: naoseiminhasenha
+    birth: 10-01-1988
+  10: &pupil10
+    first_name: Ned
+    last_name: Stark
+    email: ned@got.com
+    username: ned
+    password: naoseiminhasenha
+    password_confirmation: naoseiminhasenha
+    birth: 10-01-1963
+  11: &pupil11
+    first_name: Catelyn
+    last_name: Stark
+    email: catelyn@got.com
+    username: catelyn
+    password: naoseiminhasenha
+    password_confirmation: naoseiminhasenha
+    birth: 10-01-1966
+teachers:
+  1: &teacher1
+    first_name: Marge
+    last_name: Simpson
+    email: marge@simpsons.com
+    username: marge
+    password: naoseiminhasenha
+    password_confirmation: naoseiminhasenha
+    rg: 98765432145
+    cpf: 95135746594
+    birth: 10-01-1967
+    responsibility: Teacher
+    wage: 1200
+managers:
+  1: &manager1
+    first_name: Lisa
+    last_name: Simpson
+    email: lisa@simpsons.com
+    username: lisa
+    password: naoseiminhasenha
+    password_confirmation: naoseiminhasenha
+    rg: 852147963
+    cpf: 963258741
+    birth: 10-01-1988
+    responsibility: Manager
+    wage: 2400
+modalities:
+  1: &modality1
+    name: 'Dança de Salão'
+    description: 'Estilos de dança a dois.'
+  2: &modality2
+    name: 'Jazz'
+    description: 'Uma das mais importantes formas de se expressar artísticamente, recebendo modos de diversos outros estilos e princípios técnicos do ballet e dança contemporânea.'
+  3: &modality3
+    name: 'Ballet'
+    description: 'Estilo de dança que se originou nas cortes da Itália renascentista durante o século XV, e que se desenvolveu ainda mais na Inglaterra, Rússia e França como uma forma de dança de concerto.'
+  4: &modality4
+    name: 'Dança Contemporânea'
+    description: 'Colecção de sistemas e métodos desenvolvidos a partir da dança moderna e pós-moderna.'
+  5: &modality5
+    name: 'Dança do Ventre'
+    description: 'Composta por uma série de movimentos vibrações, impacto, ondulações e rotações que envolvem o corpo como um todo.'
+  6: &modality6
+    name: 'Dança de Rua'
+    description: 'Um estilo de dança popular que surgiu nos Estados Unidos.'
+rhythms:
+  1:
+    name: 'Forró'
+    description: 'Dança típica da Região Nordeste do Brasil praticada nas festas juninas e outros eventos.'
+    modality: *modality1
+  2:
+    name: 'Bolero'
+    description: 'Mescla raízes espanholas com influências locais de vários países hispano-americanos.'
+    modality: *modality1
+  3:
+    name: 'Soltinho'
+    description: 'Dança típica dos anos 60 e 70.'
+    modality: *modality1
+  4:
+    name: 'Salsa'
+    description: 'Mescla de ritmos afro-americanos, tais como o son montuno, o mambo, Cha-cha-chá, e a rumba cubanos.'
+    modality: *modality1
+horaries:
+  1: &horary1
+    day: 1
+    start: 20:00:00
+    end: 21:00:00
+  2: &horary2
+    day: 3
+    start: 20:00:00
+    end: 21:00:00
+groups:
+  1: &group1
+    name: Dança de Salão Iniciante
+    description: Turma de dança de salão para alunos iniciantes.
+    teacher: *teacher1
+    price: 160
+    local: Salão principal
+    start: 01-01-2014
+    end: 01-01-2015
+    modality: *modality1
+    horaries_attributes:
+      1: *horary1
+      2: *horary2
+enrollments:
+  1: &enrollment1
+    number: 123456789
+    date: '01-01-2014'
+    pupil: *pupil1
+    group: *group1
+hours_packages:
+  1: &hours_package1
+    pupils:
+      1: *pupil1
+    teacher: *teacher1
+    price: 1600
+    horaries_attributes:
+      1: *horary1
+      2: *horary2
+    start: 01-01-2014
+    end: 01-01-2015
+presences:
+  1: &presence1
+    user: *teacher1
+    time: '01-10-2013 19:56:13'
+  2: &presence2
+    user: *teacher1
+    time: '02-10-2013 18:45:13'
+  3: &presence3
+    user: *teacher1
+    time: '04-10-2013 19:35:13'
+  4: &presence4
+    user: *teacher1
+    time: '05-10-2013 19:48:13'
+  5: &presence5
+    user: *teacher1
+    time: '07-10-2013 19:31:13'
+  6: &presence6
+    user: *teacher1
+    time: '08-10-2013 19:15:13'
+  7: &presence7
+    user: *teacher1
+    time: '10-10-2013 19:22:13'
+  8: &presence8
+    user: *pupil1
+    time: '01-10-2013 19:56:13'
+  9: &presence9
+    user: *pupil1
+    time: '02-10-2013 18:45:13'
+  10: &presence10
+    user: *pupil1
+    time: '04-10-2013 19:35:13'
+  11: &presence11
+    user: *pupil1
+    time: '05-10-2013 19:48:13'
+  12: &presence12
+    user: *pupil1
+    time: '07-10-2013 19:31:13'
+  13: &presence13
+    user: *pupil1
+    time: '08-10-2013 19:15:13'
+  14: &presence14
+    user: *pupil1
+    time: '10-10-2013 19:22:13'
+events:
+  1: &event1
+    name: Baile Dançante
+    description: Primeiro baile dançante promovido pela escola.
+    local: Centro de Convenções da UFPE
+    date: '12-12-2013 20:00:00'
