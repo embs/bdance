@@ -39,3 +39,7 @@ en:
     provider_login: Sign in with
     logout: Logout
     recover_password: Forgot your password?
+    create:
+      succeed: "%{entity} was successfully created."
+    update:
+      succeed: "%{entity} was successfully updated."

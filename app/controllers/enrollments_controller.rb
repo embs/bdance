@@ -33,7 +33,7 @@ class EnrollmentsController < ApplicationController
 
     respond_to do |format|
       if @enrollment.save
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
+        format.html { redirect_to @enrollment, notice: t('action.create.succeed', entity: Enrollment.model_name.human) }
         format.json { render action: 'show', status: :created, location: @enrollment }
       else
         format.html { render action: 'new' }
@@ -52,7 +52,7 @@ class EnrollmentsController < ApplicationController
     end
     respond_to do |format|
       if @enrollment.update(enrollment_params.merge(pupil: pupil, group: group))
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully updated.' }
+        format.html { redirect_to @enrollment, notice: t('action.update.succeed', entity: Enrollment.model_name.human) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

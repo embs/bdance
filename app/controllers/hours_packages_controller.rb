@@ -28,7 +28,7 @@ class HoursPackagesController < ApplicationController
 
     respond_to do |format|
       if @hours_package.save
-        format.html { redirect_to @hours_package, notice: 'Hours package was successfully created.' }
+        format.html { redirect_to @hours_package, notice: t('action.create.succeed', entity: HoursPackage.model_name.human) }
         format.json { render action: 'show', status: :created, location: @hours_package }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class HoursPackagesController < ApplicationController
   def update
     respond_to do |format|
       if @hours_package.update(hours_package_attrs)
-        format.html { redirect_to @hours_package, notice: 'Hours package was successfully updated.' }
+        format.html { redirect_to @hours_package, notice: t('action.update.succeed', entity: HoursPackage.model_name.human) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

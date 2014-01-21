@@ -32,7 +32,7 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to Employee.last, notice: 'Employee was successfully created.' }
+        format.html { redirect_to Employee.last, notice: t('action.create.succeed', entity: Employee.model_name.human) }
         format.json { render action: 'show', status: :created, location: @employee }
       else
         format.html { render action: 'new' }
@@ -53,7 +53,7 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.update(employee_attrs)
-        format.html { redirect_to (@employee.try(:employee) || @employee), notice: 'Employee was successfully updated.' }
+        format.html { redirect_to (@employee.try(:employee) || @employee), notice: t('action.update.succeed', entity: Employee.model_name.human) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

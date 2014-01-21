@@ -28,7 +28,7 @@ class RhythmsController < ApplicationController
 
     respond_to do |format|
       if @rhythm.save
-        format.html { redirect_to @rhythm, notice: 'Rhythm was successfully created.' }
+        format.html { redirect_to @rhythm, notice: t('action.create.succeed', entity: Rhythm.model_name.human) }
         format.json { render action: 'show', status: :created, location: @rhythm }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class RhythmsController < ApplicationController
   def update
     respond_to do |format|
       if @rhythm.update(rhythm_params.merge({ modality: Modality.find(rhythm_params[:modality]) }))
-        format.html { redirect_to @rhythm, notice: 'Rhythm was successfully updated.' }
+        format.html { redirect_to @rhythm, notice: t('action.update.succeed', entity: Rhythm.model_name.human) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

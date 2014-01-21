@@ -28,7 +28,7 @@ class PupilsController < ApplicationController
 
     respond_to do |format|
       if @pupil.save
-        format.html { redirect_to @pupil, notice: 'Pupil was successfully created.' }
+        format.html { redirect_to @pupil, notice: t('action.create.succeed', entity: Pupil.model_name.human) }
         format.json { render action: 'show', status: :created, location: @pupil }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class PupilsController < ApplicationController
   def update
     respond_to do |format|
       if @pupil.update(pupil_attrs)
-        format.html { redirect_to @pupil, notice: 'Pupil was successfully updated.' }
+        format.html { redirect_to @pupil, notice: t('action.update.succeed', entity: Pupil.model_name.human) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

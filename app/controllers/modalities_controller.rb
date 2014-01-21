@@ -28,7 +28,7 @@ class ModalitiesController < ApplicationController
 
     respond_to do |format|
       if @modality.save
-        format.html { redirect_to @modality, notice: 'Modality was successfully created.' }
+        format.html { redirect_to @modality, notice: t('action.create.succeed', entity: Modality.model_name.human) }
         format.json { render action: 'show', status: :created, location: @modality }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class ModalitiesController < ApplicationController
   def update
     respond_to do |format|
       if @modality.update(modality_params)
-        format.html { redirect_to @modality, notice: 'Modality was successfully updated.' }
+        format.html { redirect_to @modality, notice: t('action.update.succeed', entity: Modality.model_name.human) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

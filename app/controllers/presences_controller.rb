@@ -19,7 +19,7 @@ class PresencesController < ApplicationController
 
     respond_to do |format|
       if @presence.save
-        format.html { redirect_to user_presences_path(@presence.user), notice: 'Presence was successfully created.' }
+        format.html { redirect_to user_presences_path(@presence.user), notice: t('action.create.succeed', entity: Presence.model_name.human) }
         format.json { render action: 'show', status: :created, location: @presence }
       else
         format.html { render action: 'new' }

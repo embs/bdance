@@ -238,7 +238,7 @@ pt-BR:
         start: Início
         end: Fim
         modality: Modalidade
-        horaries: Horários]
+        horaries: Horários
       hours_package:
         pupils: Alunos
         teacher: Professor
@@ -297,3 +297,7 @@ pt-BR:
     provider_login: Entrar com
     logout: Sair
     recover_password: Recuperar senha
+    create:
+      succeed: "%{entity} criado(a) com sucesso."
+    update:
+      succeed: "%{entity} atualizado(a) com sucesso."
