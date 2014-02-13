@@ -1,6 +1,6 @@
 <h1><%= "#{t 'action.listing'} #{Employee.model_name.human.pluralize}" %></h1>
 
-<table>
+<table class='table table-hover'>
   <thead>
     <tr>
       <th><%= Employee.human_attribute_name :first_name %></th>
@@ -22,7 +22,7 @@
   <tbody>
     <% @employees.each do |employee| %>
       <tr>
-        <td><%= employee.first_name %></td>
+        <td><%= link_to employee.first_name, employee %></td>
         <td><%= employee.last_name %></td>
         <td><%= employee.email %></td>
         <td><%= employee.username %></td>
@@ -32,9 +32,16 @@
         <td><%= employee.phone_numbers.collect { |p| p.number } %></td>
         <td><%= employee.responsibility %></td>
         <td><%= employee.wage %></td>
-        <td><%= link_to t('action.show'), employee %></td>
-        <td><%= link_to t('action.edit'), edit_employee_path(employee) %></td>
-        <td><%= link_to t('action.destroy'), employee, method: :delete, data: { confirm: t('action.confirm') } %></td>
+        <td>
+          <%= link_to edit_employee_path(employee), class: 'btn' do %>
+            <i class="fa fa-edit"></i> <%= t('action.edit') %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to employee, method: :delete, data: { confirm: t('action.confirm') }, class: 'btn btn-danger' do %>
+            <i class="fa fa-trash-o"></i> <%= t('action.destroy') %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -42,4 +49,4 @@
 
 <br>
 
-<%= link_to "#{t 'action.new'} #{Employee.model_name.human}", new_employee_path %>
+<%= link_to "#{t 'action.new'} #{Employee.model_name.human}", new_employee_path, type: "button", class: "btn btn-default" %>

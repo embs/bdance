@@ -1,67 +1,77 @@
-<h1><%= "#{t 'action.showing'} #{Pupil.model_name.human}" %></h1>
+<div class="row-fluid">
+  <h1><%= "#{t 'action.showing'} #{Pupil.model_name.human}" %></h1>
 
-<p>
-  <strong><%= Pupil.human_attribute_name :first_name %>:</strong>
-  <%= @pupil.first_name %>
-</p>
-
-<p>
-  <strong><%= Pupil.human_attribute_name :last_name %>:</strong>
-  <%= @pupil.last_name %>
-</p>
-
-<p>
-  <strong><%= Pupil.human_attribute_name :username %>:</strong>
-  <%= @pupil.username %>
-</p>
-
-<p>
-  <strong><%= Pupil.human_attribute_name :email %>:</strong>
-  <%= @pupil.email %>
-</p>
-
-<p>
-  <strong><%= Pupil.human_attribute_name :rg %>:</strong>
-  <%= @pupil.rg %>
-</p>
-
-<p>
-  <strong><%= Pupil.human_attribute_name :cpf %>:</strong>
-  <%= @pupil.cpf %>
-</p>
-
-<p>
-  <strong><%= Pupil.human_attribute_name :birth %>:</strong>
-  <%= @pupil.birth %>
-</p>
-
-<% unless @pupil.address.nil? %>
   <p>
-    <strong><%= Pupil.human_attribute_name :address %>:</strong>
-    <%= @pupil.address.street %> <%= @pupil.address.number %> <%= @pupil.address.district %>
-    <%= @pupil.address.city %> <%= @pupil.address.state %> <%= @pupil.address.zip_code %>
+    <strong><%= Pupil.human_attribute_name :first_name %>:</strong>
+    <%= @pupil.first_name %>
   </p>
-<% end %>
 
-<p>
-  <strong><%= Pupil.human_attribute_name :phone_numbers %>:</strong>
-  <%= @pupil.phone_numbers.collect { |p| p.number } %>
-</p>
+  <p>
+    <strong><%= Pupil.human_attribute_name :last_name %>:</strong>
+    <%= @pupil.last_name %>
+  </p>
 
-<p>
-  <strong><%= Pupil.human_attribute_name :profession %>:</strong>
-  <%= @pupil.profession %>
-</p>
+  <p>
+    <strong><%= Pupil.human_attribute_name :username %>:</strong>
+    <%= @pupil.username %>
+  </p>
 
-<p>
-  <strong><%= Pupil.human_attribute_name :responsibles %>:</strong>
-  <%= @pupil.responsibles.collect { |r| r.email } %>
-</p>
+  <p>
+    <strong><%= Pupil.human_attribute_name :email %>:</strong>
+    <%= @pupil.email %>
+  </p>
 
-<p>
-  <strong><%= Pupil.human_attribute_name :observations %>:</strong>
-  <%= @pupil.observations %>
-</p>
+  <p>
+    <strong><%= Pupil.human_attribute_name :rg %>:</strong>
+    <%= @pupil.rg %>
+  </p>
 
-<%= link_to t('action.edit'), edit_pupil_path(@pupil) %> |
-<%= link_to t('action.back'), pupils_path %>
+  <p>
+    <strong><%= Pupil.human_attribute_name :cpf %>:</strong>
+    <%= @pupil.cpf %>
+  </p>
+
+  <p>
+    <strong><%= Pupil.human_attribute_name :birth %>:</strong>
+    <%= @pupil.birth %>
+  </p>
+
+  <% unless @pupil.address.nil? %>
+    <p>
+      <strong><%= Pupil.human_attribute_name :address %>:</strong>
+      <%= @pupil.address.street %> <%= @pupil.address.number %> <%= @pupil.address.district %>
+      <%= @pupil.address.city %> <%= @pupil.address.state %> <%= @pupil.address.zip_code %>
+    </p>
+  <% end %>
+
+  <p>
+    <strong><%= Pupil.human_attribute_name :phone_numbers %>:</strong>
+    <%= @pupil.phone_numbers.collect { |p| p.number } %>
+  </p>
+
+  <p>
+    <strong><%= Pupil.human_attribute_name :profession %>:</strong>
+    <%= @pupil.profession %>
+  </p>
+
+  <p>
+    <strong><%= Pupil.human_attribute_name :responsibles %>:</strong>
+    <%= @pupil.responsibles.collect { |r| r.email } %>
+  </p>
+
+  <p>
+    <strong><%= Pupil.human_attribute_name :observations %>:</strong>
+    <%= @pupil.observations %>
+  </p>
+
+  <p>
+    <%= link_to "Ver Presença do Aluno", user_presences_path(@pupil.user.id) %>
+  </p>
+
+  <%= link_to edit_pupil_path(@pupil), class: 'btn' do %>
+    <i class="fa fa-edit"></i> <%= t('action.edit') %>
+  <% end %>
+  <%= link_to @pupil, method: :delete, data: { confirm: t('action.confirm') }, class: 'btn btn-danger' do %>
+    <i class="fa fa-trash-o"></i> <%= t('action.destroy') %>
+  <% end %>
+</div>

@@ -14,7 +14,7 @@
   <%= render 'shared/user_fields', f: f %>
 
   <div class="field">
-    <%= f.label :responsibles %><br>
+    <%= f.label :responsibles %>
     <%= f.fields_for :responsibilities do |b| %>
       <%= b.select :responsible, Responsible.all.collect { |r| [r.email, r.id] } %>
       <%= b.text_field :kinship, placeholder: "Kinship" %>
@@ -23,14 +23,14 @@
     <%= f.link_to_add "Add a responsible", :responsibilities %>
   </div>
   <div class="field">
-    <%= f.label :profession %><br>
+    <%= f.label :profession %>
     <%= f.text_field :profession %>
   </div>
   <div class="field">
-    <%= f.label :observations %><br>
+    <%= f.label :observations %>
     <%= f.text_field :observations %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn' %>
   </div>
 <% end %>

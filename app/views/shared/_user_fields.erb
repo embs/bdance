@@ -1,13 +1,13 @@
 <%= render 'shared/user_required_fields', f: f %>
-<div class="field">
-  <%= f.label :rg %><br>
+<div class="form-group">
+  <%= f.label :rg %>
   <%= f.text_field :rg %>
 </div>
-<div class="field">
-  <%= f.label :cpf %><br>
-  <%= f.text_field :cpf %>
+<div class="form-group">
+  <%= f.label :cpf %>
+  <%= f.text_field :cpf, class: 'form-control' %>
 </div>
-<div class="field">
+<div class="form-group">
   <%= f.label :address %>
   <%= f.fields_for :address do |b| %>
     <%= b.text_field :street, placeholder: Address.human_attribute_name(:street) %>
@@ -18,8 +18,8 @@
     <%= b.text_field :zip_code, placeholder: Address.human_attribute_name(:zip_code) %>
   <% end %>
 </div>
-<div class="field">
-  <%= f.label :phone_numbers %><br>
+<div class="form-group">
+  <%= f.label :phone_numbers %>
   <%= f.fields_for :phone_numbers do |b| %>
     <%= b.select :kind, ["Personal", "Commercial", "Residential", "Work"], placeholder: 'DDD' %>
     <%= b.text_field :ddd, placeholder: 'DDD' %>

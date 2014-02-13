@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :pupil %><br>
+    <%= f.label :pupil %>
     <%= f.select :pupil, Pupil.all.collect { |p| [p.first_name, p.id] } %>
   </div>
   <div class="field">
-    <%= f.label :group %><br>
+    <%= f.label :group %>
     <%= f.select :group, Group.all.collect { |g| [g.name, g.id] } %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn' %>
   </div>
 <% end %>

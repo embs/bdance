@@ -1,8 +1,9 @@
 <h1><%= "#{t 'action.listing'} #{Enrollment.model_name.human.pluralize}" %></h1>
 
-<table>
+<table class='table table-hover'>
   <thead>
     <tr>
+      <th><%= Enrollment.human_attribute_name :number %></th>
       <th><%= Enrollment.human_attribute_name :pupil %></th>
       <th><%= Enrollment.human_attribute_name :group %></th>
       <th></th>
@@ -14,11 +15,19 @@
   <tbody>
     <% @enrollments.each do |enrollment| %>
       <tr>
+        <td><%= link_to enrollment.number, enrollment %></td>
         <td><%= enrollment.pupil.first_name %></td>
         <td><%= enrollment.group.name %></td>
-        <td><%= link_to t('action.show'), enrollment %></td>
-        <td><%= link_to t('action.edit'), edit_enrollment_path(enrollment) %></td>
-        <td><%= link_to t('action.destroy'), enrollment, method: :delete, data: { confirm: t('action.confirm') } %></td>
+        <td>
+          <%= link_to edit_enrollment_path(enrollment), class: 'btn' do %>
+            <i class="fa fa-edit"></i> <%= t('action.edit') %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to enrollment, method: :delete, data: { confirm: t('action.confirm') }, class: 'btn btn-danger' do %>
+            <i class="fa fa-trash-o"></i> <%= t('action.destroy') %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +35,4 @@
 
 <br>
 
-<%= link_to "#{t 'action.new'} #{Enrollment.model_name.human}", new_enrollment_path %>
+<%= link_to "#{t 'action.new'} #{Enrollment.model_name.human}", new_enrollment_path, class: 'btn' %>
