@@ -14,4 +14,8 @@ describe Employee do
   # Atributos
   it { should respond_to(:responsibility) }
   it { should respond_to(:wage) }
+
+  # Validações
+  it { should validate_presence_of(:responsibility) }
+  it { should validate_presence_of(:wage) }
 end

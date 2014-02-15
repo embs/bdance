@@ -17,5 +17,6 @@ describe Group do
 
   # Validações
   it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:description) }
   it { should validate_presence_of(:modality) }
 end

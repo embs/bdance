@@ -6,5 +6,5 @@ class Group < ActiveRecord::Base
   has_many :horaries, dependent: :destroy
   accepts_nested_attributes_for :horaries, reject_if: lambda { |h| h[:day].blank? },
     allow_destroy: true
-  validates_presence_of :name, :modality
+  validates_presence_of :name, :description, :modality
 end

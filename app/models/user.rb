@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :phone_numbers, dependent: :destroy
   accepts_nested_attributes_for :phone_numbers, reject_if: lambda { |h| h[:number].blank? },
     allow_destroy: true
+  validates_presence_of :first_name, :last_name, :birth
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     authentication = Authentication.where(:provider => auth.provider, :uid => auth.uid).first

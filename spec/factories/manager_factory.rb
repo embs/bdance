@@ -6,6 +6,7 @@ FactoryGirl.define do
       "#{first_name}.#{last_name}#{n}@example.com".downcase
     end
     password '12345678'
+    birth 40.years.ago
     responsibility 'Manager'
     wage 1200
   end

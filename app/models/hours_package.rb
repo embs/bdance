@@ -7,4 +7,6 @@ class HoursPackage < ActiveRecord::Base
   has_many :horaries, dependent: :destroy
   accepts_nested_attributes_for :horaries, reject_if: lambda { |h| h[:day].blank? },
     allow_destroy: true
+
+  validates_presence_of :teacher
 end

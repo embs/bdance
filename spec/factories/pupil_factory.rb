@@ -7,6 +7,7 @@ FactoryGirl.define do
     end
     password '12345678'
     password_confirmation '12345678'
+    birth 18.years.ago
     observations 'Lorem ipsum dolor'
   end
 end

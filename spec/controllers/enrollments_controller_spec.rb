@@ -21,8 +21,8 @@ require 'spec_helper'
 describe EnrollmentsController do
 
   let(:pupil) { FactoryGirl.create(:pupil) }
-  let(:modality) { Modality.create(name: 'Salao') }
-  let(:group) { Group.create(name: 'Salao I', modality: modality )}
+  let(:modality) { FactoryGirl.create(:modality) }
+  let(:group) { FactoryGirl.create(:group) }
 
   # This should return the minimal set of attributes required to create a valid
   # Enrollment. As you add validations to Enrollment, be sure to

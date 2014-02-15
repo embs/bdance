@@ -7,6 +7,7 @@ FactoryGirl.define do
       "#{first_name}.#{last_name}#{n}@example.com".downcase
     end
     password '12345678'
+    birth 20.years.ago
   end
 
   # This will use the User class (Admin would have been guessed)

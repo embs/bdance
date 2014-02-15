@@ -25,7 +25,7 @@ describe PresencesController do
   # This should return the minimal set of attributes required to create a valid
   # Presence. As you add validations to Presence, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "user" => pupil.user } }
+  let(:valid_attributes) { FactoryGirl.attributes_for(:presence, user: pupil.user) }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in

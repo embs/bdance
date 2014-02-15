@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :private_class do
+    pupil { FactoryGirl.create :pupil }
+    hours_package { FactoryGirl.create :hours_package }
   end
 end

@@ -20,13 +20,13 @@ require 'spec_helper'
 
 describe GroupsController do
 
-  let(:modality) { Modality.create(name: "NewModality") }
+  let(:modality) { FactoryGirl.create(:modality) }
 
   # This should return the minimal set of attributes required to create a valid
   # Group. As you add validations to Group, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    { "name" => "MyString", modality: modality }
+    FactoryGirl.attributes_for :group
   end
 
   # This should return the minimal set of values that should be in the session
