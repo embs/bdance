@@ -16,10 +16,12 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
+    @employee.address = Address.new
   end
 
   # GET /employees/1/edit
   def edit
+    @employee.address = Address.new if @employee.address.nil?
   end
 
   # POST /employees
@@ -114,6 +116,7 @@ class EmployeesController < ApplicationController
     def employee_params
       params.require(:employee).permit(:first_name, :last_name, :email, :password,
         :password_confirmation, :username, :rg, :cpf, :birth, :phone, :responsibility, :wage,
-        phone_numbers_attributes: [:id, :kind, :ddd, :number, :provider, :_destroy])
+        phone_numbers_attributes: [:id, :kind, :ddd, :number, :provider, :_destroy],
+        address_attributes: [:id, :street, :number, :zip_code, :district, :city, :state])
     end
 end

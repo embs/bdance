@@ -8,6 +8,17 @@
   <%= f.text_field :cpf %>
 </div>
 <div class="field">
+  <%= f.label :address %>
+  <%= f.fields_for :address do |b| %>
+    <%= b.text_field :street, placeholder: Address.human_attribute_name(:street) %>
+    <%= b.text_field :number, placeholder: Address.human_attribute_name(:number) %>
+    <%= b.text_field :district, placeholder: Address.human_attribute_name(:district) %>
+    <%= b.text_field :city, placeholder: Address.human_attribute_name(:city) %>
+    <%= b.text_field :state, placeholder: Address.human_attribute_name(:state) %>
+    <%= b.text_field :zip_code, placeholder: Address.human_attribute_name(:zip_code) %>
+  <% end %>
+</div>
+<div class="field">
   <%= f.label :phone_numbers %><br>
   <%= f.fields_for :phone_numbers do |b| %>
     <%= b.select :kind, ["Personal", "Commercial", "Residential", "Work"], placeholder: 'DDD' %>

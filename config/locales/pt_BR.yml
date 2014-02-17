@@ -259,6 +259,14 @@ pt-BR:
         birth: Data de Nascimento
         phone_numbers: Telefones
         profession: Profissão
+        address: Endereço
+      address:
+        street: Rua
+        number: Número
+        district: Bairro
+        city: Cidade
+        state: Estado
+        zip_code: Código Postal
       pupil:
         <<: *user
         responsibles: Responsável(is)

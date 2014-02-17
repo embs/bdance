@@ -16,10 +16,12 @@ class PupilsController < ApplicationController
   # GET /pupils/new
   def new
     @pupil = Pupil.new
+    @pupil.address = Address.new
   end
 
   # GET /pupils/1/edit
   def edit
+    @pupil.address = Address.new if @pupil.address.nil?
   end
 
   # POST /pupils
@@ -109,6 +111,7 @@ class PupilsController < ApplicationController
       params.require(:pupil).permit(:first_name, :last_name, :username, :email,
         :password, :password_confirmation, :rg, :cpf, :birth, :phone, :profession, :observations,
         phone_numbers_attributes: [:id, :kind, :ddd, :number, :provider, :_destroy],
-        responsibilities_attributes: [:id, :kinship, :responsible, :_destroy])
+        responsibilities_attributes: [:id, :kinship, :responsible, :_destroy],
+        address_attributes: [:id, :street, :number, :zip_code, :district, :city, :state])
     end
 end

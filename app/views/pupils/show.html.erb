@@ -35,6 +35,14 @@
   <%= @pupil.birth %>
 </p>
 
+<% unless @pupil.address.nil? %>
+  <p>
+    <strong><%= Pupil.human_attribute_name :address %>:</strong>
+    <%= @pupil.address.street %> <%= @pupil.address.number %> <%= @pupil.address.district %>
+    <%= @pupil.address.city %> <%= @pupil.address.state %> <%= @pupil.address.zip_code %>
+  </p>
+<% end %>
+
 <p>
   <strong><%= Pupil.human_attribute_name :phone_numbers %>:</strong>
   <%= @pupil.phone_numbers.collect { |p| p.number } %>
