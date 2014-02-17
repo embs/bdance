@@ -1,0 +1,30 @@
+<div class="field">
+  <%= f.label :first_name %><br>
+  <%= f.text_field :first_name %>
+</div>
+<div class="field">
+  <%= f.label :last_name %><br>
+  <%= f.text_field :last_name %>
+</div>
+<div class="field">
+  <%= f.label :birth %><br>
+  <%= f.date_select :birth, default: 18.years.ago, start_year: 1900 %>
+</div>
+<div class="field">
+  <%= f.label :username %><br>
+  <%= f.text_field :username %>
+</div>
+<div class="field">
+  <%= f.label :email %><br>
+  <%= f.text_field :email %>
+</div>
+<% if f.object.new_record? %>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+<% end %>
