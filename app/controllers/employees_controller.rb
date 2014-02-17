@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:create, :update]
 
   # GET /employees
   # GET /employees.json
@@ -24,6 +25,7 @@ class EmployeesController < ApplicationController
   # POST /employees
   # POST /employees.json
   def create
+    authorize! :manage, Employee
     if ['Teacher', 'Manager'].include?(employee_params['responsibility'])
       @employee = (eval "#{employee_params['responsibility']}.new(employee_attrs)")
     else
@@ -44,6 +46,7 @@ class EmployeesController < ApplicationController
   # PATCH/PUT /employees/1
   # PATCH/PUT /employees/1.json
   def update
+    authorize! :manage, Employee
     if responsibility_changes?
       new_employee = Employee.new_from_old(employee_params['responsibility'], @employee)
       @employee.destroy

@@ -8,6 +8,10 @@ FactoryGirl.define do
     end
     password '12345678'
     birth 20.years.ago
+
+    after(:create) do |user|
+      user.roles << Role.find_by_name('user')
+    end
   end
 
   # This will use the User class (Admin would have been guessed)

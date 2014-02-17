@@ -43,3 +43,8 @@ en:
       succeed: "%{entity} was successfully created."
     update:
       succeed: "%{entity} was successfully updated."
+  unauthorized:
+    manage:
+      all: "Not authorized to %{action} %{subject}."
+      presence: "Not allowed to manager other user presences."
+      user: "Not allowed to manage other user accounts."

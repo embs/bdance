@@ -1,5 +1,6 @@
 class EnrollmentsController < ApplicationController
   before_action :set_enrollment, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:create, :update]
 
   # GET /enrollments
   # GET /enrollments.json
@@ -24,6 +25,7 @@ class EnrollmentsController < ApplicationController
   # POST /enrollments
   # POST /enrollments.json
   def create
+    authorize! :manage, Enrollment
     begin
       pupil = Pupil.find(enrollment_params[:pupil])
       group = Group.find(enrollment_params[:group])
@@ -45,6 +47,7 @@ class EnrollmentsController < ApplicationController
   # PATCH/PUT /enrollments/1
   # PATCH/PUT /enrollments/1.json
   def update
+    authorize! :manage, Enrollment
     begin
       pupil = Pupil.find(enrollment_params[:pupil])
       group = Group.find(enrollment_params[:group])

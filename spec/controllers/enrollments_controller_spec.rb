@@ -19,7 +19,8 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe EnrollmentsController do
-
+  include Devise::TestHelpers
+  let(:manager) { FactoryGirl.create(:manager) }
   let(:pupil) { FactoryGirl.create(:pupil) }
   let(:modality) { FactoryGirl.create(:modality) }
   let(:group) { FactoryGirl.create(:group) }
@@ -29,15 +30,14 @@ describe EnrollmentsController do
   # adjust the attributes here as well.
   let(:valid_attributes) { { pupil: pupil, group: group } }
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # EnrollmentsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  before do
+    sign_in manager.user
+  end
 
   describe "GET index" do
     it "assigns all enrollments as @enrollments" do
       enrollment = Enrollment.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}
       expect(assigns(:enrollments)).to eq([enrollment])
     end
   end
@@ -45,14 +45,14 @@ describe EnrollmentsController do
   describe "GET show" do
     it "assigns the requested enrollment as @enrollment" do
       enrollment = Enrollment.create! valid_attributes
-      get :show, {:id => enrollment.to_param}, valid_session
+      get :show, {:id => enrollment.to_param}
       expect(assigns(:enrollment)).to eq(enrollment)
     end
   end
 
   describe "GET new" do
     it "assigns a new enrollment as @enrollment" do
-      get :new, {}, valid_session
+      get :new, {}
       expect(assigns(:enrollment)).to be_a_new(Enrollment)
     end
   end
@@ -60,7 +60,7 @@ describe EnrollmentsController do
   describe "GET edit" do
     it "assigns the requested enrollment as @enrollment" do
       enrollment = Enrollment.create! valid_attributes
-      get :edit, {:id => enrollment.to_param}, valid_session
+      get :edit, {:id => enrollment.to_param}
       expect(assigns(:enrollment)).to eq(enrollment)
     end
   end
@@ -69,18 +69,18 @@ describe EnrollmentsController do
     describe "with valid params" do
       it "creates a new Enrollment" do
         expect {
-          post :create, {:enrollment => valid_attributes}, valid_session
+          post :create, {:enrollment => valid_attributes}
         }.to change(Enrollment, :count).by(1)
       end
 
       it "assigns a newly created enrollment as @enrollment" do
-        post :create, {:enrollment => valid_attributes}, valid_session
+        post :create, {:enrollment => valid_attributes}
         expect(assigns(:enrollment)).to be_a(Enrollment)
         expect(assigns(:enrollment)).to be_persisted
       end
 
       it "redirects to the created enrollment" do
-        post :create, {:enrollment => valid_attributes}, valid_session
+        post :create, {:enrollment => valid_attributes}
         expect(response).to redirect_to(Enrollment.last)
       end
     end
@@ -89,14 +89,14 @@ describe EnrollmentsController do
       it "assigns a newly created but unsaved enrollment as @enrollment" do
         # Trigger the behavior that occurs when invalid params are submitted
         Enrollment.any_instance.stub(:save).and_return(false)
-        post :create, {:enrollment => { "pupil" => "invalid value" }}, valid_session
+        post :create, {:enrollment => { "pupil" => "invalid value" }}
         expect(assigns(:enrollment)).to be_a_new(Enrollment)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Enrollment.any_instance.stub(:save).and_return(false)
-        post :create, {:enrollment => { "pupil" => "invalid value" }}, valid_session
+        post :create, {:enrollment => { "pupil" => "invalid value" }}
         expect(response).to render_template("new")
       end
     end
@@ -111,18 +111,18 @@ describe EnrollmentsController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         expect_any_instance_of(Enrollment).to receive(:update).with({ "pupil" => pupil, "group" => group })
-        put :update, {:id => enrollment.to_param, :enrollment => { "pupil" => pupil, "group" => group }}, valid_session
+        put :update, {:id => enrollment.to_param, :enrollment => { "pupil" => pupil, "group" => group }}
       end
 
       it "assigns the requested enrollment as @enrollment" do
         enrollment = Enrollment.create! valid_attributes
-        put :update, {:id => enrollment.to_param, :enrollment => valid_attributes}, valid_session
+        put :update, {:id => enrollment.to_param, :enrollment => valid_attributes}
         expect(assigns(:enrollment)).to eq(enrollment)
       end
 
       it "redirects to the enrollment" do
         enrollment = Enrollment.create! valid_attributes
-        put :update, {:id => enrollment.to_param, :enrollment => valid_attributes}, valid_session
+        put :update, {:id => enrollment.to_param, :enrollment => valid_attributes}
         expect(response).to redirect_to(enrollment)
       end
     end
@@ -132,7 +132,7 @@ describe EnrollmentsController do
         enrollment = Enrollment.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Enrollment.any_instance.stub(:save).and_return(false)
-        put :update, {:id => enrollment.to_param, :enrollment => { "pupil" => "invalid value" }}, valid_session
+        put :update, {:id => enrollment.to_param, :enrollment => { "pupil" => "invalid value" }}
         expect(assigns(:enrollment)).to eq(enrollment)
       end
 
@@ -140,7 +140,7 @@ describe EnrollmentsController do
         enrollment = Enrollment.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Enrollment.any_instance.stub(:save).and_return(false)
-        put :update, {:id => enrollment.to_param, :enrollment => { "pupil" => "invalid value" }}, valid_session
+        put :update, {:id => enrollment.to_param, :enrollment => { "pupil" => "invalid value" }}
         expect(response).to render_template("edit")
       end
     end
@@ -150,13 +150,13 @@ describe EnrollmentsController do
     it "destroys the requested enrollment" do
       enrollment = Enrollment.create! valid_attributes
       expect {
-        delete :destroy, {:id => enrollment.to_param}, valid_session
+        delete :destroy, {:id => enrollment.to_param}
       }.to change(Enrollment, :count).by(-1)
     end
 
     it "redirects to the enrollments list" do
       enrollment = Enrollment.create! valid_attributes
-      delete :destroy, {:id => enrollment.to_param}, valid_session
+      delete :destroy, {:id => enrollment.to_param}
       expect(response).to redirect_to(enrollments_url)
     end
   end

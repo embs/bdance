@@ -1,5 +1,6 @@
 class PresencesController < ApplicationController
   before_action :set_presence, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:create]
 
   # GET /presences
   # GET /presences.json
@@ -15,6 +16,7 @@ class PresencesController < ApplicationController
   # POST /presences
   # POST /presences.json
   def create
+    authorize! :manage, Presence
     @presence = Presence.new(presence_attrs)
 
     respond_to do |format|

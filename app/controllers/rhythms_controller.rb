@@ -1,5 +1,6 @@
 class RhythmsController < ApplicationController
   before_action :set_rhythm, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:create, :update]
 
   # GET /rhythms
   # GET /rhythms.json
@@ -24,6 +25,7 @@ class RhythmsController < ApplicationController
   # POST /rhythms
   # POST /rhythms.json
   def create
+    authorize! :manage, Rhythm
     @rhythm = Rhythm.new(rhythm_params.merge({ modality: Modality.find(rhythm_params[:modality]) }))
 
     respond_to do |format|
@@ -40,6 +42,7 @@ class RhythmsController < ApplicationController
   # PATCH/PUT /rhythms/1
   # PATCH/PUT /rhythms/1.json
   def update
+    authorize! :manage, Rhythm
     respond_to do |format|
       if @rhythm.update(rhythm_params.merge({ modality: Modality.find(rhythm_params[:modality]) }))
         format.html { redirect_to @rhythm, notice: t('action.update.succeed', entity: Rhythm.model_name.human) }

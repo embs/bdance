@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:create, :update]
 
   # GET /groups
   # GET /groups.json
@@ -27,6 +28,7 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
+    authorize! :manage, Group
     @group = Group.new(group_params)
 
     respond_to do |format|
@@ -43,6 +45,7 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
+    authorize! :manage, Group
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: t('action.update.succeed', entity: Group.model_name.human) }

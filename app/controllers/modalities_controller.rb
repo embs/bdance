@@ -1,5 +1,6 @@
 class ModalitiesController < ApplicationController
   before_action :set_modality, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:create, :update]
 
   # GET /modalities
   # GET /modalities.json
@@ -24,6 +25,7 @@ class ModalitiesController < ApplicationController
   # POST /modalities
   # POST /modalities.json
   def create
+    authorize! :manage, Modality
     @modality = Modality.new(modality_params)
 
     respond_to do |format|
@@ -40,6 +42,7 @@ class ModalitiesController < ApplicationController
   # PATCH/PUT /modalities/1
   # PATCH/PUT /modalities/1.json
   def update
+    authorize! :manage, Modality
     respond_to do |format|
       if @modality.update(modality_params)
         format.html { redirect_to @modality, notice: t('action.update.succeed', entity: Modality.model_name.human) }

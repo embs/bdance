@@ -19,21 +19,22 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe PupilsController do
+  include Devise::TestHelpers
+  let(:manager) { FactoryGirl.create(:manager) }
 
   # This should return the minimal set of attributes required to create a valid
   # Pupil. As you add validations to Pupil, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) { attributes_for(:pupil) }
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # PupilsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  before do
+    sign_in manager.user
+  end
 
   describe "GET index" do
     it "assigns all pupils as @pupils" do
       pupil = Pupil.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}
       expect(assigns(:pupils)).to eq([pupil])
     end
   end
@@ -41,14 +42,14 @@ describe PupilsController do
   describe "GET show" do
     it "assigns the requested pupil as @pupil" do
       pupil = Pupil.create! valid_attributes
-      get :show, {:id => pupil.to_param}, valid_session
+      get :show, {:id => pupil.to_param}
       expect(assigns(:pupil)).to eq(pupil)
     end
   end
 
   describe "GET new" do
     it "assigns a new pupil as @pupil" do
-      get :new, {}, valid_session
+      get :new, {}
       expect(assigns(:pupil)).to be_a_new(Pupil)
     end
   end
@@ -56,7 +57,7 @@ describe PupilsController do
   describe "GET edit" do
     it "assigns the requested pupil as @pupil" do
       pupil = Pupil.create! valid_attributes
-      get :edit, {:id => pupil.to_param}, valid_session
+      get :edit, {:id => pupil.to_param}
       expect(assigns(:pupil)).to eq(pupil)
     end
   end
@@ -65,18 +66,18 @@ describe PupilsController do
     describe "with valid params" do
       it "creates a new Pupil" do
         expect {
-          post :create, {:pupil => valid_attributes}, valid_session
+          post :create, {:pupil => valid_attributes}
         }.to change(Pupil, :count).by(1)
       end
 
       it "assigns a newly created pupil as @pupil" do
-        post :create, {:pupil => valid_attributes}, valid_session
+        post :create, {:pupil => valid_attributes}
         expect(assigns(:pupil)).to be_a(Pupil)
         expect(assigns(:pupil)).to be_persisted
       end
 
       it "redirects to the created pupil" do
-        post :create, {:pupil => valid_attributes}, valid_session
+        post :create, {:pupil => valid_attributes}
         expect(response).to redirect_to(Pupil.last)
       end
     end
@@ -85,14 +86,14 @@ describe PupilsController do
       it "assigns a newly created but unsaved pupil as @pupil" do
         # Trigger the behavior that occurs when invalid params are submitted
         Pupil.any_instance.stub(:save).and_return(false)
-        post :create, {:pupil => { "first_name" => "invalid value" }}, valid_session
+        post :create, {:pupil => { "first_name" => "invalid value" }}
         expect(assigns(:pupil)).to be_a_new(Pupil)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Pupil.any_instance.stub(:save).and_return(false)
-        post :create, {:pupil => { "first_name" => "invalid value" }}, valid_session
+        post :create, {:pupil => { "first_name" => "invalid value" }}
         expect(response).to render_template("new")
       end
     end
@@ -100,7 +101,7 @@ describe PupilsController do
     describe "with password confirmation that doesn't match password" do
       it "raises error" do
         password_attrs = { password: '12345678', password_confirmation: '87654321'}
-        post :create, {:pupil => valid_attributes.merge(password_attrs)}, valid_session
+        post :create, {:pupil => valid_attributes.merge(password_attrs)}
         expect(assigns(:pupil)).to be_a_new(Pupil)
       end
     end
@@ -115,18 +116,18 @@ describe PupilsController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         expect_any_instance_of(Pupil).to receive(:update).with({ "first_name" => "MyString" })
-        put :update, {:id => pupil.to_param, :pupil => { "first_name" => "MyString" }}, valid_session
+        put :update, {:id => pupil.to_param, :pupil => { "first_name" => "MyString" }}
       end
 
       it "assigns the requested pupil as @pupil" do
         pupil = Pupil.create! valid_attributes
-        put :update, {:id => pupil.to_param, :pupil => valid_attributes}, valid_session
+        put :update, {:id => pupil.to_param, :pupil => valid_attributes}
         expect(assigns(:pupil)).to eq(pupil)
       end
 
       it "redirects to the pupil" do
         pupil = Pupil.create! valid_attributes
-        put :update, {:id => pupil.to_param, :pupil => valid_attributes}, valid_session
+        put :update, {:id => pupil.to_param, :pupil => valid_attributes}
         expect(response).to redirect_to(pupil)
       end
     end
@@ -136,7 +137,7 @@ describe PupilsController do
         pupil = Pupil.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Pupil.any_instance.stub(:save).and_return(false)
-        put :update, {:id => pupil.to_param, :pupil => { "first_name" => "invalid value" }}, valid_session
+        put :update, {:id => pupil.to_param, :pupil => { "first_name" => "invalid value" }}
         expect(assigns(:pupil)).to eq(pupil)
       end
 
@@ -144,7 +145,7 @@ describe PupilsController do
         pupil = Pupil.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Pupil.any_instance.stub(:save).and_return(false)
-        put :update, {:id => pupil.to_param, :pupil => { "first_name" => "invalid value" }}, valid_session
+        put :update, {:id => pupil.to_param, :pupil => { "first_name" => "invalid value" }}
         expect(response).to render_template("edit")
       end
     end
@@ -154,13 +155,13 @@ describe PupilsController do
     it "destroys the requested pupil" do
       pupil = Pupil.create! valid_attributes
       expect {
-        delete :destroy, {:id => pupil.to_param}, valid_session
+        delete :destroy, {:id => pupil.to_param}
       }.to change(Pupil, :count).by(-1)
     end
 
     it "redirects to the pupils list" do
       pupil = Pupil.create! valid_attributes
-      delete :destroy, {:id => pupil.to_param}, valid_session
+      delete :destroy, {:id => pupil.to_param}
       expect(response).to redirect_to(pupils_url)
     end
   end

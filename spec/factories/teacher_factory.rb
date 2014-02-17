@@ -11,6 +11,7 @@ FactoryGirl.define do
     birth 30.year.ago
 
     after(:create) do |teacher, evaluator|
+      teacher.roles << Role.find_by_name('teacher')
       create_list(:phone_number, 2, user: teacher.user)
     end
   end

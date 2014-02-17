@@ -9,5 +9,9 @@ FactoryGirl.define do
     birth 40.years.ago
     responsibility 'Manager'
     wage 1200
+
+    after(:create) do |manager|
+      manager.roles << Role.find_by_name('manager')
+    end
   end
 end

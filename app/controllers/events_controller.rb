@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:create, :update]
 
   # GET /events
   # GET /events.json
@@ -24,6 +25,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    authorize! :manage, Event
     @event = Event.new(event_attrs)
 
     respond_to do |format|
@@ -40,6 +42,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    authorize! :manage, Event
     respond_to do |format|
       if @event.update(event_attrs)
         format.html { redirect_to @event, notice: t('action.update.succeed', entity: Event.model_name.human) }

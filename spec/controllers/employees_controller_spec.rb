@@ -19,36 +19,37 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe EmployeesController do
+  include Devise::TestHelpers
+  let(:manager) { FactoryGirl.create(:manager) }
 
   # This should return the minimal set of attributes required to create a valid
   # Employee. As you add validations to Employee, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) { attributes_for :employee }
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # EmployeesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  before do
+    sign_in manager.user
+  end
 
   describe "GET index" do
     it "assigns all employees as @employees" do
       employee = Employee.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:employees)).to eq([employee])
+      get :index, {}
+      expect(assigns(:employees)).to eq(Employee.all)
     end
   end
 
   describe "GET show" do
     it "assigns the requested employee as @employee" do
       employee = Employee.create! valid_attributes
-      get :show, {:id => employee.to_param}, valid_session
+      get :show, {:id => employee.to_param}
       expect(assigns(:employee)).to eq(employee)
     end
   end
 
   describe "GET new" do
     it "assigns a new employee as @employee" do
-      get :new, {}, valid_session
+      get :new, {}
       expect(assigns(:employee)).to be_a_new(Employee)
     end
   end
@@ -56,7 +57,7 @@ describe EmployeesController do
   describe "GET edit" do
     it "assigns the requested employee as @employee" do
       employee = Employee.create! valid_attributes
-      get :edit, {:id => employee.to_param}, valid_session
+      get :edit, {:id => employee.to_param}
       expect(assigns(:employee)).to eq(employee)
     end
   end
@@ -65,35 +66,35 @@ describe EmployeesController do
     describe "with valid params" do
       it "creates a new Employee" do
         expect {
-          post :create, {:employee => valid_attributes}, valid_session
+          post :create, {:employee => valid_attributes}
         }.to change(Employee, :count).by(1)
       end
 
       it "creates an Employee with arbitrary responsibility" do
-        post :create, {:employee => valid_attributes}, valid_session
+        post :create, {:employee => valid_attributes}
         Employee.last.responsibility.should == valid_attributes[:responsibility]
       end
 
       it "creates a new Teacher" do
         expect {
-          post :create, { employee: (attributes_for :teacher)}, valid_session
+          post :create, { employee: (attributes_for :teacher)}
         }.to change(Teacher, :count).by(1)
       end
 
       it "creates a new Manager" do
         expect {
-          post :create, { employee: (attributes_for :manager)}, valid_session
+          post :create, { employee: (attributes_for :manager)}
         }.to change(Manager, :count).by(1)
       end
 
       it "assigns a newly created employee as @employee" do
-        post :create, {:employee => valid_attributes}, valid_session
+        post :create, {:employee => valid_attributes}
         expect(assigns(:employee)).to be_a(Employee)
         expect(assigns(:employee)).to be_persisted
       end
 
       it "redirects to the created employee" do
-        post :create, {:employee => valid_attributes}, valid_session
+        post :create, {:employee => valid_attributes}
         expect(response).to redirect_to(Employee.last)
       end
     end
@@ -102,14 +103,14 @@ describe EmployeesController do
       it "assigns a newly created but unsaved employee as @employee" do
         # Trigger the behavior that occurs when invalid params are submitted
         Employee.any_instance.stub(:save).and_return(false)
-        post :create, {:employee => { "first_name" => "invalid value" }}, valid_session
+        post :create, {:employee => { "first_name" => "invalid value" }}
         expect(assigns(:employee)).to be_a_new(Employee)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Employee.any_instance.stub(:save).and_return(false)
-        post :create, {:employee => { "first_name" => "invalid value" }}, valid_session
+        post :create, {:employee => { "first_name" => "invalid value" }}
         expect(response).to render_template("new")
       end
     end
@@ -117,7 +118,7 @@ describe EmployeesController do
     describe "with password confirmation that doesn't match password" do
       it "raises error" do
         password_attrs = { password: '12345678', password_confirmation: '87654321'}
-        post :create, {:employee => valid_attributes.merge(password_attrs)}, valid_session
+        post :create, {:employee => valid_attributes.merge(password_attrs)}
         expect(assigns(:employee)).to be_a_new(Employee)
       end
     end
@@ -132,18 +133,18 @@ describe EmployeesController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         expect_any_instance_of(Employee).to receive(:update).with({ "first_name" => "MyString" })
-        put :update, {:id => employee.to_param, :employee => { "first_name" => "MyString" }}, valid_session
+        put :update, {:id => employee.to_param, :employee => { "first_name" => "MyString" }}
       end
 
       it "assigns the requested employee as @employee" do
         employee = Employee.create! valid_attributes
-        put :update, {:id => employee.to_param, :employee => valid_attributes}, valid_session
+        put :update, {:id => employee.to_param, :employee => valid_attributes}
         expect(assigns(:employee)).to eq(employee)
       end
 
       it "redirects to the employee" do
         employee = Employee.create! valid_attributes
-        put :update, {:id => employee.to_param, :employee => valid_attributes}, valid_session
+        put :update, {:id => employee.to_param, :employee => valid_attributes}
         expect(response).to redirect_to(employee)
       end
 
@@ -152,7 +153,7 @@ describe EmployeesController do
 
         it "does not destroy employee user" do
           put :update, {id: @employee.to_param, employee: { first_name: "Chefe",
-            responsibility: @employee.responsibility }}, valid_session
+            responsibility: @employee.responsibility }}
           expect {
             User.find(@employee.user.id)
           }.not_to raise_error
@@ -160,7 +161,7 @@ describe EmployeesController do
 
         it "does not destroy employee" do
           put :update, {id: @employee.to_param, employee: { first_name: "Chefe",
-            responsibility: @employee.responsibility }}, valid_session
+            responsibility: @employee.responsibility }}
           expect {
             Employee.find(@employee.id)
           }.not_to raise_error
@@ -173,7 +174,7 @@ describe EmployeesController do
         employee = Employee.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Employee.any_instance.stub(:save).and_return(false)
-        put :update, {:id => employee.to_param, :employee => { "first_name" => "invalid value" }}, valid_session
+        put :update, {:id => employee.to_param, :employee => { "first_name" => "invalid value" }}
         expect(assigns(:employee)).to eq(employee)
       end
 
@@ -181,7 +182,7 @@ describe EmployeesController do
         employee = Employee.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Employee.any_instance.stub(:save).and_return(false)
-        put :update, {:id => employee.to_param, :employee => { "first_name" => "invalid value" }}, valid_session
+        put :update, {:id => employee.to_param, :employee => { "first_name" => "invalid value" }}
         expect(response).to render_template("edit")
       end
     end
@@ -193,39 +194,39 @@ describe EmployeesController do
 
         it "destroys teacher" do
           expect {
-            put :update, {id: @teacher.to_param, employee: { responsibility: 'Manager' } }, valid_session
+            put :update, {id: @teacher.employee.to_param, employee: { responsibility: 'Manager' } }
           }.to change(Teacher, :count).by(-1)
         end
 
         it "creates manager" do
           expect {
-            put :update, {id: @teacher.to_param, employee: { responsibility: 'Manager' } }, valid_session
+            put :update, {id: @teacher.employee.to_param, employee: { responsibility: 'Manager' } }
           }.to change(Manager, :count).by(1)
         end
 
         it "keeps teacher attributes but responsibility" do
-          put :update, {id: @teacher.to_param, employee: { responsibility: 'Manager' } }, valid_session
+          put :update, {id: @teacher.employee.to_param, employee: { responsibility: 'Manager' } }
           manager = Manager.last
           manager.responsibility.should == 'Manager'
-          @teacher.attributes.except(:responsibility).each do |k,v|
+          @teacher.attributes.except('id').each do |k,v|
             manager.send(k.to_sym).to_s.should eq v.to_s
           end
         end
 
         it "keeps user password" do
-          put :update, {id: @teacher.to_param, employee: { responsibility: 'Manager' } }, valid_session
+          put :update, {id: @teacher.employee.to_param, employee: { responsibility: 'Manager' } }
           Employee.last.encrypted_password.should eq @teacher.encrypted_password
         end
 
         it "destroys old employee" do
-          put :update, {id: @teacher.to_param, employee: { responsibility: 'Manager' } }, valid_session
+          put :update, {id: @teacher.employee.to_param, employee: { responsibility: 'Manager' } }
           expect {
             Employee.find(@teacher.employee.id)
           }.to raise_error(ActiveRecord::RecordNotFound)
         end
 
         it "destroys old user" do
-          put :update, {id: @teacher.to_param, employee: { responsibility: 'Manager' } }, valid_session
+          put :update, {id: @teacher.employee.to_param, employee: { responsibility: 'Manager' } }
           expect {
             User.find(@teacher.user.id)
           }.to raise_error(ActiveRecord::RecordNotFound)
@@ -233,8 +234,8 @@ describe EmployeesController do
 
         it "changes user associated to existing phone numbers from manager" do
           phone_number = PhoneNumber.create(number: 87654321, user: @teacher.user)
-          put :update, {id: @teacher.to_param, employee: { responsibility: 'Manager',
-            phone_number_attributes: { "26548" => phone_number.attributes } } }, valid_session
+          put :update, {id: @teacher.employee.to_param, employee: { responsibility: 'Manager',
+            phone_number_attributes: { "26548" => phone_number.attributes } } }
           Employee.last.phone_numbers.should include(phone_number)
         end
       end
@@ -244,18 +245,18 @@ describe EmployeesController do
 
         it "destroys manager" do
           expect {
-            put :update, {id: @manager.to_param, employee: { responsibility: 'Teacher' } }, valid_session
+            put :update, {id: @manager.employee.to_param, employee: { responsibility: 'Teacher' } }
           }.to change(Manager, :count).by(-1)
         end
 
         it "creates teacher" do
           expect {
-            put :update, {id: @manager.to_param, employee: { responsibility: 'Teacher' } }, valid_session
+            put :update, {id: @manager.employee.to_param, employee: { responsibility: 'Teacher' } }
           }.to change(Teacher, :count).by(1)
         end
 
         it "keeps manager attributes but responsibility" do
-          put :update, {id: @manager.to_param, employee: { responsibility: 'Teacher' } }, valid_session
+          put :update, {id: @manager.employee.to_param, employee: { responsibility: 'Teacher' } }
           teacher = Teacher.last
           @manager.attributes.except(:responsibility).each do |k,v|
             teacher.send(k.to_sym).to_s.should eq v.to_s
@@ -268,26 +269,26 @@ describe EmployeesController do
 
         it "destroys teacher" do
           expect {
-            put :update, {id: @teacher.to_param, employee: { responsibility: 'Jedi' } }, valid_session
+            put :update, {id: @teacher.employee.to_param, employee: { responsibility: 'Jedi' } }
           }.to change(Teacher, :count).by(-1)
         end
 
         it "creates jedi" do
-          put :update, {id: @teacher.to_param, employee: { responsibility: 'Jedi' } }, valid_session
+          put :update, {id: @teacher.employee.to_param, employee: { responsibility: 'Jedi' } }
           Employee.last.responsibility.should == 'Jedi'
         end
 
         it "does not create a manager" do
           expect {
-            put :update, {id: @teacher.to_param, employee: { responsibility: 'Jedi' } }, valid_session
+            put :update, {id: @teacher.employee.to_param, employee: { responsibility: 'Jedi' } }
           }.to change(Manager, :count).by(0)
         end
 
         it "keeps teacher attributes but responsibility" do
-          put :update, {id: @teacher.to_param, employee: { responsibility: 'Jedi' } }, valid_session
+          put :update, {id: @teacher.employee.to_param, employee: { responsibility: 'Jedi' } }
           jedi = Employee.last
           jedi.responsibility.should == 'Jedi'
-          @teacher.attributes.except(:responsibility).each do |k,v|
+          @teacher.attributes.except('id').each do |k,v|
             jedi.send(k.to_sym).to_s.should eq v.to_s
           end
         end
@@ -299,13 +300,13 @@ describe EmployeesController do
     it "destroys the requested employee" do
       employee = Employee.create! valid_attributes
       expect {
-        delete :destroy, {:id => employee.to_param}, valid_session
+        delete :destroy, {:id => employee.to_param}
       }.to change(Employee, :count).by(-1)
     end
 
     it "redirects to the employees list" do
       employee = Employee.create! valid_attributes
-      delete :destroy, {:id => employee.to_param}, valid_session
+      delete :destroy, {:id => employee.to_param}
       expect(response).to redirect_to(employees_url)
     end
   end

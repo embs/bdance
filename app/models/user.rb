@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
+  acts_as_superclass
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          omniauth_providers: [:facebook]
-  acts_as_superclass
+  has_many :assignments
+  has_many :roles, through: :assignments
   has_many :attendances
   has_many :events, through: :attendances
   has_many :presences
@@ -13,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :phone_numbers, dependent: :destroy
   accepts_nested_attributes_for :phone_numbers, reject_if: lambda { |h| h[:number].blank? },
     allow_destroy: true
+
   validates_presence_of :first_name, :last_name, :birth
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
@@ -29,5 +32,9 @@ class User < ActiveRecord::Base
     end
 
     user
+  end
+
+  def has_role?(role_sym)
+    roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
 end

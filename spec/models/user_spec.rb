@@ -12,6 +12,8 @@ describe User do
   it { should respond_to(:username) }
 
   # Associações
+  it { should have_many(:assignments) }
+  it { should have_many(:roles).through(:assignments) }
   it { should have_many(:events).through(:attendances) }
   it { should have_many(:presences) }
   it { should have_one(:address) }

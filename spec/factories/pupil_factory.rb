@@ -9,5 +9,9 @@ FactoryGirl.define do
     password_confirmation '12345678'
     birth 18.years.ago
     observations 'Lorem ipsum dolor'
+
+    after(:create) do |pupil|
+      pupil.roles << Role.find_by_name('pupil')
+    end
   end
 end

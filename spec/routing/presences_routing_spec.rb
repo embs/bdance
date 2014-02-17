@@ -6,7 +6,7 @@ describe PresencesController do
     let(:user) { stub_model(User) }
 
     it "routes to #index" do
-      expect(:get => "user/#{user.to_param}/presences").to route_to("presences#index", user_id: user.to_param)
+      expect(:get => "users/#{user.to_param}/presences").to route_to("presences#index", user_id: user.to_param)
     end
 
     it "routes to #new" do

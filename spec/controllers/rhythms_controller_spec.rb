@@ -19,7 +19,8 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe RhythmsController do
-
+  include Devise::TestHelpers
+  let(:manager) { FactoryGirl.create(:manager) }
   let(:modality) { FactoryGirl.create(:modality) }
 
   # This should return the minimal set of attributes required to create a valid
@@ -29,15 +30,14 @@ describe RhythmsController do
     FactoryGirl.attributes_for(:rhythm)
   end
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # RhythmsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  before do
+    sign_in manager.user
+  end
 
   describe "GET index" do
     it "assigns all rhythms as @rhythms" do
       rhythm = Rhythm.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}
       expect(assigns(:rhythms)).to eq([rhythm])
     end
   end
@@ -45,14 +45,14 @@ describe RhythmsController do
   describe "GET show" do
     it "assigns the requested rhythm as @rhythm" do
       rhythm = Rhythm.create! valid_attributes
-      get :show, {:id => rhythm.to_param}, valid_session
+      get :show, {:id => rhythm.to_param}
       expect(assigns(:rhythm)).to eq(rhythm)
     end
   end
 
   describe "GET new" do
     it "assigns a new rhythm as @rhythm" do
-      get :new, {}, valid_session
+      get :new, {}
       expect(assigns(:rhythm)).to be_a_new(Rhythm)
     end
   end
@@ -60,7 +60,7 @@ describe RhythmsController do
   describe "GET edit" do
     it "assigns the requested rhythm as @rhythm" do
       rhythm = Rhythm.create! valid_attributes
-      get :edit, {:id => rhythm.to_param}, valid_session
+      get :edit, {:id => rhythm.to_param}
       expect(assigns(:rhythm)).to eq(rhythm)
     end
   end
@@ -69,18 +69,18 @@ describe RhythmsController do
     describe "with valid params" do
       it "creates a new Rhythm" do
         expect {
-          post :create, {:rhythm => valid_attributes}, valid_session
+          post :create, {:rhythm => valid_attributes}
         }.to change(Rhythm, :count).by(1)
       end
 
       it "assigns a newly created rhythm as @rhythm" do
-        post :create, {:rhythm => valid_attributes}, valid_session
+        post :create, {:rhythm => valid_attributes}
         expect(assigns(:rhythm)).to be_a(Rhythm)
         expect(assigns(:rhythm)).to be_persisted
       end
 
       it "redirects to the created rhythm" do
-        post :create, {:rhythm => valid_attributes}, valid_session
+        post :create, {:rhythm => valid_attributes}
         expect(response).to redirect_to(Rhythm.last)
       end
     end
@@ -89,14 +89,14 @@ describe RhythmsController do
       it "assigns a newly created but unsaved rhythm as @rhythm" do
         # Trigger the behavior that occurs when invalid params are submitted
         Rhythm.any_instance.stub(:save).and_return(false)
-        post :create, {:rhythm => { "name" => "invalid value", modality: modality }}, valid_session
+        post :create, {:rhythm => { "name" => "invalid value", modality: modality }}
         expect(assigns(:rhythm)).to be_a_new(Rhythm)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Rhythm.any_instance.stub(:save).and_return(false)
-        post :create, {:rhythm => { "name" => "invalid value", modality: modality }}, valid_session
+        post :create, {:rhythm => { "name" => "invalid value", modality: modality }}
         expect(response).to render_template("new")
       end
     end
@@ -111,18 +111,18 @@ describe RhythmsController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         expect_any_instance_of(Rhythm).to receive(:update).with({ "name" => "MyString", "modality" => modality })
-        put :update, {:id => rhythm.to_param, :rhythm => { "name" => "MyString", modality: modality }}, valid_session
+        put :update, {:id => rhythm.to_param, :rhythm => { "name" => "MyString", modality: modality }}
       end
 
       it "assigns the requested rhythm as @rhythm" do
         rhythm = Rhythm.create! valid_attributes
-        put :update, {:id => rhythm.to_param, :rhythm => valid_attributes}, valid_session
+        put :update, {:id => rhythm.to_param, :rhythm => valid_attributes}
         expect(assigns(:rhythm)).to eq(rhythm)
       end
 
       it "redirects to the rhythm" do
         rhythm = Rhythm.create! valid_attributes
-        put :update, {:id => rhythm.to_param, :rhythm => valid_attributes}, valid_session
+        put :update, {:id => rhythm.to_param, :rhythm => valid_attributes}
         expect(response).to redirect_to(rhythm)
       end
     end
@@ -132,7 +132,7 @@ describe RhythmsController do
         rhythm = Rhythm.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Rhythm.any_instance.stub(:save).and_return(false)
-        put :update, {:id => rhythm.to_param, :rhythm => { "name" => "invalid value", modality: modality }}, valid_session
+        put :update, {:id => rhythm.to_param, :rhythm => { "name" => "invalid value", modality: modality }}
         expect(assigns(:rhythm)).to eq(rhythm)
       end
 
@@ -140,7 +140,7 @@ describe RhythmsController do
         rhythm = Rhythm.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Rhythm.any_instance.stub(:save).and_return(false)
-        put :update, {:id => rhythm.to_param, :rhythm => { "name" => "invalid value", modality: modality }}, valid_session
+        put :update, {:id => rhythm.to_param, :rhythm => { "name" => "invalid value", modality: modality }}
         expect(response).to render_template("edit")
       end
     end
@@ -150,13 +150,13 @@ describe RhythmsController do
     it "destroys the requested rhythm" do
       rhythm = Rhythm.create! valid_attributes
       expect {
-        delete :destroy, {:id => rhythm.to_param}, valid_session
+        delete :destroy, {:id => rhythm.to_param}
       }.to change(Rhythm, :count).by(-1)
     end
 
     it "redirects to the rhythms list" do
       rhythm = Rhythm.create! valid_attributes
-      delete :destroy, {:id => rhythm.to_param}, valid_session
+      delete :destroy, {:id => rhythm.to_param}
       expect(response).to redirect_to(rhythms_url)
     end
   end

@@ -17,7 +17,7 @@ Bdance::Application.routes.draw do
     :hours_packages, :events
   resources :presences, except: [:index, :show, :edit, :update, :patch]
 
-  resources :user, only: [] do
+  resources :users, only: [] do
     resources :presences, only: :index
   end
 

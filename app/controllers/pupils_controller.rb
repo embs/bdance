@@ -1,5 +1,6 @@
 class PupilsController < ApplicationController
   before_action :set_pupil, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:create, :update]
 
   # GET /pupils
   # GET /pupils.json
@@ -24,6 +25,7 @@ class PupilsController < ApplicationController
   # POST /pupils
   # POST /pupils.json
   def create
+    authorize! :manage, Pupil
     @pupil = Pupil.new(pupil_attrs)
 
     respond_to do |format|
@@ -40,6 +42,7 @@ class PupilsController < ApplicationController
   # PATCH/PUT /pupils/1
   # PATCH/PUT /pupils/1.json
   def update
+    authorize! :manage, Pupil
     respond_to do |format|
       if @pupil.update(pupil_attrs)
         format.html { redirect_to @pupil, notice: t('action.update.succeed', entity: Pupil.model_name.human) }

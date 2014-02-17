@@ -19,7 +19,8 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe HoursPackagesController do
-
+  include Devise::TestHelpers
+  let(:manager) { FactoryGirl.create(:manager) }
   let(:pupil) { FactoryGirl.create(:pupil) }
   let(:teacher) { FactoryGirl.create(:teacher) }
 
@@ -28,15 +29,14 @@ describe HoursPackagesController do
   # adjust the attributes here as well.
   let(:valid_attributes) { FactoryGirl.attributes_for(:hours_package) }
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # HoursPackagesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  before do
+    sign_in manager.user
+  end
 
   describe "GET index" do
     it "assigns all hours_packages as @hours_packages" do
       hours_package = HoursPackage.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}
       expect(assigns(:hours_packages)).to eq([hours_package])
     end
   end
@@ -44,14 +44,14 @@ describe HoursPackagesController do
   describe "GET show" do
     it "assigns the requested hours_package as @hours_package" do
       hours_package = HoursPackage.create! valid_attributes
-      get :show, {:id => hours_package.to_param}, valid_session
+      get :show, {:id => hours_package.to_param}
       expect(assigns(:hours_package)).to eq(hours_package)
     end
   end
 
   describe "GET new" do
     it "assigns a new hours_package as @hours_package" do
-      get :new, {}, valid_session
+      get :new, {}
       expect(assigns(:hours_package)).to be_a_new(HoursPackage)
     end
   end
@@ -59,7 +59,7 @@ describe HoursPackagesController do
   describe "GET edit" do
     it "assigns the requested hours_package as @hours_package" do
       hours_package = HoursPackage.create! valid_attributes
-      get :edit, {:id => hours_package.to_param}, valid_session
+      get :edit, {:id => hours_package.to_param}
       expect(assigns(:hours_package)).to eq(hours_package)
     end
   end
@@ -68,18 +68,18 @@ describe HoursPackagesController do
     describe "with valid params" do
       it "creates a new HoursPackage" do
         expect {
-          post :create, {:hours_package => valid_attributes}, valid_session
+          post :create, {:hours_package => valid_attributes}
         }.to change(HoursPackage, :count).by(1)
       end
 
       it "assigns a newly created hours_package as @hours_package" do
-        post :create, {:hours_package => valid_attributes}, valid_session
+        post :create, {:hours_package => valid_attributes}
         expect(assigns(:hours_package)).to be_a(HoursPackage)
         expect(assigns(:hours_package)).to be_persisted
       end
 
       it "redirects to the created hours_package" do
-        post :create, {:hours_package => valid_attributes}, valid_session
+        post :create, {:hours_package => valid_attributes}
         expect(response).to redirect_to(HoursPackage.last)
       end
     end
@@ -88,14 +88,14 @@ describe HoursPackagesController do
       it "assigns a newly created but unsaved hours_package as @hours_package" do
         # Trigger the behavior that occurs when invalid params are submitted
         HoursPackage.any_instance.stub(:save).and_return(false)
-        post :create, {:hours_package => { "pupils" => "invalid value" }}, valid_session
+        post :create, {:hours_package => { "pupils" => "invalid value" }}
         expect(assigns(:hours_package)).to be_a_new(HoursPackage)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         HoursPackage.any_instance.stub(:save).and_return(false)
-        post :create, {:hours_package => { "pupils" => "invalid value" }}, valid_session
+        post :create, {:hours_package => { "pupils" => "invalid value" }}
         expect(response).to render_template("new")
       end
     end
@@ -110,18 +110,18 @@ describe HoursPackagesController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         expect_any_instance_of(HoursPackage).to receive(:update).with({ "price" => "2000" })
-        put :update, {:id => hours_package.to_param, :hours_package => { "price" => "2000" }}, valid_session
+        put :update, {:id => hours_package.to_param, :hours_package => { "price" => "2000" }}
       end
 
       it "assigns the requested hours_package as @hours_package" do
         hours_package = HoursPackage.create! valid_attributes
-        put :update, {:id => hours_package.to_param, :hours_package => valid_attributes}, valid_session
+        put :update, {:id => hours_package.to_param, :hours_package => valid_attributes}
         expect(assigns(:hours_package)).to eq(hours_package)
       end
 
       it "redirects to the hours_package" do
         hours_package = HoursPackage.create! valid_attributes
-        put :update, {:id => hours_package.to_param, :hours_package => valid_attributes}, valid_session
+        put :update, {:id => hours_package.to_param, :hours_package => valid_attributes}
         expect(response).to redirect_to(hours_package)
       end
     end
@@ -131,7 +131,7 @@ describe HoursPackagesController do
         hours_package = HoursPackage.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         HoursPackage.any_instance.stub(:save).and_return(false)
-        put :update, {:id => hours_package.to_param, :hours_package => { "pupils" => "invalid value" }}, valid_session
+        put :update, {:id => hours_package.to_param, :hours_package => { "pupils" => "invalid value" }}
         expect(assigns(:hours_package)).to eq(hours_package)
       end
 
@@ -139,7 +139,7 @@ describe HoursPackagesController do
         hours_package = HoursPackage.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         HoursPackage.any_instance.stub(:save).and_return(false)
-        put :update, {:id => hours_package.to_param, :hours_package => { "pupils" => "invalid value" }}, valid_session
+        put :update, {:id => hours_package.to_param, :hours_package => { "pupils" => "invalid value" }}
         expect(response).to render_template("edit")
       end
     end
@@ -149,13 +149,13 @@ describe HoursPackagesController do
     it "destroys the requested hours_package" do
       hours_package = HoursPackage.create! valid_attributes
       expect {
-        delete :destroy, {:id => hours_package.to_param}, valid_session
+        delete :destroy, {:id => hours_package.to_param}
       }.to change(HoursPackage, :count).by(-1)
     end
 
     it "redirects to the hours_packages list" do
       hours_package = HoursPackage.create! valid_attributes
-      delete :destroy, {:id => hours_package.to_param}, valid_session
+      delete :destroy, {:id => hours_package.to_param}
       expect(response).to redirect_to(hours_packages_url)
     end
   end

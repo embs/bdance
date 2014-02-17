@@ -19,6 +19,8 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe PresencesController do
+  include Devise::TestHelpers
+  let(:manager) { FactoryGirl.create(:manager) }
 
   let(:pupil) { FactoryGirl.create(:pupil) }
 
@@ -27,10 +29,9 @@ describe PresencesController do
   # adjust the attributes here as well.
   let(:valid_attributes) { FactoryGirl.attributes_for(:presence, user: pupil.user) }
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # PresencesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  before do
+    sign_in manager.user
+  end
 
   describe "GET index" do
     before do
@@ -39,14 +40,14 @@ describe PresencesController do
     end
 
     it "assigns all user presences as @presences" do
-      get :index, { user_id: pupil.user.to_param }, valid_session
+      get :index, { user_id: pupil.user.to_param }
       expect(assigns(:presences)).to eq([@user_presence])
     end
   end
 
   describe "GET new" do
     it "assigns a new presence as @presence" do
-      get :new, {}, valid_session
+      get :new, {}
       expect(assigns(:presence)).to be_a_new(Presence)
     end
   end
@@ -55,18 +56,18 @@ describe PresencesController do
     describe "with valid params" do
       it "creates a new Presence" do
         expect {
-          post :create, {:presence => valid_attributes}, valid_session
+          post :create, {:presence => valid_attributes}
         }.to change(Presence, :count).by(1)
       end
 
       it "assigns a newly created presence as @presence" do
-        post :create, {:presence => valid_attributes}, valid_session
+        post :create, {:presence => valid_attributes}
         expect(assigns(:presence)).to be_a(Presence)
         expect(assigns(:presence)).to be_persisted
       end
 
       it "redirects to the user presences" do
-        post :create, {:presence => valid_attributes}, valid_session
+        post :create, {:presence => valid_attributes}
         expect(response).to redirect_to(user_presences_path(pupil.user))
       end
     end
@@ -75,14 +76,14 @@ describe PresencesController do
       it "assigns a newly created but unsaved presence as @presence" do
         # Trigger the behavior that occurs when invalid params are submitted
         Presence.any_instance.stub(:save).and_return(false)
-        post :create, {:presence => { "user" => nil }}, valid_session
+        post :create, {:presence => { "user" => nil }}
         expect(assigns(:presence)).to be_a_new(Presence)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Presence.any_instance.stub(:save).and_return(false)
-        post :create, {:presence => { "user" => nil }}, valid_session
+        post :create, {:presence => { "user" => nil }}
         expect(response).to render_template("new")
       end
     end
@@ -92,13 +93,13 @@ describe PresencesController do
     it "destroys the requested presence" do
       presence = Presence.create! valid_attributes
       expect {
-        delete :destroy, {:id => presence.to_param}, valid_session
+        delete :destroy, {:id => presence.to_param}
       }.to change(Presence, :count).by(-1)
     end
 
     it "redirects to the presences list" do
       presence = Presence.create! valid_attributes
-      delete :destroy, {:id => presence.to_param}, valid_session
+      delete :destroy, {:id => presence.to_param}
       expect(response).to redirect_to(user_presences_url(pupil.user))
     end
   end

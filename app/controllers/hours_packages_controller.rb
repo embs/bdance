@@ -1,5 +1,6 @@
 class HoursPackagesController < ApplicationController
   before_action :set_hours_package, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:create, :update]
 
   # GET /hours_packages
   # GET /hours_packages.json
@@ -24,6 +25,7 @@ class HoursPackagesController < ApplicationController
   # POST /hours_packages
   # POST /hours_packages.json
   def create
+    authorize! :manage, HoursPackage
     @hours_package = HoursPackage.new(hours_package_attrs)
 
     respond_to do |format|
@@ -40,6 +42,7 @@ class HoursPackagesController < ApplicationController
   # PATCH/PUT /hours_packages/1
   # PATCH/PUT /hours_packages/1.json
   def update
+    authorize! :manage, HoursPackage
     respond_to do |format|
       if @hours_package.update(hours_package_attrs)
         format.html { redirect_to @hours_package, notice: t('action.update.succeed', entity: HoursPackage.model_name.human) }

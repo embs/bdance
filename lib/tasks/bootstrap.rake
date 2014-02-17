@@ -83,6 +83,19 @@ namespace :bootstrap do
     end
   end
 
+  desc 'Create roles'
+  task roles: :environment do
+    ['manager', 'user', 'teacher', 'responsible', 'pupil'].each do |role|
+      Role.create(name: role)
+    end
+  end
+
+  desc 'Create admin user'
+  task admin: :environment do
+    FactoryGirl.create(:manager, username: 'admin', email: 'admin@example.com',
+      password: '12345678')
+  end
+
   desc "Run all bootstrapping tasks"
   task all: [:pupils, :teachers, :managers, :modalities, :rhythms, :groups,
                 :enrollments, :hours_packages, :presences, :events]
