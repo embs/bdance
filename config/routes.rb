@@ -21,6 +21,10 @@ Bdance::Application.routes.draw do
     resources :presences, only: :index
   end
 
+  resources :contracts, only: [:index] do
+    get 'download'
+  end
+
   # Example resource route with options:
   #   resources :products do
   #     member do

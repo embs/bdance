@@ -1,0 +1,22 @@
+<h1><%= "#{t 'action.listing'} #{t 'contract.many'}" %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Enrollment.human_attribute_name :number %></th>
+      <th><%= Pupil.model_name.human %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pupils.each do |pupil| %>
+      <tr>
+        <td><%= pupil.id %></td>
+        <td><%= "#{pupil.first_name} #{pupil.last_name}" %></td>
+        <td><%= link_to "#{t('action.download')} #{t('contract.one')}",
+          contract_download_path(pupil), class: 'btn' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

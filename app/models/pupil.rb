@@ -10,4 +10,5 @@ class Pupil < ActiveRecord::Base
   has_many :hours_packages, through: :private_classes
   accepts_nested_attributes_for :responsibilities, reject_if: lambda { |h| h[:responsible].blank? },
     allow_destroy: true
+  scope :enrolled, -> { joins(:enrollments) }
 end

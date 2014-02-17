@@ -268,6 +268,7 @@ pt-BR:
         responsibility: Cargo
         wage: Salário
       enrollment:
+        number: Número
         pupil: Aluno
         group: Turma
       presence:
@@ -302,8 +303,12 @@ pt-BR:
       succeed: "%{entity} criado(a) com sucesso."
     update:
       succeed: "%{entity} atualizado(a) com sucesso."
+    download: Baixar
   unauthorized:
     manage:
       all: "Você precisa de autorização para acessar a página solicitada."
       presence: "Você não pode ver informações de frequência do usuário."
       user: "Você não pode gerenciar contas de outros usuários."
+  contract:
+    one: Contrato
+    many: Contratos

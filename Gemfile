@@ -60,3 +60,5 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 gem 'cancan'
+
+gem 'prawn'
