@@ -1,19 +1,25 @@
-<h1><%= "#{t 'action.showing'} #{Rhythm.model_name.human}" %></h1>
+<div class="row-fluid">
+  <h1><%= "#{t 'action.showing'} #{Rhythm.model_name.human}" %></h1>
 
-<p>
-  <strong><%= Rhythm.human_attribute_name :name %>:</strong>
-  <%= @rhythm.name %>
-</p>
+  <p>
+    <strong><%= Rhythm.human_attribute_name :name %>:</strong>
+    <%= @rhythm.name %>
+  </p>
 
-<p>
-  <strong><%= Rhythm.human_attribute_name :description %>:</strong>
-  <%= @rhythm.description %>
-</p>
+  <p>
+    <strong><%= Rhythm.human_attribute_name :description %>:</strong>
+    <%= @rhythm.description %>
+  </p>
 
-<p>
-  <strong><%= Rhythm.human_attribute_name :modality %>:</strong>
-  <%= @rhythm.modality.name %>
-</p>
+  <p>
+    <strong><%= Rhythm.human_attribute_name :modality %>:</strong>
+    <%= @rhythm.modality.name %>
+  </p>
 
-<%= link_to t('action.edit'), edit_rhythm_path(@rhythm) %> |
-<%= link_to t('action.back'), rhythms_path %>
+  <%= link_to edit_rhythm_path(@rhythm), class: 'btn' do %>
+    <i class="fa fa-edit"></i> <%= t('action.edit') %>
+  <% end %>
+  <%= link_to @rhythm, method: :delete, data: { confirm: t('action.confirm') }, class: 'btn btn-danger' do %>
+    <i class="fa fa-trash-o"></i> <%= t('action.destroy') %>
+  <% end %>
+</div>

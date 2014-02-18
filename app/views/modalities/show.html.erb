@@ -1,14 +1,20 @@
-<h1><%= "#{t 'action.showing'} #{Modality.model_name.human}" %></h1>
+<div class="row-fluid">
+  <h1><%= "#{t 'action.showing'} #{Modality.model_name.human}" %></h1>
 
-<p>
-  <strong><%= Modality.human_attribute_name :name %>:</strong>
-  <%= @modality.name %>
-</p>
+  <p>
+    <strong><%= Modality.human_attribute_name :name %>:</strong>
+    <%= @modality.name %>
+  </p>
 
-<p>
-  <strong><%= Modality.human_attribute_name :description %>:</strong>
-  <%= @modality.description %>
-</p>
+  <p>
+    <strong><%= Modality.human_attribute_name :description %>:</strong>
+    <%= @modality.description %>
+  </p>
 
-<%= link_to t('action.edit'), edit_modality_path(@modality) %> |
-<%= link_to t('action.back'), modalities_path %>
+  <%= link_to edit_modality_path(@modality), class: 'btn' do %>
+    <i class="fa fa-edit"></i> <%= t('action.edit') %>
+  <% end %>
+  <%= link_to @modality, method: :delete, data: { confirm: t('action.confirm') }, class: 'btn btn-danger' do %>
+    <i class="fa fa-trash-o"></i> <%= t('action.destroy') %>
+  <% end %>
+</div>

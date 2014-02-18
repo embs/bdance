@@ -37,11 +37,6 @@ describe "pupils/index" do
     assert_select "tr>td", :text => "Last Name".to_s, :count => 2
     assert_select "tr>td", :text => "Username".to_s, :count => 2
     assert_select "tr>td", :text => "Mail".to_s, :count => 2
-    assert_select "tr>td", :text => "Rg".to_s, :count => 2
     assert_select "tr>td", :text => "Cpf".to_s, :count => 2
-    assert_select "tr>td", :text => Date.new.to_s, :count => 2
-    assert_select "tr>td", :text => "[12345678]".to_s, :count => 2
-    assert_select "tr>td", :text => "Profession".to_s, :count => 2
-    assert_select "tr>td", :text => "Observations".to_s, :count => 2
   end
 end

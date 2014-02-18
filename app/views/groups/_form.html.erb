@@ -12,30 +12,30 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :teacher %><br>
+    <%= f.label :teacher %>
     <%= f.select :teacher, options_from_collection_for_select(Teacher.all, :id, :first_name, selected: @group.teacher) %>
   </div>
   <div class="field">
-    <%= f.label :price %><br>
+    <%= f.label :price %>
     <%= f.text_field :price %>
   </div>
   <div class="field">
-    <%= f.label :horaries %><br>
+    <%= f.label :horaries %>
     <%= f.fields_for :horaries do |builder| %>
       <%= render "shared/horary_fields", f: builder %>
     <% end %>
     <%= f.link_to_add "Add a horary", :horaries %>
   </div>
   <div class="field">
-    <%= f.label :local %><br>
+    <%= f.label :local %>
     <%= f.text_field :local %>
   </div>
   <div class="field">
@@ -47,10 +47,10 @@
     <%= f.date_select :end_date %>
   </div>
   <div class="field">
-    <%= f.label :modality %><br>
+    <%= f.label :modality %>
     <%= f.select :modality, options_from_collection_for_select(Modality.all, :id, :name) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn' %>
   </div>
 <% end %>

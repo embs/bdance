@@ -1,6 +1,6 @@
 <h1><%= "#{t 'action.listing'} #{Rhythm.model_name.human.pluralize}" %></h1>
 
-<table>
+<table class='table table-hover'>
   <thead>
     <tr>
       <th><%= Rhythm.human_attribute_name :name %></th>
@@ -15,12 +15,19 @@
   <tbody>
     <% @rhythms.each do |rhythm| %>
       <tr>
-        <td><%= rhythm.name %></td>
+        <td><%= link_to rhythm.name, rhythm %></td>
         <td><%= rhythm.description %></td>
         <td><%= rhythm.modality.name %></td>
-        <td><%= link_to t('action.show'), rhythm %></td>
-        <td><%= link_to t('action.edit'), edit_rhythm_path(rhythm) %></td>
-        <td><%= link_to t('action.destroy'), rhythm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to edit_rhythm_path(rhythm), class: 'btn' do %>
+            <i class="fa fa-edit"></i> <%= t('action.edit') %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to rhythm, method: :delete, data: { confirm: t('action.confirm') }, class: 'btn btn-danger' do %>
+            <i class="fa fa-trash-o"></i> <%= t('action.destroy') %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +35,4 @@
 
 <br>
 
-<%= link_to "#{t 'action.new'} #{Rhythm.model_name.human}", new_rhythm_path %>
+<%= link_to "#{t 'action.new'} #{Rhythm.model_name.human}", new_rhythm_path, class: 'btn' %>

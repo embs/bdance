@@ -1,20 +1,13 @@
 <h1><%= "#{t 'action.listing'} #{Pupil.model_name.human.pluralize}" %></h1>
 
-<table>
+<table class='table table-hover'>
   <thead>
     <tr>
       <th><%= Pupil.human_attribute_name :first_name %></th>
       <th><%= Pupil.human_attribute_name :last_name %></th>
-      <th><%= Pupil.human_attribute_name :email %></th>
-      <th><%= Pupil.human_attribute_name :username %></th>
-      <th><%= Pupil.human_attribute_name :rg %></th>
       <th><%= Pupil.human_attribute_name :cpf %></th>
-      <th><%= Pupil.human_attribute_name :birth %></th>
-      <th><%= Pupil.human_attribute_name :phone_numbers %></th>
-      <th><%= Pupil.human_attribute_name :profession %></th>
-      <th><%= Pupil.human_attribute_name :responsibles %></th>
-      <th><%= Pupil.human_attribute_name :observations %></th>
-      <th></th>
+      <th><%= Pupil.human_attribute_name :username %></th>
+      <th><%= Pupil.human_attribute_name :email %></th>
       <th></th>
       <th></th>
     </tr>
@@ -23,20 +16,21 @@
   <tbody>
     <% @pupils.each do |pupil| %>
       <tr>
-        <td><%= pupil.first_name %></td>
+        <td><%= link_to pupil.first_name, pupil %></td>
         <td><%= pupil.last_name %></td>
+        <td><%= pupil.cpf %></td>
         <td><%= pupil.username %></td>
         <td><%= pupil.email %></td>
-        <td><%= pupil.rg %></td>
-        <td><%= pupil.cpf %></td>
-        <td><%= pupil.birth %></td>
-        <td><%= pupil.phone_numbers.collect { |p| p.number } %></td>
-        <td><%= pupil.profession %></td>
-        <td><%= pupil.responsibles.collect { |r| r.email } %></td>
-        <td><%= pupil.observations %></td>
-        <td><%= link_to t('action.show'), pupil %></td>
-        <td><%= link_to t('action.edit'), edit_pupil_path(pupil) %></td>
-        <td><%= link_to t('action.destroy'), pupil, method: :delete, data: { confirm: t('action.confirm') } %></td>
+        <td>
+          <%= link_to edit_pupil_path(pupil), class: 'btn' do %>
+            <i class="fa fa-edit"></i> <%= t('action.edit') %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to pupil, method: :delete, data: { confirm: t('action.confirm') }, class: 'btn btn-danger' do %>
+            <i class="fa fa-trash-o"></i> <%= t('action.destroy') %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -44,4 +38,4 @@
 
 <br>
 
-<%= link_to "#{t 'action.new'} #{Pupil.model_name.human}", new_pupil_path %>
+<%= link_to "#{t 'action.new'} #{Pupil.model_name.human}", new_pupil_path, type: "button", class: "btn btn-default" %>

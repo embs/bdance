@@ -5,7 +5,7 @@
 
   <%= render 'shared/user_required_fields', f: f %>
 
-  <div><%= f.submit t('action.signup') %></div>
+  <div><%= f.submit t('action.signup'), class: 'btn' %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>

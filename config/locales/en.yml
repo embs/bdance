@@ -44,6 +44,7 @@ en:
     update:
       succeed: "%{entity} was successfully updated."
     download: Download
+    remember_me: "Remember me"
   unauthorized:
     manage:
       all: "Not authorized to %{action} %{subject}."
@@ -52,3 +53,20 @@ en:
   contract:
     one: Contract
     many: Contracts
+  message:
+    welcome: "Welcome to BDance!"
+    habilities:
+      manage:
+        title: Manage
+        body: "Gerenciamento de alunos, funcionários e turmas de escolas de dança para gerentes e proprietários"
+      control:
+        title: Control
+        body: "Controle de horário de turmas e frequência de alunos para professores"
+      explore:
+        title: Discover
+        body: "Turmas, modalidades, ritmos e serviços oferecidos pela escola"
+      know_more: "SAIBA MAIS"
+  navigation:
+    people: People
+    dancing: Dancing
+    enrollments_n_presences: Enrollments and Frequency

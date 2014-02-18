@@ -1,54 +1,61 @@
-<h1><%= "#{t 'action.showing'} #{Employee.model_name.human}" %></h1>
+<div class="row-fluid">
+  <h1><%= "#{t 'action.showing'} #{Employee.model_name.human}" %></h1>
 
-<p>
-  <strong><%= Employee.human_attribute_name :first_name %>:</strong>
-  <%= @employee.first_name %>
-</p>
+  <p>
+    <strong><%= Employee.human_attribute_name :first_name %>:</strong>
+    <%= @employee.first_name %>
+  </p>
 
-<p>
-  <strong><%= Employee.human_attribute_name :last_name %>:</strong>
-  <%= @employee.last_name %>
-</p>
+  <p>
+    <strong><%= Employee.human_attribute_name :last_name %>:</strong>
+    <%= @employee.last_name %>
+  </p>
 
-<p>
-  <strong><%= Employee.human_attribute_name :email %>:</strong>
-  <%= @employee.email %>
-</p>
+  <p>
+    <strong><%= Employee.human_attribute_name :email %>:</strong>
+    <%= @employee.email %>
+  </p>
 
-<p>
-  <strong><%= Employee.human_attribute_name :username %>:</strong>
-  <%= @employee.username %>
-</p>
+  <p>
+    <strong><%= Employee.human_attribute_name :username %>:</strong>
+    <%= @employee.username %>
+  </p>
 
-<p>
-  <strong><%= Employee.human_attribute_name :rg %>:</strong>
-  <%= @employee.rg %>
-</p>
+  <p>
+    <strong><%= Employee.human_attribute_name :rg %>:</strong>
+    <%= @employee.rg %>
+  </p>
 
-<p>
-  <strong><%= Employee.human_attribute_name :cpf %>:</strong>
-  <%= @employee.cpf %>
-</p>
+  <p>
+    <strong><%= Employee.human_attribute_name :cpf %>:</strong>
+    <%= @employee.cpf %>
+  </p>
 
-<p>
-  <strong><%= Employee.human_attribute_name :birth %>:</strong>
-  <%= @employee.birth %>
-</p>
+  <p>
+    <strong><%= Employee.human_attribute_name :birth %>:</strong>
+    <%= @employee.birth %>
+  </p>
 
-<p>
-  <strong><%= Employee.human_attribute_name :phone_numbers %>:</strong>
-  <%= @employee.phone_numbers.collect { |p| p.number } %>
-</p>
+  <p>
+    <strong><%= Employee.human_attribute_name :phone_numbers %>:</strong>
+    <%= @employee.phone_numbers.collect { |p| p.number } %>
+  </p>
 
-<p>
-  <strong><%= Employee.human_attribute_name :responsibility %>:</strong>
-  <%= @employee.responsibility %>
-</p>
+  <p>
+    <strong><%= Employee.human_attribute_name :responsibility %>:</strong>
+    <%= @employee.responsibility %>
+  </p>
 
-<p>
-  <strong><%= Employee.human_attribute_name :wage %>:</strong>
-  <%= @employee.wage %>
-</p>
+  <p>
+    <strong><%= Employee.human_attribute_name :wage %>:</strong>
+    <%= @employee.wage %>
+  </p>
 
-<%= link_to t('action.edit'), edit_employee_path(@employee) %> |
-<%= link_to t('action.back'), employees_path %>
+
+  <%= link_to edit_employee_path(@employee), class: 'btn' do %>
+    <i class="fa fa-edit"></i> <%= t('action.edit') %>
+  <% end %>
+  <%= link_to @employee, method: :delete, data: { confirm: t('action.confirm') }, class: 'btn btn-danger' do %>
+    <i class="fa fa-trash-o"></i> <%= t('action.destroy') %>
+  <% end %>
+</div>

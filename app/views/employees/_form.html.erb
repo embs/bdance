@@ -14,15 +14,15 @@
   <%= render 'shared/user_fields', f: f %>
 
   <div class="field">
-    <%= f.label :responsibility %><br>
+    <%= f.label :responsibility %>
     <%= f.select :responsibility, options_for_select(['Teacher', 'Manager', 'Facilitator'],
       selected: @employee.try(:responsibility)) %>
   </div>
   <div class="field">
-    <%= f.label :wage %><br>
+    <%= f.label :wage %>
     <%= f.text_field :wage %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn' %>
   </div>
 <% end %>

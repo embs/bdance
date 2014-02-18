@@ -1,14 +1,20 @@
-<h1><%= "#{t 'action.showing'} #{Enrollment.model_name.human}" %></h1>
+<div class="row-fluid">
+  <h1><%= "#{t 'action.showing'} #{Enrollment.model_name.human}" %></h1>
 
-<p>
-  <strong><%= Enrollment.human_attribute_name :pupil %>:</strong>
-  <%= "#{@enrollment.pupil.first_name} #{@enrollment.pupil.last_name}" %>
-</p>
+  <p>
+    <strong><%= Enrollment.human_attribute_name :pupil %>:</strong>
+    <%= "#{@enrollment.pupil.first_name} #{@enrollment.pupil.last_name}" %>
+  </p>
 
-<p>
-  <strong><%= Enrollment.human_attribute_name :group %>:</strong>
-  <%= @enrollment.group.name %>
-</p>
+  <p>
+    <strong><%= Enrollment.human_attribute_name :group %>:</strong>
+    <%= @enrollment.group.name %>
+  </p>
 
-<%= link_to t('action.edit'), edit_enrollment_path(@enrollment) %> |
-<%= link_to t('action.back'), enrollments_path %>
+  <%= link_to edit_enrollment_path(@enrollment), class: 'btn' do %>
+    <i class="fa fa-edit"></i> <%= t('action.edit') %>
+  <% end %>
+  <%= link_to @enrollment, method: :delete, data: { confirm: t('action.confirm') }, class: 'btn btn-danger' do %>
+    <i class="fa fa-trash-o"></i> <%= t('action.destroy') %>
+  <% end %>
+</div>

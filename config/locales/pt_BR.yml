@@ -317,6 +317,7 @@ pt-BR:
     update:
       succeed: "%{entity} atualizado(a) com sucesso."
     download: Baixar
+    remember_me: "Manter-me logado"
   unauthorized:
     manage:
       all: "Você precisa de autorização para acessar a página solicitada."
@@ -325,3 +326,20 @@ pt-BR:
   contract:
     one: Contrato
     many: Contratos
+  message:
+    welcome: "Seja bem vindo ao BDance!"
+    habilities:
+      manage:
+        title: Gerencie
+        body: "Gerenciamento de alunos, funcionários e turmas de escolas de dança para gerentes e proprietários"
+      control:
+        title: Controle
+        body: "Controle de horário de turmas e frequência de alunos para professores"
+      explore:
+        title: Descubra
+        body: "Turmas, modalidades, ritmos e serviços oferecidos pela escola"
+      know_more: "SAIBA MAIS"
+  navigation:
+    people: Pessoas
+    dancing: Dança
+    enrollments_n_presences: Matrículas e Presenças

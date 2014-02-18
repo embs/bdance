@@ -1,51 +1,57 @@
-<h1><%= "#{t 'action.showing'} #{Group.model_name.human}" %></h1>
+<div class="row-fluid">
+  <h1><%= "#{t 'action.showing'} #{Group.model_name.human}" %></h1>
 
-<p>
-  <strong><%= Group.human_attribute_name :name %>:</strong>
-  <%= @group.name %>
-</p>
+  <p>
+    <strong><%= Group.human_attribute_name :name %>:</strong>
+    <%= @group.name %>
+  </p>
 
-<p>
-  <strong><%= Group.human_attribute_name :description %>:</strong>
-  <%= @group.description %>
-</p>
+  <p>
+    <strong><%= Group.human_attribute_name :description %>:</strong>
+    <%= @group.description %>
+  </p>
 
-<p>
-  <strong><%= Group.human_attribute_name :teacher %>:</strong>
-  <%= @group.teacher.first_name %>
-</p>
+  <p>
+    <strong><%= Group.human_attribute_name :teacher %>:</strong>
+    <%= @group.teacher.first_name %>
+  </p>
 
-<p>
-  <strong><%= Group.human_attribute_name :price %>:</strong>
-  <%= @group.price %>
-</p>
+  <p>
+    <strong><%= Group.human_attribute_name :price %>:</strong>
+    <%= @group.price %>
+  </p>
 
-<p>
-  <strong><%= Group.human_attribute_name :horaries %>:</strong>
-  <% @group.horaries.each do |horary| %>
-    <%= Date::DAYNAMES[horary.day.to_i] %>, <%= horary.start.to_s(:horary_time) %> ~ <%= horary.end.to_s(:horary_time) %>
+  <p>
+    <strong><%= Group.human_attribute_name :horaries %>:</strong>
+    <% @group.horaries.each do |horary| %>
+      <%= Date::DAYNAMES[horary.day.to_i] %>, <%= horary.start.to_s %> ~ <%= horary.end.to_s %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong><%= Group.human_attribute_name :local %>:</strong>
+    <%= @group.local %>
+  </p>
+
+  <p>
+    <strong><%= Group.human_attribute_name :start_date %>:</strong>
+    <%= @group.start_date %>
+  </p>
+
+  <p>
+    <strong><%= Group.human_attribute_name :end_date %>:</strong>
+    <%= @group.end_date %>
+  </p>
+
+  <p>
+    <strong><%= Group.human_attribute_name :modality %>:</strong>
+    <%= @group.modality.name %>
+  </p>
+
+  <%= link_to edit_group_path(@group), class: 'btn' do %>
+    <i class="fa fa-edit"></i> <%= t('action.edit') %>
   <% end %>
-</p>
-
-<p>
-  <strong><%= Group.human_attribute_name :local %>:</strong>
-  <%= @group.local %>
-</p>
-
-<p>
-  <strong><%= Group.human_attribute_name :start_date %>:</strong>
-  <%= @group.start_date %>
-</p>
-
-<p>
-  <strong><%= Group.human_attribute_name :end_date %>:</strong>
-  <%= @group.end_date %>
-</p>
-
-<p>
-  <strong><%= Group.human_attribute_name :modality %>:</strong>
-  <%= @group.modality.name %>
-</p>
-
-<%= link_to t('action.edit'), edit_group_path(@group) %> |
-<%= link_to t('action.back'), groups_path %>
+  <%= link_to @group, method: :delete, data: { confirm: t('action.confirm') }, class: 'btn btn-danger' do %>
+    <i class="fa fa-trash-o"></i> <%= t('action.destroy') %>
+  <% end %>
+</div>

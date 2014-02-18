@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user %><br>
+    <%= f.label :user %>
     <%= f.select :user, User.all.collect { |u| [u.email, u.id] } %>
   </div>
   <div class="field">
-    <%= f.label :time %><br>
+    <%= f.label :time %>
     <%= f.datetime_select :time %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn' %>
   </div>
 <% end %>

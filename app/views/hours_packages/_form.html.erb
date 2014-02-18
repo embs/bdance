@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :pupils %><br>
+    <%= f.label :pupils %>
     <%= f.fields_for :private_classes do |b| %>
       <%= b.select :pupil, Pupil.all.collect { |p| [p.first_name, p.id] } %><br />
       <%= b.link_to_remove "Remove this pupil" %><br />
@@ -20,29 +20,29 @@
     <%= f.link_to_add "Add a pupil", :private_classes %>
   </div>
   <div class="field">
-    <%= f.label :teacher %><br>
+    <%= f.label :teacher %>
     <%= f.select :teacher, Teacher.all.collect { |t| [t.first_name, t.id] } %>
   </div>
   <div class="field">
-    <%= f.label :price %><br>
+    <%= f.label :price %>
     <%= f.text_field :price %>
   </div>
   <div class="field">
-    <%= f.label :horaries %><br>
+    <%= f.label :horaries %>
     <%= f.fields_for :horaries do |builder| %>
       <%= render "shared/horary_fields", f: builder %>
     <% end %>
     <%= f.link_to_add "Add a horary", :horaries %>
   </div>
   <div class="field">
-    <%= f.label :start %><br>
+    <%= f.label :start %>
     <%= f.date_select :start %>
   </div>
   <div class="field">
-    <%= f.label :end %><br>
+    <%= f.label :end %>
     <%= f.date_select :end %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn' %>
   </div>
 <% end %>
