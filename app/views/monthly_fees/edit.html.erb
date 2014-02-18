@@ -1,0 +1,6 @@
+<h1><%= "#{t 'action.editing'} #{MonthlyFee.model_name.human}" %></h1>
+
+<%= render 'form' %>
+
+<%= link_to t('action.show'), pupil_monthly_fee_path(@pupil, @monthly_fee) %> |
+<%= link_to t('action.back'), pupil_monthly_fees_path(@pupil) %>

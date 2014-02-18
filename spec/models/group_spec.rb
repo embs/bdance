@@ -6,8 +6,8 @@ describe Group do
   it { should respond_to(:description) }
   it { should respond_to(:price) }
   it { should respond_to(:local) }
-  it { should respond_to(:start) }
-  it { should respond_to(:end) }
+  it { should respond_to(:start_date) }
+  it { should respond_to(:end_date) }
 
   # Associações
   it { should have_many(:pupils).through(:enrollments) }

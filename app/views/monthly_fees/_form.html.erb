@@ -1,0 +1,25 @@
+<%= form_for [@pupil, @monthly_fee] do |f| %>
+  <% if @monthly_fee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@monthly_fee.errors.count, "error") %> prohibited this monthly_fee from being saved:</h2>
+
+      <ul>
+      <% @monthly_fee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :due_date %><br>
+    <%= f.date_select :due_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

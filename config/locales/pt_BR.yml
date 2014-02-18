@@ -221,6 +221,7 @@ pt-BR:
       enrollment: Matrícula
       presence: Presença
       event: Evento
+      monthly_fee: Mensalidade
     attributes:
       modality:
         name: Nome
@@ -288,6 +289,10 @@ pt-BR:
         local: Local
         date: Dia e Hora
         users: Usuários
+      monthly_fee:
+        amount: Valor total
+        due_date: Vencimento
+        pupil: Aluno
   action:
     new: Novo(a)
     save: Cadastrar

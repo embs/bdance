@@ -5,5 +5,8 @@ FactoryGirl.define do
     name "New Group"
     description "A brand new group."
     modality { FactoryGirl.create(:modality) }
+    start_date Time.now
+    end_date 1.year.from_now
+    price 120.00
   end
 end

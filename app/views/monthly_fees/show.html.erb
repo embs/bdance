@@ -1,0 +1,17 @@
+<p>
+  <strong>Id:</strong>
+  <%= @monthly_fee.id %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @monthly_fee.amount %>
+</p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @monthly_fee.due_date %>
+</p>
+
+<%= link_to 'Edit', edit_pupil_monthly_fee_path(@pupil, @monthly_fee) %> |
+<%= link_to 'Back', pupil_monthly_fees_path(@pupil) %>

@@ -16,9 +16,14 @@ Bdance::Application.routes.draw do
   resources :modalities, :rhythms, :groups, :employees, :pupils, :enrollments,
     :hours_packages, :events
   resources :presences, except: [:index, :show, :edit, :update, :patch]
+  resources :monthly_fees, only: :index
 
   resources :users, only: [] do
     resources :presences, only: :index
+  end
+
+  resources :pupils, only: [] do
+    resources :monthly_fees
   end
 
   resources :contracts, only: [:index] do

@@ -9,8 +9,8 @@
       <th><%= Group.human_attribute_name :price %></th>
       <th><%= Group.human_attribute_name :time %></th>
       <th><%= Group.human_attribute_name :local %></th>
-      <th><%= Group.human_attribute_name :start %></th>
-      <th><%= Group.human_attribute_name :end %></th>
+      <th><%= Group.human_attribute_name :start_date %></th>
+      <th><%= Group.human_attribute_name :end_date %></th>
       <th><%= Group.human_attribute_name :modality %></th>
       <th></th>
       <th></th>
@@ -27,8 +27,8 @@
         <td><%= group.price %></td>
         <td><%#= group.hour %></td>
         <td><%= group.local %></td>
-        <td><%= group.start %></td>
-        <td><%= group.end %></td>
+        <td><%= group.start_date %></td>
+        <td><%= group.end_date %></td>
         <td><%= group.modality.name %></td>
         <td><%= link_to t('action.show'), group %></td>
         <td><%= link_to t('action.edit'), edit_group_path(group) %></td>

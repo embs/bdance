@@ -93,7 +93,7 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_permitted_params
-      params.require(:group).permit(:name, :description, :price, :time, :local, :start, :end, :modality, :teacher)
+      params.require(:group).permit(:name, :description, :price, :time, :local, :start_date, :end_date, :modality, :teacher)
     end
 
     def horaries_permitted_params

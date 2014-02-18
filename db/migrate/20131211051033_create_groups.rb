@@ -5,8 +5,8 @@ class CreateGroups < ActiveRecord::Migration
       t.text :description
       t.float :price
       t.string :local
-      t.date :start
-      t.date :end
+      t.date :start_date
+      t.date :end_date
       t.references :modality
       t.references :teacher
 

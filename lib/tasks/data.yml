@@ -184,8 +184,8 @@ groups:
     teacher: *teacher1
     price: 160
     local: Salão principal
-    start: 01-01-2014
-    end: 01-01-2015
+    start_date: 01-01-2014
+    end_date: 01-01-2015
     modality: *modality1
     horaries_attributes:
       1: *horary1
