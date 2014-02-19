@@ -1,0 +1,21 @@
+<h1><%= "#{t 'action.listing'} #{Presence.model_name.human.pluralize}" %></h1>
+
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th><%= Presence.human_attribute_name :id %></th>
+      <th><%= Presence.human_attribute_name :user %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= link_to "#{t('action.show')} #{Presence.model_name.human.pluralize}", user_presences_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

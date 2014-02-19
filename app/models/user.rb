@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          omniauth_providers: [:facebook]
+
   has_many :assignments
   has_many :roles, through: :assignments
   has_many :attendances
@@ -13,9 +14,12 @@ class User < ActiveRecord::Base
   has_one :address
   has_many :authentications, dependent: :destroy
   has_many :phone_numbers, dependent: :destroy
+
   accepts_nested_attributes_for :phone_numbers, reject_if: lambda { |h| h[:number].blank? },
     allow_destroy: true
   accepts_nested_attributes_for :address
+
+  scope :with_presences, -> { joins(:presences).group("users.id") }
 
   validates_presence_of :first_name, :last_name, :birth
 
@@ -37,5 +41,9 @@ class User < ActiveRecord::Base
 
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
+  end
+
+  def name
+    "#{first_name} #{last_name}"
   end
 end

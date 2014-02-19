@@ -27,8 +27,13 @@ describe "Presences" do
         post_via_redirect user_session_path, 'user[email]' => manager.email, 'user[password]' => manager.password
       end
 
-      it "works! (now write some real specs)" do
-        get employees_path
+      it "gets all users presences" do
+        get presences_path
+        expect(response.status).to be(200)
+      end
+
+      it "gets one user presences" do
+        get user_presences_path(user)
         expect(response.status).to be(200)
       end
     end

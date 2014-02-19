@@ -17,7 +17,7 @@
         <td><%= presence.user.first_name %></td>
         <td><%= presence.time %></td>
         <td>
-          <%= link_to presence, method: :delete, data: { confirm: t('action.confirm') }, class: 'btn btn-danger' do %>
+          <%= link_to user_presence_path(@user, presence), method: :delete, data: { confirm: t('action.confirm') }, class: 'btn btn-danger' do %>
             <i class="fa fa-trash-o"></i> <%= t('action.destroy') %>
           <% end %>
         </td>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to "#{t 'action.new'} #{Presence.model_name.human}", new_presence_path, class: 'btn' %>
+<%= link_to "#{t 'action.new'} #{Presence.model_name.human}", new_user_presence_path(@user), class: 'btn' %>
