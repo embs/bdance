@@ -1,6 +1,6 @@
 <h1><%= "#{t 'action.listing'} #{t 'contract.many'}" %></h1>
 
-<table>
+<table class='table table-hover'>
   <thead>
     <tr>
       <th><%= Enrollment.human_attribute_name :number %></th>
@@ -14,8 +14,11 @@
       <tr>
         <td><%= pupil.id %></td>
         <td><%= "#{pupil.first_name} #{pupil.last_name}" %></td>
-        <td><%= link_to "#{t('action.download')} #{t('contract.one')}",
-          contract_download_path(pupil), class: 'btn' %></td>
+        <td>
+          <%= link_to contract_download_path(pupil), class: 'btn' do %>
+            <i class="fa fa-download"></i> <%= "#{t('action.download')} #{t('contract.one')}" %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

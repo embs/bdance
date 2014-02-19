@@ -1,16 +1,23 @@
 class PresencesController < ApplicationController
   before_action :set_presence, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:create, :new, :destroy]
   load_and_authorize_resource except: [:create]
 
-  # GET /presences
+  # GET /presences, /users/:user_id/presences
   # GET /presences.json
   def index
-    @presences = User.find(params[:user_id]).presences
+    unless params[:user_id]
+      @users = User.with_presences
+      render 'users_index' and return
+    end
+
+    @user = User.find(params[:user_id])
+    @presences = @user.presences
   end
 
   # GET /presences/new
   def new
-    @presence = Presence.new
+    @presence = @user.presences.build
   end
 
   # POST /presences
@@ -45,6 +52,10 @@ class PresencesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_presence
       @presence = Presence.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find(params[:user_id])
     end
 
     def presence_attrs

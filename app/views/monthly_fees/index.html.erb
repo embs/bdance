@@ -1,11 +1,11 @@
 <h1><%= "#{t 'action.listing'} #{MonthlyFee.model_name.human.pluralize}" %></h1>
 
-<table>
+<table class='table table-hover'>
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Amount</th>
-      <th>Due date</th>
+      <th><%= MonthlyFee.human_attribute_name :id %></th>
+      <th><%= MonthlyFee.human_attribute_name :amount %></th>
+      <th><%= MonthlyFee.human_attribute_name :due_date %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,12 +15,19 @@
   <tbody>
     <% @monthly_fees.each do |monthly_fee| %>
       <tr>
-        <td><%= monthly_fee.id %></td>
+        <td><%= link_to monthly_fee.id, pupil_monthly_fee_path(monthly_fee.pupil, monthly_fee) %></td>
         <td><%= monthly_fee.amount %></td>
         <td><%= monthly_fee.due_date %></td>
-        <td><%= link_to t('action.show'), pupil_monthly_fee_path(monthly_fee.pupil, monthly_fee) %></td>
-        <td><%= link_to t('action.edit'), edit_pupil_monthly_fee_path(monthly_fee.pupil, monthly_fee) %></td>
-        <td><%= link_to t('action.destroy'), pupil_monthly_fee_path(monthly_fee.pupil, monthly_fee), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to edit_pupil_monthly_fee_path(monthly_fee.pupil, monthly_fee), class: 'btn' do %>
+            <i class="fa fa-edit"></i> <%= t('action.edit') %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to pupil_monthly_fee_path(monthly_fee.pupil, monthly_fee), method: :delete, data: { confirm: t('action.confirm') }, class: 'btn btn-danger' do %>
+            <i class="fa fa-trash-o"></i> <%= t('action.destroy') %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +35,4 @@
 
 <br>
 
-<%= link_to "#{t 'action.new'} #{MonthlyFee.model_name.human}", new_pupil_monthly_fee_path(@pupil) %>
+<%= link_to "#{t 'action.new'} #{MonthlyFee.model_name.human}", new_pupil_monthly_fee_path(@pupil), class: 'btn' %>

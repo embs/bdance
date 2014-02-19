@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :amount %><br>
+    <%= f.label :amount %>
     <%= f.text_field :amount %>
   </div>
   <div class="field">
-    <%= f.label :due_date %><br>
+    <%= f.label :due_date %>
     <%= f.date_select :due_date %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn' %>
   </div>
 <% end %>

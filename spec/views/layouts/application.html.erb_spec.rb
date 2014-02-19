@@ -24,15 +24,15 @@ describe "layouts/application" do
   end
 
   it "displays side menu options" do
-    assert_select "ul>li>a", text: Pupil.model_name.human.pluralize, count: 1
-    assert_select "ul>li>a", text: Employee.model_name.human.pluralize, count: 1
-    assert_select "ul>li>a", text: Group.model_name.human.pluralize, count: 1
-    assert_select "ul>li>a", text: Modality.model_name.human.pluralize, count: 1
-    assert_select "ul>li>a", text: Rhythm.model_name.human.pluralize, count: 1
-    assert_select "ul>li>a", text: Enrollment.model_name.human.pluralize, count: 1
-    assert_select "ul>li>a", text: HoursPackage.model_name.human.pluralize, count: 1
-    assert_select "ul>li>a", text: Presence.model_name.human.pluralize, count: 1
-    assert_select "ul>li>a", text: t('contract.many'), count: 1
-    assert_select "ul>li>a", text: MonthlyFee.model_name.human.pluralize, count: 1
+    assert_select "ul>li>a[href=#{pupils_path}]", text: Pupil.model_name.human.pluralize, count: 1
+    assert_select "ul>li>a[href=#{employees_path}]", text: Employee.model_name.human.pluralize, count: 1
+    assert_select "ul>li>a[href=#{groups_path}]", text: Group.model_name.human.pluralize, count: 1
+    assert_select "ul>li>a[href=#{modalities_path}]", text: Modality.model_name.human.pluralize, count: 1
+    assert_select "ul>li>a[href=#{rhythms_path}]", text: Rhythm.model_name.human.pluralize, count: 1
+    assert_select "ul>li>a[href=#{enrollments_path}]", text: Enrollment.model_name.human.pluralize, count: 1
+    assert_select "ul>li>a[href=#{hours_packages_path}]", text: HoursPackage.model_name.human.pluralize, count: 1
+    assert_select "ul>li>a[href=#{presences_path}]", text: Presence.model_name.human.pluralize, count: 1
+    assert_select "ul>li>a[href=#{contracts_path}]", text: t('contract.many'), count: 1
+    assert_select "ul>li>a[href=#{monthly_fees_path}]", text: MonthlyFee.model_name.human.pluralize, count: 1
   end
 end

@@ -15,11 +15,11 @@ Bdance::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :modalities, :rhythms, :groups, :employees, :pupils, :enrollments,
     :hours_packages, :events
-  resources :presences, except: [:index, :show, :edit, :update, :patch]
+  resources :presences, only: :index
   resources :monthly_fees, only: :index
 
   resources :users, only: [] do
-    resources :presences, only: :index
+    resources :presences, only: [:index, :new, :create, :destroy]
   end
 
   resources :pupils, only: [] do
